@@ -1,5 +1,5 @@
 # Web Storm 
-.idea/ 
+.idea/
 .idea/.name
 .idea/encodings.xml
 .idea/footballSimulator.iml
@@ -9,3 +9,6 @@ simpd3.js
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
+
+# Big Files 
+data/
