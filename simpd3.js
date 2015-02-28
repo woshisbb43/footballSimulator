@@ -52,14 +52,14 @@ piter.append('line')
 .attr('stroke','white');
 
 
-d3.csv("part.csv", function(error, ballP) {
+d3.csv("part.csv", function(error, ballP) {                     // load data foa a ball
   // for (var i = 0; i < ballP.length; i++) {
   //   console.log(ballP[i].x_pos);
   // };
 
 //path
  var lineFunction = d3.svg.line()
-                        .x(function(d) { return d.x_pos*10; })
+                        .x(function(d) { return d.x_pos*10; })  // approximate coordinates
                         .y(function(d) { return d.y_pos*10; })
                         .interpolate("linear");
 
@@ -73,7 +73,7 @@ var path = piter.append("path")
                             .attr("stroke-width", 2)
                             .attr("fill", "none");
 
-var circle = piter.append("circle")
+var circle = piter.append("circle")                             // draw a circle
     .attr("r", 20);
     // .attr("transform" , "translate(" +  +")");
 
@@ -116,7 +116,7 @@ piter.append('circle')
 .attr("id", "middle");
 //the ball
 
-//point for penalty  
+//point for penalty
 piter.append('circle')
 .attr('r', 4)
 .attr('cx',12*7+10)
