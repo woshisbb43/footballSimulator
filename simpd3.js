@@ -25,7 +25,7 @@ var field = piter.append('rect').attr('height',height)
 .attr('x', 10)
 .attr('y',10);
 
-//大禁区
+//big goalkeeper rectangle
 piter.append('rect')
 .attr('height',44*7)
 .attr('width', 18*7)
@@ -33,7 +33,7 @@ piter.append('rect')
 .attr('x',10)
 .attr('fill', 'green')
 .attr('stroke', 'white');
-//小禁区
+//small rectangle
 piter.append('rect')
 .attr('height',20*7)
 .attr('width', 8*7)
@@ -106,7 +106,7 @@ piter.append('circle')
 .attr('stroke', 'white');
 
 
-//中场发球点
+//center og the field
 piter.append('circle')
 .attr('r', 4)
 .attr('cx',width/2+10)
@@ -116,7 +116,7 @@ piter.append('circle')
 .attr("id", "middle");
 //the ball
 
-//点球点
+//point for penalty  
 piter.append('circle')
 .attr('r', 4)
 .attr('cx',12*7+10)
