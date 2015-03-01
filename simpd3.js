@@ -56,16 +56,12 @@ d3.csv("part.csv", function(error, ballP) {                     // load data foa
   // for (var i = 0; i < ballP.length; i++) {
   //   console.log(ballP[i].x_pos);
   // };
-
+// ############################### movement of player ###################
 //path
  var lineFunction = d3.svg.line()
                         .x(function(d) { return d.x_pos*10; })  // approximate coordinates
                         .y(function(d) { return d.y_pos*10; })
                         .interpolate("linear");
-
-var svgContainer = d3.select("body").append("svg")
-                                    .attr("width", 600)
-                                    .attr("height", 600);
 
 var path = piter.append("path")
                             .attr("d", lineFunction(ballP))
@@ -77,13 +73,41 @@ var circle = piter.append("circle")                             // draw a circle
     .attr("r", 20);
     // .attr("transform" , "translate(" +  +")");
 
+// ############################## arc ################################
+var arc = d3.svg.arc()
+    .innerRadius(10)
+    .outerRadius(70)
+    .startAngle(0 )
+    .endAngle(3) //just radians
+
+var arc1 = d3.svg.arc()
+    .innerRadius(10)
+    .outerRadius(70)
+    .startAngle(2 )
+    .endAngle(3) //just radians
+
+arcElement = piter.append("path")
+    .attr("d", arc)
+    .attr("fill" , "red")
+    .attr("transform" , "translate(" + 400 + "," + 400 + ")");
+
+// ########################## arc finishi ############################
+
 
 transition();
 
 function transition() {
-  circle.transition()
-      .duration(10000)
+  arcElement.transition()
+      .duration(20000)
       .attrTween("transform", translateAlong(path.node()))
+      .attr("d", arc1)
+      .each("end", transition);
+
+      console.log(path.node());
+  circle.transition()
+      .duration(20000)
+      .attrTween("transform", translateAlong(path.node()))
+      .attr("fill", "blue")
       .each("end", transition);
 }
 
@@ -97,6 +121,8 @@ function translateAlong(path) {
     };
   };
 }
+
+// ####################### finish movement of player ############################
 //center circle
 piter.append('circle')
 .attr('r', 70)

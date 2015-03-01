@@ -1,0 +1,53 @@
+<div id="container"></div>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+		var points = [
+  [480, 200],
+  [580, 400],
+  [680, 100],
+  [780, 300],
+  [180, 300],
+  [280, 100],
+  [380, 400],
+  [500, 700]
+];
+		
+var container =  d3.select("#container")
+							.append("svg")
+							.attr("id", "plot")
+							.attr("width", 500)
+							.attr("height", 500);
+							
+		var circle = container
+						.append("circle")
+						.attr("cx", 25)
+						.attr("cy", 25)
+						.attr("r", 25)
+						.style("fill", "purple");
+		
+		var rect = container
+						.append("rect")
+						.attr("x", 100)
+						.attr("y", 200)
+						.attr("height", 30)
+						.attr("width", 30)
+						.attr("fill", 40);
+			
+		animations = [ 	function(){  console.log(1); return circle.transition().duration(2e3).attr("cy", Math.random()*300); } ,
+						function(){  console.log(2); return rect.transition().duration(3e3).attr("fill", "#"+((1<<24)*Math.random()|0).toString(16)); },
+						function(){  console.log(3); return circle.transition().duration(1e3).attr("r", Math.random()*500); },
+						function(){  console.log(4); return circle.transition().duration(2e3).style("fill", "#"+((1<<24)*Math.random()|0).toString(16)); },
+						function(){  console.log(5); return circle.transition().duration(1e3).attr("cx", Math.random()*500); }]
+		
+		function animate(index){
+			if(index < animations.length - 1){
+				index = index + 1
+				return animations[index]().each("end", function() { animate(index) })
+			} else {
+				return true
+			}
+		}
+		
+		animate(-1)
+		</script>
