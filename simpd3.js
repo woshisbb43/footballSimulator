@@ -59,56 +59,92 @@ d3.csv("part.csv", function(error, ballP) {                     // load data foa
 // ############################### movement of player ###################
 //path
  var lineFunction = d3.svg.line()
-                        .x(function(d) { return d.x_pos*10; })  // approximate coordinates
-                        .y(function(d) { return d.y_pos*10; })
+                        .x(function(d) { return d.x_pos*5; })  // approximate coordinates
+                        .y(function(d) { return d.y_pos*5; })
                         .interpolate("linear");
 
 var path = piter.append("path")
                             .attr("d", lineFunction(ballP))
                             .attr("stroke", "blue")
+                            .attr("opacity" , 0.0)
                             .attr("stroke-width", 2)
                             .attr("fill", "none");
-
+// ##############################circle##############################
 var circle = piter.append("circle")                             // draw a circle
-    .attr("r", 20);
+    .attr("r", 20)
+    .attr("fill" , "#FF0000");
     // .attr("transform" , "translate(" +  +")");
+// #######################circle end #################################
 
 // ############################## arc ################################
-var arc = d3.svg.arc()
-    .innerRadius(10)
-    .outerRadius(70)
-    .startAngle(0 )
-    .endAngle(3) //just radians
-
-var arc1 = d3.svg.arc()
+var arcV1 = d3.svg.arc()
     .innerRadius(10)
     .outerRadius(70)
     .startAngle(2 )
     .endAngle(3) //just radians
 
-arcElement = piter.append("path")
-    .attr("d", arc)
-    .attr("fill" , "red")
+var arcV2 = d3.svg.arc()
+    .innerRadius(10)
+    .outerRadius(70)
+    .startAngle(-3 )
+    .endAngle(-2) //just radians
+
+var arcV2 = d3.svg.arc()
+    .innerRadius(10)
+    .outerRadius(70)
+    .startAngle(0 )
+    .endAngle(1) //just radians
+
+arcV = piter.append("path")
+    .attr("d", arcV1)
+    .attr("fill" , "#FA8258")
+    .attr("opacity" , "0.7")
+    .attr("stroke" , "white")
     .attr("transform" , "translate(" + 400 + "," + 400 + ")");
 
 // ########################## arc finishi ############################
 
+// ##########################rectangle##############################
+var arcD1 = d3.svg.arc()
+    .innerRadius(30)
+    .outerRadius(40)
+    .startAngle(0 )
+    .endAngle(1) //just radians
+
+var arcD2 = d3.svg.arc()
+    .innerRadius(30)
+    .outerRadius(40)
+    .startAngle(0 )
+    .endAngle(3) //just radians
+
+arcD = piter.append("path")
+    .attr("d", arcD1)
+    .attr("fill" , "#6E6E6E")
+    .attr("opacity" , "0.7")
+    .attr("stroke" , "white")
+    .attr("transform" , "translate(" + 400 + "," + 400 + ")");
 
 transition();
 
 function transition() {
-  arcElement.transition()
+  arcD.transition()
       .duration(20000)
       .attrTween("transform", translateAlong(path.node()))
-      .attr("d", arc1)
-      .each("end", transition);
+      .attr("d", arcD2) 
+
+
+  arcV.transition()
+      .duration(20000)
+      .attrTween("transform", translateAlong(path.node()))
+      .attr("d", arcV2)
+      // .each("end", transition);
 
       console.log(path.node());
   circle.transition()
       .duration(20000)
       .attrTween("transform", translateAlong(path.node()))
-      .attr("fill", "blue")
-      .each("end", transition);
+      .attr("fill", "#8A0808")
+      // .each("end", transition);
 }
 
 // Returns an attrTween for translating along the specified path element.
