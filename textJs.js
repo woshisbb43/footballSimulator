@@ -56,8 +56,8 @@ for (i=0;i<xMax;i++) {
       .range([height, 0]);
 
   var color = d3.scale.linear()
-      .domain([0, 100])
-      .range(["#FFF","#FFFF00 "]);
+      .domain([0, 500, 1000, 1500, 2000, 2500, 3000, 3500])
+      .range(["#0a0", "#6c0", "#ee0", "#eb4", "#eb9", "#fff" ,"#FF00FF", "#6699FF"]);
 
   // var xAxis = d3.svg.axis()
   //     .scale(x)
@@ -210,6 +210,7 @@ function arcTween(transition, newStartAngle , newFinishAngle) {
 // Grab a random sample of letters from the alphabet, in alphabetical order.
 //this code run the function each 2000 miliseconds
 var num =0;
+var max = 0, maxX, maxY;
 var clearID = setInterval(function() {
   num = num + 1;
 
@@ -229,7 +230,17 @@ var clearID = setInterval(function() {
 
   if (num == 1500) {
     console.log(heatArray);
-    drawImage();
+        drawImage();
+    for (i=0 ;i<xMax;i++) {
+      for (j=0;j<yMax;j++) {
+        if(heatArray[i][j] > max){
+          max = heatArray[i][j];
+          maxX= i;
+          maxY = j;
+        };
+      }
+    };
+    console.log(max+"dd " + maxX + "" + maxY);
     clearInterval(clearID);} 
 }, 1);
 
