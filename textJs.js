@@ -9,13 +9,9 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(32," + (height / 2) + ")");
 
 var circle = svg.append("circle")
-    .attr("cx" , 100)
-    .attr("cy" , 200)
     .attr("r" , 20);
 
 var rect = svg.append("rect")
-    .attr("cx" ,100)
-    .attr("cy" , 100)
     .attr("width" , 50)
     .attr("height" , 40)
     .attr("opacity" , 0.5);
@@ -30,39 +26,120 @@ arcV = svg.append("path")
     .attr("fill" , "#FA8258")
     .attr("opacity" , "0.7")
     .attr("stroke" , "white");
+//heatmap array   
+var xMax = 960;
+var yMax = 500;
+var heatArray = new Array();
+
+for (i=0;i<xMax;i++) {
+ heatArray[i]=new Array();
+ for (j=0;j<yMax;j++) {
+  heatArray[i][j]=0;
+ }
+}
+// ############################# for heatmap ######################################
+  var dx = heatArray.length,
+      dy = heatArray[0].length;
+      // console.log(dx +"" + dy);
+
+  // Fix the aspect ratio.
+  // var ka = dy / dx, kb = height / width;
+  // if (ka < kb) height = width * ka;
+  // else width = height / ka;
+
+  var x = d3.scale.linear()
+      .domain([0, dx])
+      .range([0, width]);
+
+  var y = d3.scale.linear()
+      .domain([0, dy])
+      .range([height, 0]);
+
+  var color = d3.scale.linear()
+      .domain([0, 5, 10, 15, 20, 25])
+      .range(["#0a0", "#6c0", "#ee0", "#eb4", "#eb9", "#fff"]);
+
+  // var xAxis = d3.svg.axis()
+  //     .scale(x)
+  //     .orient("top")
+  //     .ticks(20);
+
+  // var yAxis = d3.svg.axis()
+  //     .scale(y)
+  //     .orient("right");
+
+
+var  canvas =  d3.select("body").append("canvas")
+      .attr("width", dx)
+      .attr("height", dy)
+      .style("width", width + "px")
+      .style("height", height + "px")
+      .attr("id" , "canvas");
 
 
 //load data
 d3.csv("part.csv", function(error, ballP) {   
-
-
-
 
 function update(datax, datay , heading , energy, speed) {
 
   var startHeading =  parseFloat (heading-1);
   var endHeading =parseFloat (heading+ 1);
 
+  // console.log(parseInt(datax));
+
   circle.transition()
         .duration(400)
-        .attr("cx" , datax)
-        .attr("cy" , datay);
+        .attr("cx" , parseInt(datax))
+        .attr("cy" , parseInt(datay));
 
   rect.transition()
         .duration(400)
         .attr("height" , speed*30 )
-        .attr("x"  , datax + 10)
-        .attr("y" , datay);
+        .attr("x"  , parseInt(datax) + 10)
+        .attr("y" , parseInt(datay));
 
   arcV.transition()
         .duration(400)
-        .attr("transform" , "translate(" + datax + "," + datay + ")")
+        .attr("transform" , "translate(" + parseInt(datax) + "," + parseInt(datay) + ")")
         .call(arcTween, startHeading,  endHeading );
-      
-  // console.log(startHeading);
-  //   console.log(endHeading);
+  
+  calculateHeat(parseInt(datax) , parseInt(datay));    
+
+  // drawImage();
+
+
+
+}
+//caluculate the apperance array for heatmap
+function calculateHeat(datax , datay){
+
+   heatArray[datax][datay] = heatArray[datax][datay]+1;
+   // console.log(heatArray[datax][datay]);
 }
 
+function drawImage() {
+    var context = document.getElementById("canvas").getContext("2d"),
+    //The createImageData() method creates a new, blank ImageData object
+    //http://www.w3schools.com/tags/canvas_createimagedata.asp
+        image = context.createImageData(dx, dy);
+        // console.log("dafd")
+
+    for (var y = 0, p = -1; y < dy; ++y) {
+      for (var x = 0; x < dx; ++x) {
+
+        var c = d3.rgb(color(heatArray[y][x]));
+                // console.log(c);
+        // console.log(color(heatmap[y][x]));
+        //this c is every data's color in heatmap.josn
+        image.data[++p] = c.r;
+        image.data[++p] = c.g;
+        image.data[++p] = c.b;
+        //this is the transparency
+        image.data[++p] = 255;
+      }
+    }
+    context.putImageData(image, 0, 0);
+}
 
 function arcTween(transition, newStartAngle , newFinishAngle) {
 
@@ -119,7 +196,7 @@ function arcTween(transition, newStartAngle , newFinishAngle) {
 // Grab a random sample of letters from the alphabet, in alphabetical order.
 //this code run the function each 2000 miliseconds
 var num =0;
-setInterval(function() {
+var clearID = setInterval(function() {
   num = num + 1;
 
   // console.log(ballP[num].x_pos);
@@ -134,6 +211,13 @@ setInterval(function() {
      //      console.log(shuffle(alphabet).slice(1,3));
 
       // .sort());
-}, 300);
+  console.log(num);
+
+  if (num == 1500) {
+    console.log(heatArray);
+    drawImage();
+    clearInterval(clearID);} 
+}, 20);
+
 
 });

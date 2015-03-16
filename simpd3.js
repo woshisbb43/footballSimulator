@@ -57,6 +57,7 @@ d3.csv("part.csv", function(error, ballP) {                     // load data foa
   //   console.log(ballP[i].x_pos);
   // };
 // ############################### movement of player ###################
+console.log(ballP);
 //path
  var lineFunction = d3.svg.line()
                         .x(function(d) { return d.x_pos*5; })  // approximate coordinates
