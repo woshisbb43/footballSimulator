@@ -99,8 +99,9 @@ var  canvas =  d3.select("body").append("canvas")
       for (var x = 0; x < dx; ++x) {
         // console.log(heatmap[y][x])
         var c = d3.rgb(color(heatmap[y][x]));
-
+        if(800<=x<=820){
         console.log(c);
+      }
         //this c is every data's color in heatmap.josn
         image.data[++p] = c.r;
         image.data[++p] = c.g;

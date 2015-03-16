@@ -38,8 +38,8 @@ for (i=0;i<xMax;i++) {
  }
 }
 // ############################# for heatmap ######################################
-  var dx = heatArray.length,
-      dy = heatArray[0].length;
+  var dx = heatArray[0].length,
+      dy = heatArray.length;
       // console.log(dx +"" + dy);
 
   // Fix the aspect ratio.
@@ -56,8 +56,8 @@ for (i=0;i<xMax;i++) {
       .range([height, 0]);
 
   var color = d3.scale.linear()
-      .domain([0, 5, 10, 15, 20, 25])
-      .range(["#0a0", "#6c0", "#ee0", "#eb4", "#eb9", "#fff"]);
+      .domain([0, 100])
+      .range(["#FFF","#FFFF00 "]);
 
   // var xAxis = d3.svg.axis()
   //     .scale(x)
@@ -103,7 +103,7 @@ function update(datax, datay , heading , energy, speed) {
         .attr("transform" , "translate(" + parseInt(datax) + "," + parseInt(datay) + ")")
         .call(arcTween, startHeading,  endHeading );
   
-  calculateHeat(parseInt(datax) , parseInt(datay));    
+  calculateHeat(parseInt(datax*5) , parseInt(datay*5));    
 
   // drawImage();
 
@@ -113,7 +113,15 @@ function update(datax, datay , heading , energy, speed) {
 //caluculate the apperance array for heatmap
 function calculateHeat(datax , datay){
 
-   heatArray[datax][datay] = heatArray[datax][datay]+1;
+   // heatArray[datax][datay] = heatArray[datax][datay]+10;
+   for (var i = datax-30; i < datax+30; i++) {
+     for (var j = datay-30; j < datay+30; j++) {
+      if(i<0||j<0){
+        continue;
+      }
+     heatArray[i][j] = heatArray[i][j]+10;
+     };
+   };
    // console.log(heatArray[datax][datay]);
 }
 
@@ -128,7 +136,13 @@ function drawImage() {
       for (var x = 0; x < dx; ++x) {
 
         var c = d3.rgb(color(heatArray[y][x]));
-                // console.log(c);
+              if(x==800){
+                console.log(dy)
+                console.log(dx)
+        console.log(y+" ")
+        console.log(x+" ")
+        console.log(heatArray[y][x]);
+      }
         // console.log(color(heatmap[y][x]));
         //this c is every data's color in heatmap.josn
         image.data[++p] = c.r;
@@ -217,7 +231,7 @@ var clearID = setInterval(function() {
     console.log(heatArray);
     drawImage();
     clearInterval(clearID);} 
-}, 20);
+}, 1);
 
 
 });
