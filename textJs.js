@@ -30,7 +30,7 @@ arcV = svg.append("path")
     .attr("fill" , "#FA8258")
     .attr("opacity" , "0.7")
     .attr("stroke" , "white");
-<<<<<<< HEAD
+
 //heatmap array   
 var xMax = 960;
 var yMax = 500;
@@ -62,9 +62,8 @@ for (i=0;i<xMax;i++) {
 
   var color = d3.scale.linear()
       .domain([0, 500, 1000, 1500, 2000, 2500, 3000, 3500])
-      .range(["#0a0", "#6c0", "#ee0", "#eb4", "#eb9", "#fff" ,"#FF00FF", "#6699FF"]);
-=======
->>>>>>> parent of de82202... very low heatmap
+      .range(["#0a0", "#6c0", "#ee0", "#eb4", "#eb9", "#fff" ,"#FF00FF", "#6699FF"]); 
+
 
 
 //load data
@@ -93,22 +92,16 @@ function update(datax, datay , heading , energy, speed) {
         .duration(400)
         .attr("transform" , "translate(" + datax + "," + datay + ")")
         .call(arcTween, startHeading,  endHeading );
-<<<<<<< HEAD
   
   calculateHeat(parseInt(datax*5) , parseInt(datay*5));    
 
   // drawImage();
 
 
-
-=======
       
   // console.log(startHeading);
   //   console.log(endHeading);
->>>>>>> parent of de82202... very low heatmap
-}
 
-<<<<<<< HEAD
    // heatArray[datax][datay] = heatArray[datax][datay]+10;
    for (var i = datax-30; i < datax+30; i++) {
      for (var j = datay-30; j < datay+30; j++) {
@@ -150,8 +143,6 @@ function drawImage() {
     }
     context.putImageData(image, 0, 0);
 }
-=======
->>>>>>> parent of de82202... very low heatmap
 
 function arcTween(transition, newStartAngle , newFinishAngle) {
 
@@ -208,12 +199,12 @@ function arcTween(transition, newStartAngle , newFinishAngle) {
 // Grab a random sample of letters from the alphabet, in alphabetical order.
 //this code run the function each 2000 miliseconds
 var num =0;
-<<<<<<< HEAD
+
 var max = 0, maxX, maxY;
 var clearID = setInterval(function() {
-=======
+
 setInterval(function() {
->>>>>>> parent of de82202... very low heatmap
+
   num = num + 1;
 
   // console.log(ballP[num].x_pos);
@@ -228,7 +219,7 @@ setInterval(function() {
      //      console.log(shuffle(alphabet).slice(1,3));
 
       // .sort());
-<<<<<<< HEAD
+
   console.log(num);
 
   if (num == 1500) {
@@ -247,8 +238,7 @@ setInterval(function() {
     clearInterval(clearID);} 
 }, 1);
 
-=======
+
 }, 300);
->>>>>>> parent of de82202... very low heatmap
 
 });

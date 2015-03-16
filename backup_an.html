@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+text {
+  font: bold 48px monospace;
+}
+
+/*svg,
+canvas {
+  position: absolute;
+}*/
+
+.enter {
+  fill: green;
+}
+
+.update {
+  fill: #333;
+}
+
+.exit {
+  fill: brown;
+}
+
+</style>
+<body>
+<!-- <script src="http://d3js.org/d3.v2.min.js?2.10.1"></script> -->
+<script src="http://d3js.org/d3.v3.js"></script>
+<script src="http://d3js.org/d3.v2.min.js?2.10.1"></script>
+<script>
+
+var alphabet = "abcdefghsfasdfaio".split("");
+
+var b1 = [
+[1978,632],
+[2066,596],
+[2128,576],
+[2160,562],
+[2194,566],
+[2342,576],
+[2434,578],
+[2458,568],
+[2470,572],
+[2486,568],
+[2510,568],
+[2536,554],
+[2564,550],
+[2538,554],
+[2512,556],
+[2486,556],
+[2438,562],
+[2316,538],
+[2278,552],
+[2196,562],
+[2120,580],
+[2074,588],
+[2074,596],
+[2072,600],
+[2084,600],
+[2438,602],
+[2812,718],
+[3190,864],
+[3226,890],
+[3266,944]
+];
+
+var p1 = [
+[64.9740051913,14.7137207936],
+[65.601918115,15.4598234485],
+[65.7267781378,16.4435639348],
+[65.4822142933,17.6187681048],
+[65.2243057939,18.6109767197],
+[65.2505377081,19.4028567109],
+[65.7440007215,20.1205229795],
+[66.6386817934,21.1234650333],
+[67.5145524633,22.5162365886],
+[68.0296313906,24.0437617886],
+[68.1129961627,25.3830037325],
+[68.4340556367,26.1203928901],
+[69.4195219947,26.4794069984],
+[70.3522437169,26.8104762174],
+[70.9894517118,26.9346311819],
+[71.8933924833,26.8239651255],
+[73.0999288533,26.9220068457],
+[74.2950286933,27.2365694907],
+[75.3612922279,27.5317785606],
+[76.3434414854,27.9013933485],
+[77.3925110248,28.3217990605],
+[78.5117903954,28.4620533714],
+[79.448131833,28.324154259],
+[79.9773210874,27.9809373664],
+[79.8931866895,27.5738978552],
+[79.0542392555,27.28237075],
+[77.7753053252,26.8919790906],
+[76.4530246901,26.2913685085],
+[75.1647557131,26.0440828054],
+[74.0140768839,26.3497665161]
+]; 
+
+var p2 = [
+[66.9482318936,44.3846490217],
+[67.1411697637,44.8584689746],
+[67.2995514849,46.0763597448],
+[67.4516001309,47.7754491638],
+[67.7935140606,48.7738946667],
+[68.0919153843,49.1639539959],
+[68.0595197943,50.1729083872],
+[67.8002169447,51.9153022965],
+[67.4063845595,53.9859999985],
+[66.7643609271,56.2493846501],
+[66.0768698626,58.4533554171],
+[65.6044764247,60.4778470556],
+[65.4046348707,62.0352531325],
+[65.6022720035,62.6041944769],
+[66.3126245693,62.3764666706],
+[67.3993816486,61.931209961],
+[68.5838271745,61.588025914],
+[69.8453136918,61.5642785663],
+[71.3102647902,61.804727465],
+[72.835674807,61.9640623377],
+[74.2692773028,61.7640783999],
+[75.3906266174,61.2137287806],
+[75.8506669051,60.5961753937],
+[75.7961142282,59.9096167151],
+[75.4312554609,59.1157813508],
+[74.5022154882,58.3802392235],
+[73.173795237,57.992261361],
+[71.9933740791,57.8149146623],
+[71.0157819315,57.3535607546],
+[70.2365237006,56.6032497993]
+]; 
+
+// console.log(points[2]);
+
+var width = 960,
+    height = 500
+     ta = 2 * Math.PI;;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("transform", "translate(32," + (height / 2) + ")");
+
+var ball = svg.append("circle")
+    .attr("cx" , 100)
+    .attr("cy" , 200)
+    .attr("r" , 20);
+	
+var pl1 = svg.append("circle")
+    .attr("cx" , 200)
+    .attr("cy" , 200)
+    .attr("r" , 20);
+	
+var pl2 = svg.append("circle")
+    .attr("cx" , 300)
+    .attr("cy" , 200)
+    .attr("r" , 20);
+
+var rect = svg.append("rect")
+    .attr("cx" ,100)
+    .attr("cy" , 100)
+    .attr("width" , 50)
+    .attr("height" , 40)
+    .attr("opacity" , 0.5);
+
+  var arc = d3.svg.arc()
+    .innerRadius(10)
+    .outerRadius(70)
+    .startAngle(2 ) 
+
+  arcV = svg.append("path")
+  .datum({endAngle: ta})
+    .attr("d", arc)
+    .attr("fill" , "#FA8258")
+    .attr("opacity" , "0.7")
+    .attr("stroke" , "white");
+
+
+//load data
+// d3.csv("part.csv", function(error, ballP) {   
+
+function update(datax, datay) {
+
+  var randomX = Math.random()*100 ;
+  var randomY = Math.random()*200 ;
+
+
+
+  ball.transition()
+        .attr("cx" , datax/2)
+        .attr("cy" , datay/2);
+
+  rect.transition()
+        .attr("height" , datax/10 )
+        .attr("x"  , datax/2 + 10)
+        .attr("y" , datay/2);
+
+  arcV.transition()
+        .attr("transform" , "translate(" + datax/2 + "," + datay/2 + ")")
+        .call(arcTween, datax/100);
+      
+
+
+  // console.log(data);
+
+  // DATA JOIN
+  // Join new data with old elements, if any.
+  // var text = svg.selectAll("text")
+  //     .data(data, function(d) { return d; });
+
+  // #################
+  // var line = svg.selectAll("text")
+  //     .data(data, function(d) { return d; });
+
+  // UPDATE
+  // Update old elements as needed.
+  // text.attr("class", "update")
+  //   .transition()
+  //     .duration(750)
+  //     .attr("x", function(d, i) { return i * 50; });
+// ####################
+  // line.transition()
+  //     .duration(750)
+  //     .attr("x", function(d, i) { return i * 50; });
+
+
+
+  // ENTER
+  // Create new elements as needed.
+  // text.enter().append("text")
+  //     .attr("class", "enter")
+  //     .attr("dy", ".35em")
+  //     .attr("y", -600)
+  //     .attr("x", function(d, i) { return i * 50; })
+  //     .style("fill-opacity", 1e-6)
+  //     .text(function(d) { return d; })
+  //   .transition()
+  //     .duration(750)
+  //     .attr("y", 0)
+  //     .style("fill-opacity", 1);
+// #########################
+  // line.enter().append("text")
+  //     .text(function(d) {return d; })
+  //     .attr("x", function(d, i) { return i * 50; });
+
+  // EXIT
+  // Remove old elements as needed.
+  // text.exit()
+  //     .attr("class", "exit")
+  //   .transition()
+  //     .duration(750)
+  //     .attr("y", 600)
+  //     .style("fill-opacity", 1e-6)
+  //     .remove();
+
+  // line.exit()
+  //     .remove();
+}
+
+function arcTween(transition, newAngle) {
+
+  // The function passed to attrTween is invoked for each selected element when
+  // the transition starts, and for each element returns the interpolator to use
+  // over the course of transition. This function is thus responsible for
+  // determining the starting angle of the transition (which is pulled from the
+  // element's bound datum, d.endAngle), and the ending angle (simply the
+  // newAngle argument to the enclosing function).
+  transition.attrTween("d", function(d) {
+
+    // To interpolate between the two angles, we use the default d3.interpolate.
+    // (Internally, this maps to d3.interpolateNumber, since both of the
+    // arguments to d3.interpolate are numbers.) The returned function takes a
+    // single argument t and returns a number between the starting angle and the
+    // ending angle. When t = 0, it returns d.endAngle; when t = 1, it returns
+    // newAngle; and for 0 < t < 1 it returns an angle in-between.
+    var interpolate = d3.interpolate(d.endAngle, newAngle);
+
+    // The return value of the attrTween is also a function: the function that
+    // we want to run for each tick of the transition. Because we used
+    // attrTween("d"), the return value of this last function will be set to the
+    // "d" attribute at every tick. (It's also possible to use transition.tween
+    // to run arbitrary code for every tick, say if you want to set multiple
+    // attributes from a single function.) The argument t ranges from 0, at the
+    // start of the transition, to 1, at the end.
+    return function(t) {
+
+      // Calculate the current arc angle based on the transition time, t. Since
+      // the t for the transition and the t for the interpolate both range from
+      // 0 to 1, we can pass t directly to the interpolator.
+      //
+      // Note that the interpolated angle is written into the element's bound
+      // data object! This is important: it means that if the transition were
+      // interrupted, the data bound to the element would still be consistent
+      // with its appearance. Whenever we start a new arc transition, the
+      // correct starting angle can be inferred from the data.
+      d.endAngle = interpolate(t);
+
+      // Lastly, compute the arc path given the updated data! In effect, this
+      // transition uses data-space interpolation: the data is interpolated
+      // (that is, the end angle) rather than the path string itself.
+      // Interpolating the angles in polar coordinates, rather than the raw path
+      // string, produces valid intermediate arcs during the transition.
+      return arc(d);
+    };
+  });
+}
+
+// The initial display.
+update(30,22);
+
+// Grab a random sample of letters from the alphabet, in alphabetical order.
+//this code run the function each 2000 miliseconds
+var num =0;
+setInterval(function() {
+  num = num + 1;
+
+  // console.log(points);
+  update(b1[num][0], b1[num][1]);
+
+
+      // .slice(1, Math.floor(Math.random() * 5)));
+  // .slice(1, 3));
+     // console.log(shuffle(alphabet));
+     //      console.log(shuffle(alphabet).slice(1,3));
+
+      // .sort());
+}, 500);
+
+
+// Shuffles the input array.
+function shuffle(array) {
+  var m = array.length, t, i;
+  while (m) {
+    //Math.floor returns  the largest integer less than or equal to a given number.
+    i = Math.floor(Math.random() * m--);
+    t = array[m], array[m] = array[i], array[i] = t;
+  }
+  return array;
+}
+//load data finish
+
+
+</script> 
