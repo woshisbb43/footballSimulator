@@ -9,9 +9,13 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(32," + (height / 2) + ")");
 
 var circle = svg.append("circle")
+    .attr("cx" , 100)
+    .attr("cy" , 200)
     .attr("r" , 20);
 
 var rect = svg.append("rect")
+    .attr("cx" ,100)
+    .attr("cy" , 100)
     .attr("width" , 50)
     .attr("height" , 40)
     .attr("opacity" , 0.5);
@@ -26,6 +30,7 @@ arcV = svg.append("path")
     .attr("fill" , "#FA8258")
     .attr("opacity" , "0.7")
     .attr("stroke" , "white");
+<<<<<<< HEAD
 //heatmap array   
 var xMax = 960;
 var yMax = 500;
@@ -58,50 +63,37 @@ for (i=0;i<xMax;i++) {
   var color = d3.scale.linear()
       .domain([0, 500, 1000, 1500, 2000, 2500, 3000, 3500])
       .range(["#0a0", "#6c0", "#ee0", "#eb4", "#eb9", "#fff" ,"#FF00FF", "#6699FF"]);
-
-  // var xAxis = d3.svg.axis()
-  //     .scale(x)
-  //     .orient("top")
-  //     .ticks(20);
-
-  // var yAxis = d3.svg.axis()
-  //     .scale(y)
-  //     .orient("right");
-
-
-var  canvas =  d3.select("body").append("canvas")
-      .attr("width", dx)
-      .attr("height", dy)
-      .style("width", width + "px")
-      .style("height", height + "px")
-      .attr("id" , "canvas");
+=======
+>>>>>>> parent of de82202... very low heatmap
 
 
 //load data
 d3.csv("part.csv", function(error, ballP) {   
+
+
+
 
 function update(datax, datay , heading , energy, speed) {
 
   var startHeading =  parseFloat (heading-1);
   var endHeading =parseFloat (heading+ 1);
 
-  // console.log(parseInt(datax));
-
   circle.transition()
         .duration(400)
-        .attr("cx" , parseInt(datax))
-        .attr("cy" , parseInt(datay));
+        .attr("cx" , datax)
+        .attr("cy" , datay);
 
   rect.transition()
         .duration(400)
         .attr("height" , speed*30 )
-        .attr("x"  , parseInt(datax) + 10)
-        .attr("y" , parseInt(datay));
+        .attr("x"  , datax + 10)
+        .attr("y" , datay);
 
   arcV.transition()
         .duration(400)
-        .attr("transform" , "translate(" + parseInt(datax) + "," + parseInt(datay) + ")")
+        .attr("transform" , "translate(" + datax + "," + datay + ")")
         .call(arcTween, startHeading,  endHeading );
+<<<<<<< HEAD
   
   calculateHeat(parseInt(datax*5) , parseInt(datay*5));    
 
@@ -109,10 +101,14 @@ function update(datax, datay , heading , energy, speed) {
 
 
 
+=======
+      
+  // console.log(startHeading);
+  //   console.log(endHeading);
+>>>>>>> parent of de82202... very low heatmap
 }
-//caluculate the apperance array for heatmap
-function calculateHeat(datax , datay){
 
+<<<<<<< HEAD
    // heatArray[datax][datay] = heatArray[datax][datay]+10;
    for (var i = datax-30; i < datax+30; i++) {
      for (var j = datay-30; j < datay+30; j++) {
@@ -154,6 +150,8 @@ function drawImage() {
     }
     context.putImageData(image, 0, 0);
 }
+=======
+>>>>>>> parent of de82202... very low heatmap
 
 function arcTween(transition, newStartAngle , newFinishAngle) {
 
@@ -210,8 +208,12 @@ function arcTween(transition, newStartAngle , newFinishAngle) {
 // Grab a random sample of letters from the alphabet, in alphabetical order.
 //this code run the function each 2000 miliseconds
 var num =0;
+<<<<<<< HEAD
 var max = 0, maxX, maxY;
 var clearID = setInterval(function() {
+=======
+setInterval(function() {
+>>>>>>> parent of de82202... very low heatmap
   num = num + 1;
 
   // console.log(ballP[num].x_pos);
@@ -226,6 +228,7 @@ var clearID = setInterval(function() {
      //      console.log(shuffle(alphabet).slice(1,3));
 
       // .sort());
+<<<<<<< HEAD
   console.log(num);
 
   if (num == 1500) {
@@ -244,5 +247,8 @@ var clearID = setInterval(function() {
     clearInterval(clearID);} 
 }, 1);
 
+=======
+}, 300);
+>>>>>>> parent of de82202... very low heatmap
 
 });
