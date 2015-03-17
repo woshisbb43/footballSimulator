@@ -47,6 +47,8 @@ d3.json("heatmap.json", function(error, heatmap) {
       .domain([0, dx])
       .range([0, width]);
 
+      console.log(x(20));
+
   var y = d3.scale.linear()
       .domain([0, dy])
       .range([height, 0]);

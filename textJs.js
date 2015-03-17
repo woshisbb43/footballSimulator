@@ -3,10 +3,11 @@ var width = 960,
     height = 500
      τ = 2 * Math.PI;;
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("body").append("svg").attr("class" , "pitch")
     .attr("width", width)
     .attr("height", height)
-    .attr("transform", "translate(32," + (height / 2) + ")");
+    .style('background','green');
+
 
 var circle = svg.append("circle")
     .attr("r" , 20);
@@ -47,16 +48,17 @@ for (i=0;i<xMax;i++) {
   // if (ka < kb) height = width * ka;
   // else width = height / ka;
 
-  var x = d3.scale.linear()
-      .domain([0, dx])
+  var scaleX = d3.scale.linear()
+      .domain([0, 110])
       .range([0, width]);
 
-  var y = d3.scale.linear()
-      .domain([0, dy])
+
+  var scaleY = d3.scale.linear()
+      .domain([0, 73])
       .range([height, 0]);
 
   var color = d3.scale.linear()
-      .domain([0, 500, 1000, 1500, 2000, 2500, 3000, 3500])
+      .domain([0, 20, 40, 60, 80, 100, 120, 140])
       .range(["#0a0", "#6c0", "#ee0", "#eb4", "#eb9", "#fff" ,"#FF00FF", "#6699FF"]);
 
   // var xAxis = d3.svg.axis()
@@ -78,32 +80,40 @@ var  canvas =  d3.select("body").append("canvas")
 
 
 //load data
-d3.csv("part.csv", function(error, ballP) {   
+d3.csv("playerSix.csv", function(error, ballP) {   
+
+  //player's quickest speed is 13.3202 slowest is 0 
 
 function update(datax, datay , heading , energy, speed) {
 
-  var startHeading =  parseFloat (heading-1);
-  var endHeading =parseFloat (heading+ 1);
 
-  // console.log(parseInt(datax));
+  var startHeading =  parseFloat (heading-1);
+  var endHeading =parseFloat (heading+ 1),
+  scaleDataX = parseInt(scaleX(datax)),
+  scaleDataY = parseInt(scaleY(datay));
+  if(speed==0){
+    speed = 0.1;
+  }
+
+  // console.log(scaleDataX + " dddd" + scaleDataY);
 
   circle.transition()
-        .duration(400)
-        .attr("cx" , parseInt(datax))
-        .attr("cy" , parseInt(datay));
+        .duration(2000/speed)
+        .attr("cx" , scaleDataX)
+        .attr("cy" , scaleDataY);
 
   rect.transition()
-        .duration(400)
+        .duration(2000/speed)
         .attr("height" , speed*30 )
-        .attr("x"  , parseInt(datax) + 10)
-        .attr("y" , parseInt(datay));
+        .attr("x"  , scaleDataX + 10)
+        .attr("y" , scaleDataY);
 
   arcV.transition()
-        .duration(400)
-        .attr("transform" , "translate(" + parseInt(datax) + "," + parseInt(datay) + ")")
+        .duration(2000/speed)
+        .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
         .call(arcTween, startHeading,  endHeading );
   
-  calculateHeat(parseInt(datax*5) , parseInt(datay*5));    
+  calculateHeat(scaleDataX ,scaleDataY);    
 
   // drawImage();
 
@@ -122,7 +132,7 @@ function calculateHeat(datax , datay){
      heatArray[i][j] = heatArray[i][j]+10;
      };
    };
-   // console.log(heatArray[datax][datay]);
+   // console.log(heatArray[datax][datay] + " "+datax +" "+ datay);
 }
 
 function drawImage() {
@@ -136,13 +146,13 @@ function drawImage() {
       for (var x = 0; x < dx; ++x) {
 
         var c = d3.rgb(color(heatArray[y][x]));
-              if(x==800){
-                console.log(dy)
-                console.log(dx)
-        console.log(y+" ")
-        console.log(x+" ")
-        console.log(heatArray[y][x]);
-      }
+      //         if(x==800){
+      //           console.log(dy)
+      //           console.log(dx)
+      //   console.log(y+" ")
+      //   console.log(x+" ")
+      //   console.log(heatArray[y][x]);
+      // }
         // console.log(color(heatmap[y][x]));
         //this c is every data's color in heatmap.josn
         image.data[++p] = c.r;
@@ -152,6 +162,7 @@ function drawImage() {
         image.data[++p] = 255;
       }
     }
+    // console.log()
     context.putImageData(image, 0, 0);
 }
 
@@ -210,39 +221,48 @@ function arcTween(transition, newStartAngle , newFinishAngle) {
 // Grab a random sample of letters from the alphabet, in alphabetical order.
 //this code run the function each 2000 miliseconds
 var num =0;
-var max = 0, maxX, maxY;
+var maxX=0;
+var maxY; 
+var max;
+var timeStamp;
 var clearID = setInterval(function() {
   num = num + 1;
-
+  if(num==100|| num ==300|| num == 500 || num ==700 || num ==900|| num == 1100|| num == 1300 || num == 1450){
+      drawImage();
+  }
   // console.log(ballP[num].x_pos);
-  if(ballP[num].tag_id = 6){
-  update(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed);
-
+  if(parseInt( ballP[num].timestamp) == timeStamp){
+      timeStamp = parseInt(ballP[num].timestamp);
+      }
+  else{
+      timeStamp = parseInt(ballP[num].timestamp);  
+      update(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed);
   // console.log(ballP[num].tag_id);
-}
+  }
       // .slice(1, Math.floor(Math.random() * 5)));
   // .slice(1, 3));
      // console.log(shuffle(alphabet));
      //      console.log(shuffle(alphabet).slice(1,3));
 
       // .sort());
-  console.log(num);
+  // console.log(num);
 
   if (num == 1500) {
     console.log(heatArray);
         drawImage();
-    for (i=0 ;i<xMax;i++) {
-      for (j=0;j<yMax;j++) {
-        if(heatArray[i][j] > max){
-          max = heatArray[i][j];
-          maxX= i;
-          maxY = j;
-        };
-      }
-    };
+
+    // for (i=0 ;i<xMax;i++) {
+    //   for (j=0;j<yMax;j++) {
+    //     if(heatArray[i][j] > max){
+    //       max = heatArray[i][j];
+    //       maxX= i;
+    //       maxY = j;
+    //     };
+    //   }
+    // };
     console.log(max+"dd " + maxX + "" + maxY);
     clearInterval(clearID);} 
-}, 1);
+}, 50);
 
 
 });
