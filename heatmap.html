@@ -47,8 +47,6 @@ d3.json("heatmap.json", function(error, heatmap) {
       .domain([0, dx])
       .range([0, width]);
 
-      console.log(x(20));
-
   var y = d3.scale.linear()
       .domain([0, dy])
       .range([height, 0]);
@@ -102,7 +100,7 @@ var  canvas =  d3.select("body").append("canvas")
         // console.log(heatmap[y][x])
         var c = d3.rgb(color(heatmap[y][x]));
         if(800<=x<=820){
-        console.log(c);
+        // console.log(c);
       }
         //this c is every data's color in heatmap.josn
         image.data[++p] = c.r;
@@ -111,6 +109,7 @@ var  canvas =  d3.select("body").append("canvas")
         //this is the transparency
         image.data[++p] = 255;
       }
+      console.log(image);
     }
     context.putImageData(image, 0, 0);
   }

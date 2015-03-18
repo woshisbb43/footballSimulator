@@ -39,9 +39,9 @@ for (i=0;i<xMax;i++) {
  }
 }
 // ############################# for heatmap ######################################
-  var dx = heatArray[0].length,
-      dy = heatArray.length;
-      // console.log(dx +"" + dy);
+  var dx = heatArray.length,
+      dy = heatArray[0].length;
+      console.log(dx +"" + dy);
 
   // Fix the aspect ratio.
   // var ka = dy / dx, kb = height / width;
@@ -95,21 +95,28 @@ function update(datax, datay , heading , energy, speed) {
     speed = 0.1;
   }
 
-  // console.log(scaleDataX + " dddd" + scaleDataY);
-
+  console.log("x "+scaleDataX + " y" + scaleDataY + " heading" + heading);
   circle.transition()
-        .duration(2000/speed)
+        .duration(500)
         .attr("cx" , scaleDataX)
         .attr("cy" , scaleDataY);
+        //choose this player.
+
+  circle.on("click", function() {
+          //old values for dataset
+        // d3.select("#a1").remove();
+          drawImage();
+         });
+
 
   rect.transition()
-        .duration(2000/speed)
+        .duration(500)
         .attr("height" , speed*30 )
         .attr("x"  , scaleDataX + 10)
         .attr("y" , scaleDataY);
 
   arcV.transition()
-        .duration(2000/speed)
+        .duration(500)
         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
         .call(arcTween, startHeading,  endHeading );
   
@@ -132,7 +139,7 @@ function calculateHeat(datax , datay){
      heatArray[i][j] = heatArray[i][j]+10;
      };
    };
-   // console.log(heatArray[datax][datay] + " "+datax +" "+ datay);
+   // console.log(heatArray[datax][datay] + " x"+datax +" y"+ datay);
 }
 
 function drawImage() {
@@ -145,7 +152,7 @@ function drawImage() {
     for (var y = 0, p = -1; y < dy; ++y) {
       for (var x = 0; x < dx; ++x) {
 
-        var c = d3.rgb(color(heatArray[y][x]));
+        var c = d3.rgb(color(heatArray[x][y]));
       //         if(x==800){
       //           console.log(dy)
       //           console.log(dx)
@@ -160,9 +167,10 @@ function drawImage() {
         image.data[++p] = c.b;
         //this is the transparency
         image.data[++p] = 255;
+        // console.log(p);
       }
     }
-    // console.log()
+    // console.log(image);
     context.putImageData(image, 0, 0);
 }
 
@@ -203,8 +211,8 @@ function arcTween(transition, newStartAngle , newFinishAngle) {
       // interrupted, the data bound to the element would still be consistent
       // with its appearance. Whenever we start a new arc transition, the
       // correct starting angle can be inferred from the data.
-                d.startAngle = interpolateStart(t);
-                d.endAngle = interpolateEnd(t);
+    d.startAngle = interpolateStart(t);
+     d.endAngle = interpolateEnd(t);
 
       // Lastly, compute the arc path given the updated data! In effect, this
       // transition uses data-space interpolation: the data is interpolated
@@ -216,18 +224,20 @@ function arcTween(transition, newStartAngle , newFinishAngle) {
   });
 }
 
-// The initial display.
-
-// Grab a random sample of letters from the alphabet, in alphabetical order.
 //this code run the function each 2000 miliseconds
 var num =0;
 var maxX=0;
 var maxY; 
 var max;
 var timeStamp;
-var clearID = setInterval(function() {
+
+var clearID = setInterval(function() {  
+  if(ballP[num].tag_id == 1){
+    console.log("6");
+  }
+  else{
   num = num + 1;
-  if(num==100|| num ==300|| num == 500 || num ==700 || num ==900|| num == 1100|| num == 1300 || num == 1450){
+  if(num==2000|| num ==4000|| num == 6000 || num ==8000 || num ==10000|| num == 12000|| num == 14000 || num == 16000){
       drawImage();
   }
   // console.log(ballP[num].x_pos);
@@ -237,19 +247,13 @@ var clearID = setInterval(function() {
   else{
       timeStamp = parseInt(ballP[num].timestamp);  
       update(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed);
-  // console.log(ballP[num].tag_id);
+  // console.log(timeStamp);
   }
-      // .slice(1, Math.floor(Math.random() * 5)));
-  // .slice(1, 3));
-     // console.log(shuffle(alphabet));
-     //      console.log(shuffle(alphabet).slice(1,3));
-
-      // .sort());
   // console.log(num);
-
-  if (num == 1500) {
+  // ####################### code to stop interval ########################################
+  if (num == 2000) {
     console.log(heatArray);
-        drawImage();
+    // drawImage();
 
     // for (i=0 ;i<xMax;i++) {
     //   for (j=0;j<yMax;j++) {
@@ -260,9 +264,12 @@ var clearID = setInterval(function() {
     //     };
     //   }
     // };
-    console.log(max+"dd " + maxX + "" + maxY);
-    clearInterval(clearID);} 
-}, 50);
+    // console.log(max+"dd " + maxX + "" + maxY);
+    // clearInterval(clearID);
+  } 
+}
+  // ####################### code to stop interval ########################################
+}, 1);
 
 
 });
