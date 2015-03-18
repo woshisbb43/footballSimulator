@@ -57,17 +57,20 @@ arcV6 = svg.append("path")
 var xMax = 960;
 var yMax = 500;
 var heatArray = new Array();
-
+for ( k =0 ; k<15; k++){
+  heatArray[k] = new Array();
 for (i=0;i<xMax;i++) {
- heatArray[i]=new Array();
+ heatArray[k][i]=new Array();
  for (j=0;j<yMax;j++) {
-  heatArray[i][j]=0;
+  heatArray[k][i][j]=0;
  }
 }
-
-var dx = heatArray.length,
-    dy = heatArray[0].length;
+}
+var dx = heatArray[0].length,
+    dy = heatArray[0][0].length;
       // console.log(dx +"" + dy);
+      console.log(heatArray);
+
 
   // Fix the aspect ratio.
   // var ka = dy / dx, kb = height / width;
@@ -121,7 +124,7 @@ function update(datax, datay , heading , energy, speed , tag_id) {
     speed = 0.1;
   }
 
-  console.log("x "+scaleDataX + " y" + scaleDataY + " heading" + heading);
+  // console.log("x "+scaleDataX + " y" + scaleDataY + " heading" + heading);
   circle12.transition()
         .duration(500)
         .attr("cx" , scaleDataX)
@@ -131,7 +134,9 @@ function update(datax, datay , heading , energy, speed , tag_id) {
   circle12.on("click", function() {
           //old values for dataset
         // d3.select("#a1").remove();
-          drawImage();
+          drawImage(tag_id);
+          console.log(heatArray);
+          throw new Error("Something went badly wrong!");
          });
 
 
@@ -146,7 +151,7 @@ function update(datax, datay , heading , energy, speed , tag_id) {
         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
         .call(arcTween, startHeading,  endHeading );
   
-  calculateHeat(scaleDataX ,scaleDataY);    
+  calculateHeat(scaleDataX ,scaleDataY ,tag_id);    
 }
 
 function update1(datax, datay , heading , energy, speed , tag_id) {
@@ -160,7 +165,7 @@ function update1(datax, datay , heading , energy, speed , tag_id) {
     speed = 0.1;
   }
 
-  // console.log("x "+scaleDataX + " y" + scaleDataY + " heading" + heading);
+  console.log("x "+scaleDataX + " y" + scaleDataY + " heading" + heading);
   circle6.transition()
         .duration(500)
         .attr("cx" , scaleDataX)
@@ -170,7 +175,9 @@ function update1(datax, datay , heading , energy, speed , tag_id) {
   circle6.on("click", function() {
           //old values for dataset
         // d3.select("#a1").remove();
-          drawImage();
+          drawImage(tag_id);
+          console.log(heatArray);
+          throw new Error("Something went badly wrong!");
          });
 
 
@@ -185,24 +192,25 @@ function update1(datax, datay , heading , energy, speed , tag_id) {
         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
         .call(arcTween, startHeading,  endHeading );
   
-  calculateHeat(scaleDataX ,scaleDataY);    
+  calculateHeat(scaleDataX ,scaleDataY , tag_id);    
 }
 //caluculate the apperance array for heatmap
-function calculateHeat(datax , datay){
+function calculateHeat(datax , datay ,tag_id){
 
    // heatArray[datax][datay] = heatArray[datax][datay]+10;
+
    for (var i = datax-30; i < datax+30; i++) {
      for (var j = datay-30; j < datay+30; j++) {
       if(i<0||j<0){
         continue;
       }
-     heatArray[i][j] = heatArray[i][j]+1;
+     heatArray[tag_id][i][j] = heatArray[tag_id][i][j]+1;
      };
    };
    // console.log(heatArray[datax][datay] + " x"+datax +" y"+ datay);
 }
 
-function drawImage() {
+function drawImage(tag_id) {
     var context = document.getElementById("canvas").getContext("2d"),
     //The createImageData() method creates a new, blank ImageData object
     //http://www.w3schools.com/tags/canvas_createimagedata.asp
@@ -212,7 +220,7 @@ function drawImage() {
     for (var y = 0, p = -1; y < dy; ++y) {
       for (var x = 0; x < dx; ++x) {
 
-        var c = d3.rgb(color(heatArray[x][y]));
+        var c = d3.rgb(color(heatArray[tag_id][x][y]));
       //         if(x==800){
       //           console.log(dy)
       //           console.log(dx)
