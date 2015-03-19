@@ -49,12 +49,92 @@ canvas {
 
 <script>
 
-var width = 1200,
-    height = 700;
+var width = 115*7;
+var height = 74*7;
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+var pi = Math.PI;
+
+
+var piter = d3.select('body').append('svg').attr('class', 'pitch').attr('height',height+20)
+.attr('width', width+20)
+.style('background','green');
+
+
+var corner = d3.svg.arc()
+    .innerRadius(6)
+    .outerRadius(7)
+    .startAngle(0 * (pi/180)) //converting from degs to radians
+    .endAngle(90* (pi/180)) //just radians
+
+var field = piter.append('rect').attr('height',height)
+.attr('width', width)
+.attr('fill', 'transparent')
+.attr('stroke', 'white')
+.attr('x', 10)
+.attr('y',10);
+
+//big goalkeeper rectangle
+piter.append('rect')
+.attr('height',44*7)
+.attr('width', 18*7)
+.attr('y',15*7+10)
+.attr('x',10)
+.attr('fill', 'green')
+.attr('stroke', 'white');
+
+//small rectangle
+piter.append('rect')
+.attr('height',20*7)
+.attr('width', 8*7)
+.attr('y',27*7+10)
+.attr('x',10)
+.attr('fill', 'green')
+.attr('stroke', 'white');
+
+//centerline of the pitch
+piter.append('line')
+.attr('x1',width/2+10)
+.attr('x2',width/2+10)
+.attr('y1',10)
+.attr('y2',height+10)
+.attr('stroke','white');	
+
+piter.append('circle')
+.attr('r', 70)
+.attr('cx',width/2+10)
+.attr('cy',height/2+10)
+.attr('fill','transparent')
+.attr('stroke', 'white');
+
+//center og the field
+piter.append('circle')
+.attr('r', 4)
+.attr('cx',width/2+10)
+.attr('cy',height/2+10)
+.attr('fill','white')
+.attr('stroke', 'white')
+.attr("id", "middle");
+//the ball
+
+//point for penalty
+piter.append('circle')
+.attr('r', 4)
+.attr('cx',12*7+10)
+.attr('cy',height/2+10)
+.attr('fill','black')
+.attr('stroke', 'white');
+
+//adding the corner arc to the bottom left
+piter.append('path')
+  .attr('d', corner)
+  .attr('transform','translate('+ 10 +','+ (10+74*7) + ')')
+  .attr('stroke','white');
+
+  
+  
+
+  
+var svg = d3.select("body").select("svg");
 
 var ball = svg.append("circle")
     .attr("cx" , b1[0][0])
@@ -72,10 +152,10 @@ var pl2 = svg.append("circle")
     .attr("cy" , p2[0][1])
     .attr("r" , 20);
 	
-/* var pl3 = svg.append("circle")
+ var pl3 = svg.append("circle")
     .attr("cx" , p3[0][0])
     .attr("cy" , p3[0][1])
-    .attr("r" , 20); */ 
+    .attr("r" , 20);   
 
 var pl4 = svg.append("circle")
     .attr("cx" , p4[0][0])
@@ -107,10 +187,10 @@ var pl12 = svg.append("circle")
     .attr("cy" , p12[0][1])
     .attr("r" , 20);
 
-/* var pl13 = svg.append("circle")
+var pl13 = svg.append("circle")
     .attr("cx" , p13[0][0])
     .attr("cy" , p13[0][1])
-    .attr("r" , 20); */ 
+    .attr("r" , 20);  
 
 var pl14 = svg.append("circle")
     .attr("cx" , p14[0][0])
@@ -125,19 +205,19 @@ function update(datax, datay, obVal) {
 
 var linScaleX = d3.scale.linear()
 	.domain([0, 105])
-	.range([0, 1200]); 
+	.range([0, 115*7]); 
 
 var linScaleY = d3.scale.linear()
 	.domain([0, 68])
-	.range([0, 700]);
+	.range([0, 74*7]);
 		
 var linScaleBX = d3.scale.linear()
 	.domain([75, 4449])
-	.range([0, 1200]); 
+	.range([0, 115*7]); 
 	
 var linScaleBY = d3.scale.linear()
 	.domain([0, 1980])
-	.range([0, 700]); 
+	.range([0, 74*7]); 
 	
 // Grab a random sample of letters from the alphabet, in alphabetical order.
 //this code run the function each 2000 miliseconds
@@ -149,14 +229,14 @@ setInterval(function() {
   update(linScaleBX(b1[num][0]), linScaleBY(b1[num][1]), ball);
   update(linScaleX(p1[num][0]), height - linScaleY(p1[num][1]), pl1); 
   update(linScaleX(p2[num][0]), height - linScaleY(p2[num][1]), pl2);
-//  update(linScaleX(p3[num][0]), height - linScaleY(p3[num][1]), pl3); 
+  update(linScaleX(p3[num][0]), height - linScaleY(p3[num][1]), pl3); 
   update(linScaleX(p4[num][0]), height - linScaleY(p4[num][1]), pl4); 
   update(linScaleX(p5[num][0]), height - linScaleY(p5[num][1]), pl5); 
   update(linScaleX(p6[num][0]), height - linScaleY(p6[num][1]), pl6); 
   update(linScaleX(p8[num][0]), height - linScaleY(p8[num][1]), pl8); 
   update(linScaleX(p11[num][0]), height - linScaleY(p11[num][1]), pl11); 
   update(linScaleX(p12[num][0]), height - linScaleY(p12[num][1]), pl12); 
-//  update(linScaleX(p13[num][0]), height - linScaleY(p13[num][1]), pl13); 
+  update(linScaleX(p13[num][0]), height - linScaleY(p13[num][1]), pl13); 
   update(linScaleX(p14[num][0]), height - linScaleY(p14[num][1]), pl14); 
   
 }, 500);
