@@ -6,17 +6,17 @@ var width = 960,
 var svg = d3.select("body").append("svg").attr("class" , "pitch")
     .attr("width", width)
     .attr("height", height)
-    .style('background','green')
-    .on("click" , function(){
-      d3.select("#player12").remove();
-      d3.select("#player4").remove();
-      d3.select("#player5").remove();
-      d3.select("#player2").remove();
-      d3.select("#player3").remove();
-      d3.select("#player1").remove();
-      d3.select("#player13").remove();
-      d3.select("#player11").remove();
-    });
+    .style('background','green');
+    // .on("click" , function(){
+    //   d3.select("#player12").remove();
+    //   d3.select("#player4").remove();
+    //   d3.select("#player5").remove();
+    //   d3.select("#player2").remove();
+    //   d3.select("#player3").remove();
+    //   d3.select("#player1").remove();
+    //   d3.select("#player13").remove();
+    //   d3.select("#player14").remove();
+    // });
 // var c = [1,2,3,4,5,6,8,11,12,13,14]
 // var selectCircle = d3.select("svg").selectAll("circle")
 //       .data(c)
@@ -40,7 +40,7 @@ var rect = svg.append("rect")
     .attr("width" , 50)
     .attr("height" , 40)
     .attr("opacity" , 0.5)
-    .attr("id" , "player12");
+    .attr("id" , "player12Speed");
 
 var arc = d3.svg.arc()
     .innerRadius(10)
@@ -52,7 +52,7 @@ arcV = svg.append("path")
     .attr("fill" , "#FA8258")
     .attr("opacity" , "0.7")
     .attr("stroke" , "white")
-    .attr("id" , "player12");
+    .attr("id" , "player12View");
 
 // ##################player 12 ###########################
 
@@ -335,6 +335,10 @@ var dx = heatArray[0].length,
       .domain([0, 20, 40, 60, 80, 100, 120, 140])
       .range(["#0a0", "#6c0", "#ee0", "#eb4", "#eb9", "#fff" ,"#FF00FF", "#6699FF"]);
 
+  var EnergyColor = d3.scale.linear()
+      .domain([0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000])
+      .range(["#66FF66", "#CCFF66", "#FFFF99", "#FF9933", "#FF6600", "#FF1919" ,"#CC0000", "#660000"]);
+
   // var xAxis = d3.svg.axis()
   //     .scale(x)
   //     .orient("top")
@@ -373,7 +377,8 @@ function update12(datax, datay , heading , energy, speed , tag_id) {
   circle12.transition()
         .duration(500)
         .attr("cx" , scaleDataX)
-        .attr("cy" , scaleDataY);
+        .attr("cy" , scaleDataY)
+        .attr("fill" , EnergyColor(energy));
         //choose this player.
 
   circle12.on("click", function() {
@@ -413,7 +418,8 @@ function update6(datax, datay , heading , energy, speed , tag_id) {
   circle6.transition()
         .duration(500)
         .attr("cx" , scaleDataX)
-        .attr("cy" , scaleDataY);
+        .attr("cy" , scaleDataY)
+        .attr("fill" , EnergyColor(energy));
         //choose this player.
 
   circle6.on("click", function() {
@@ -452,7 +458,8 @@ function update1(datax, datay , heading , energy, speed , tag_id) {
   circle1.transition()
         .duration(500)
         .attr("cx" , scaleDataX)
-        .attr("cy" , scaleDataY);
+        .attr("cy" , scaleDataY)
+        .attr("fill" , EnergyColor(energy));
         //choose this player.
 
   circle1.on("click", function() {
@@ -491,7 +498,8 @@ function update4(datax, datay , heading , energy, speed , tag_id) {
   circle4.transition()
         .duration(500)
         .attr("cx" , scaleDataX)
-        .attr("cy" , scaleDataY);
+        .attr("cy" , scaleDataY)
+        .attr("fill" , EnergyColor(energy));
         //choose this player.
 
   circle4.on("click", function() {
@@ -530,7 +538,8 @@ function update13(datax, datay , heading , energy, speed , tag_id) {
   circle13.transition()
         .duration(500)
         .attr("cx" , scaleDataX)
-        .attr("cy" , scaleDataY);
+        .attr("cy" , scaleDataY)
+        .attr("fill" , EnergyColor(energy));
         //choose this player.
 
   circle13.on("click", function() {
@@ -569,7 +578,8 @@ function update5(datax, datay , heading , energy, speed , tag_id) {
   circle5.transition()
         .duration(500)
         .attr("cx" , scaleDataX)
-        .attr("cy" , scaleDataY);
+        .attr("cy" , scaleDataY)
+        .attr("fill" , EnergyColor(energy));
         //choose this player.
 
   circle5.on("click", function() {
@@ -608,7 +618,8 @@ function update2(datax, datay , heading , energy, speed , tag_id) {
   circle2.transition()
         .duration(500)
         .attr("cx" , scaleDataX)
-        .attr("cy" , scaleDataY);
+        .attr("cy" , scaleDataY)
+        .attr("fill" , EnergyColor(energy));
         //choose this player.
 
   circle2.on("click", function() {
@@ -647,7 +658,8 @@ function update3(datax, datay , heading , energy, speed , tag_id) {
   circle3.transition()
         .duration(500)
         .attr("cx" , scaleDataX)
-        .attr("cy" , scaleDataY);
+        .attr("cy" , scaleDataY)
+        .attr("fill" , EnergyColor(energy));
         //choose this player.
 
   circle3.on("click", function() {
@@ -686,7 +698,8 @@ function update11(datax, datay , heading , energy, speed , tag_id) {
   circle11.transition()
         .duration(500)
         .attr("cx" , scaleDataX)
-        .attr("cy" , scaleDataY);
+        .attr("cy" , scaleDataY)
+        .attr("fill" , EnergyColor(energy));
         //choose this player.
 
   circle11.on("click", function() {
@@ -725,7 +738,8 @@ function update14(datax, datay , heading , energy, speed , tag_id) {
   circle14.transition()
         .duration(500)
         .attr("cx" , scaleDataX)
-        .attr("cy" , scaleDataY);
+        .attr("cy" , scaleDataY)
+        .attr("fill" , EnergyColor(energy));
         //choose this player.
 
   circle14.on("click", function() {
@@ -854,6 +868,7 @@ var maxX=0;
 var maxY; 
 var max;
 var timeStamp;
+var jump=0;
 
 var clearID = setInterval(function() {  
   // if(ballP[num].tag_id == 1){
@@ -862,6 +877,8 @@ var clearID = setInterval(function() {
   // }
   // else{
   num = num + 1;
+
+  if(jump>=20){
   // if(parseInt( ballP[num].timestamp) == timeStamp){
   //     timeStamp = parseInt(ballP[num].timestamp);
   //     }
@@ -889,6 +906,20 @@ var clearID = setInterval(function() {
     update11(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
       else if(ballP[num].tag_id == 14){
     update14(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
+
+    jump = jump-1;
+    if(jump == 19)
+    {
+      jump=(-20);
+    }
+  }
+
+  else{
+    jump = jump + 1;
+    if(jump = 19){
+      jump = 31;
+    }
+  }
 
       // console.log(ballP[num].tag_id)
       // update(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);
@@ -918,7 +949,7 @@ var clearID = setInterval(function() {
   // } 
 // }
   // ####################### code to stop interval ########################################
-}, 5);
+}, 1);
 
 
 });
