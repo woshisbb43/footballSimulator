@@ -1,0 +1,115 @@
+Leftback	0:00:13	Interception	Opponent
+Leftback	0:00:16	Dribbling	Ball posession
+Leftback	0:00:22	Passing	Ball posession
+Left central defender	0:00:24	Receiving	Leftback
+Left central defender	0:00:25	Passing	Ball posession
+Midfield player center	0:00:26	Receiving	Left central defender
+Midfield player center	0:00:27	Passing	Ball posession
+Left central defender	0:00:28	Receiving	Midfield player 1
+Left central defender	0:00:30	Passing	Ball posession
+Leftback	0:00:43	Throwing	Throw in
+Striker 1	0:00:46	Header	Opponent
+Midfield player right	0:01:00	Kick	Opponent
+Midfield player left	0:01:11	Interception	Scrimage
+Midfield player left	0:01:12	Dribbling	Ball posession
+Midfield player left	0:01:13	Passing	Ball posession
+Midfield player center	0:01:14	Receiving	Midfield player left
+Midfield player center	0:01:15	Passing	Ball posession
+Right central defender	0:01:16	Receiving	Midfield player center
+Right central defender	0:01:19	Passing	Ball posession
+Midfield player right	0:01:20	Receiving	Right central defender
+Rightback	0:02:18	Interception	Opponent
+Rightback	0:02:19	Passing	Ball posession
+Rightback	0:02:33	Throwing	Throw in
+Midfield player front	0:03:53	Interception	Opponent
+Midfield player front	0:03:54	Passing	Ball posession
+Striker 1	0:03:55	Receiving	Midfield player front
+Striker 1	0:03:55	Passing	Ball posession
+Midfield player left	0:03:56	Receiving	Striker 1
+Midfield player left	0:03:57	Passing	Ball posession
+Midfield player left	0:04:16	Interception	Opponent
+Midfield player left	0:04:16	Passing	Ball posession
+Striker 2	0:04:17	Receiving	Midfield player left
+Striker 2	0:04:17	Dribbling	Ball posession
+Midfield player right	0:04:46	Interception	Opponent
+Midfield player right	0:04:46	Dribbling	Ball posession
+Rightback	0:04:59	Interception	Opponent
+Rightback	0:04:49	Passing	Ball posession
+Right central defender	0:05:00	Receiving	Rightbback
+Right central defender	0:05:00	Passing	Ball posession
+Goalkeeper	0:05:01	Receiving	Right central defender
+Goalkeeper	0:05:02	Kick	Ball posession
+Leftback	0:05:40	Throwing	Throw in
+Goalkeeper	0:06:09	Free-kick	Free-kick
+Leftback	0:07:12	Throwing	Throw in
+Goalkeeper	0:07:24	Interception	Opponent
+Goalkeeper	0:07:30	Kick	Ball posession
+Leftback	0:08:10	Throwing	Throw in
+Striker 1	0:08:11	Receiving	Leftback
+Striker 1	0:08:12	Passing	Ball posession
+Midfield player front	0:08:13	Receiving	Striker 1
+Midfield player front	0:08:14	Passing	Ball posession
+Midfield player right	0:08:15	Receiving	Midfield player front
+Midfield player right	0:08:17	Passing	Ball posession
+Midfield player left	0:08:19	Receiving	Midfield player right
+Midfield player left	0:08:19	Passing	Ball posession
+Midfield player left	0:08:34	Throwing	Throw in
+Leftback	0:08:34	Receiving	Midfield player left
+Leftback	0:08:35	Dribbling	Ball posession
+Leftback	0:09:13	Header	Opponent
+Striker 2	0:09:15	Receiving	Leftback
+Striker 2	0:09:16	Passing	Ball posession
+Midfield player front	0:09:17	Receiving	Striker 2
+Midfield player center	0:09:28	Interception	Opponent
+Midfield player center	0:09:29	Passing	Left central defender
+Left central defender	0:09:29	Receiving	Midfield player center
+Left central defender	0:09:30	Passing	Ball posession
+Goalkeeper	0:09:34	Receiving	Left central defender
+Goalkeeper	0:09:36	Kick	Ball posession
+Goalkeeper	0:10:46	Goal kick	Opponent
+Goalkeeper	0:11:45	Goal kick	Goal kick
+Midfield player right	0:12:14	Interception	Opponent
+Midfield player right	0:12:14	Dribbling	Ball posession
+Leftback	0:12:38	Interception	Opponent
+Leftback	0:12:38	Passing	Ball posession
+Midfield player center	0:12:38	Interception	Leftback
+Midfield player left	0:12:40	Receiving	Midfield player center
+Midfield player left	0:12:41	Dribbling	Ball posession
+Midfield player left	0:12:43	Passing	Ball posession
+Striker 2	0:12:46	Receiving	Midfield player left
+Striker 2	0:12:47	Dribbling	Ball posession
+Striker 2	0:12:50	Passing	Ball posession
+Left central defender	0:12:52	Receiving	Striker 2
+Left central defender	0:12:53	Passing	Right central defender
+Right central defender	0:12:55	Receiving	Left central defender
+Right central defender	0:12:57	Passing	Rightbback
+Rightback	0:12:57	Receiving	Right central defender
+Midfield player center	0:13:47	Interception	Opponent
+Midfield player center	0:13:48	Passing	Ball posession
+Striker 2	0:13:48	Receiving	Midfield player center
+Striker 2	0:13:48	Passing	Ball posession
+Striker 1	0:13:49	Receiving	Striker 2
+Goalkeeper	0:14:59	Goal kick	Opponent
+Leftback	0:15:17	Throwing	Throw in
+Midfield player left	0:17:19	Interception	Opponent
+Midfield player left	0:17:21	Passing	Ball posession
+Striker 1	0:17:22	Receiving	Midfield player left
+Striker 1	0:17:23	Passing	Ball posession
+Midfield player front	0:17:24	Receiving	Striker 1
+Midfield player front	0:17:27	Passing	Ball posession
+Leftback	0:17:28	Receiving	Midfield player front
+Leftback	0:17:29	Dribbling	Ball posession
+Goalkeeper	0:19:07	Goal kick	Opponent
+Midfield player right	0:19:32	Passing	Opponent
+Goalkeeper	0:19:33	Kick	Midfield player right
+Striker 1	0:19:35	Passing	Goalkeeper
+Leftback	0:19:36	Receiving	Striker 1
+Leftback	0:19:37	Dribbling	Ball posession
+Leftback	0:19:40	Passing	Ball posession
+Midfield player center	0:19:40	Passing	Leftback
+Midfield player front	0:19:42	Passing	Midfield player center
+Midfield player right	0:19:44	Receiving	Midfield player front
+Goalkeeper	0:21:32	Interception	Opponent
+Goalkeeper	0:21:34	Throw	Bl
+Leftback	0:21:36	Receiving	Goalkeeper
+Leftback	0:22:02	Free kick	Ball posession

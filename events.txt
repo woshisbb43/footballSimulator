@@ -1,0 +1,115 @@
+19:04:07.470	Leftback	Interception	Opponent
+19:04:10.470	Leftback	Dribbling	Ball posession
+19:04:16.470	Leftback	Passing	Ball posession
+19:04:18.470	Left central defender	Receiving	Leftback
+19:04:19.470	Left central defender	Passing	Ball posession
+19:04:20.470	Midfield player center	Receiving	Left central defender
+19:04:21.470	Midfield player center	Passing	Ball posession
+19:04:22.470	Left central defender	Receiving	Midfield player 1
+19:04:24.470	Left central defender	Passing	Ball posession
+19:04:37.470	Leftback	Throwing	Throw in
+19:04:40.470	Striker 1	Header	Opponent
+19:04:54.470	Midfield player right	Kick	Opponent
+19:05:05.470	Midfield player left	Interception	Scrimage
+19:05:06.470	Midfield player left	Dribbling	Ball posession
+19:05:07.470	Midfield player left	Passing	Ball posession
+19:05:08.470	Midfield player center	Receiving	Midfield player left
+19:05:09.470	Midfield player center	Passing	Ball posession
+19:05:10.470	Right central defender	Receiving	Midfield player center
+19:05:13.470	Right central defender	Passing	Ball posession
+19:05:14.470	Midfield player right	Receiving	Right central defender
+19:06:12.470	Rightback	Interception	Opponent
+19:06:13.470	Rightback	Passing	Ball posession
+19:06:27.470	Rightback	Throwing	Throw in
+19:07:47.470	Midfield player front	Interception	Opponent
+19:07:48.470	Midfield player front	Passing	Ball posession
+19:07:49.470	Striker 1	Receiving	Midfield player front
+19:07:49.470	Striker 1	Passing	Ball posession
+19:07:50.470	Midfield player left	Receiving	Striker 1
+19:07:51.470	Midfield player left	Passing	Ball posession
+19:08:10.470	Midfield player left	Interception	Opponent
+19:08:10.470	Midfield player left	Passing	Ball posession
+19:08:11.470	Striker 2	Receiving	Midfield player left
+19:08:11.470	Striker 2	Dribbling	Ball posession
+19:08:40.470	Midfield player right	Interception	Opponent
+19:08:40.470	Midfield player right	Dribbling	Ball posession
+19:08:53.470	Rightback	Interception	Opponent
+19:08:43.470	Rightback	Passing	Ball posession
+19:08:54.470	Right central defender	Receiving	Rightbback
+19:08:54.470	Right central defender	Passing	Ball posession
+19:08:55.470	Goalkeeper	Receiving	Right central defender
+19:08:56.470	Goalkeeper	Kick	Ball posession
+19:09:34.470	Leftback	Throwing	Throw in
+19:10:03.470	Goalkeeper	Free-kick	Free-kick
+19:11:06.470	Leftback	Throwing	Throw in
+19:11:18.470	Goalkeeper	Interception	Opponent
+19:11:24.470	Goalkeeper	Kick	Ball posession
+19:12:04.470	Leftback	Throwing	Throw in
+19:12:05.470	Striker 1	Receiving	Leftback
+19:12:06.470	Striker 1	Passing	Ball posession
+19:12:07.470	Midfield player front	Receiving	Striker 1
+19:12:08.470	Midfield player front	Passing	Ball posession
+19:12:09.470	Midfield player right	Receiving	Midfield player front
+19:12:11.470	Midfield player right	Passing	Ball posession
+19:12:13.470	Midfield player left	Receiving	Midfield player right
+19:12:13.470	Midfield player left	Passing	Ball posession
+19:12:28.470	Midfield player left	Throwing	Throw in
+19:12:28.470	Leftback	Receiving	Midfield player left
+19:12:29.470	Leftback	Dribbling	Ball posession
+19:13:07.470	Leftback	Header	Opponent
+19:13:09.470	Striker 2	Receiving	Leftback
+19:13:10.470	Striker 2	Passing	Ball posession
+19:13:11.470	Midfield player front	Receiving	Striker 2
+19:13:22.470	Midfield player center	Interception	Opponent
+19:13:23.470	Midfield player center	Passing	Left central defender
+19:13:23.470	Left central defender	Receiving	Midfield player center
+19:13:24.470	Left central defender	Passing	Ball posession
+19:13:28.470	Goalkeeper	Receiving	Left central defender
+19:13:30.470	Goalkeeper	Kick	Ball posession
+19:14:40.470	Goalkeeper	Goal kick	Opponent
+19:15:39.470	Goalkeeper	Goal kick	Goal kick
+19:16:08.470	Midfield player right	Interception	Opponent
+19:16:08.470	Midfield player right	Dribbling	Ball posession
+19:16:32.470	Leftback	Interception	Opponent
+19:16:32.470	Leftback	Passing	Ball posession
+19:16:32.470	Midfield player center	Interception	Leftback
+19:16:34.470	Midfield player left	Receiving	Midfield player center
+19:16:35.470	Midfield player left	Dribbling	Ball posession
+19:16:37.470	Midfield player left	Passing	Ball posession
+19:16:40.470	Striker 2	Receiving	Midfield player left
+19:16:41.470	Striker 2	Dribbling	Ball posession
+19:16:44.470	Striker 2	Passing	Ball posession
+19:16:46.470	Left central defender	Receiving	Striker 2
+19:16:47.470	Left central defender	Passing	Right central defender
+19:16:49.470	Right central defender	Receiving	Left central defender
+19:16:51.470	Right central defender	Passing	Rightbback
+19:16:51.470	Rightback	Receiving	Right central defender
+19:17:41.470	Midfield player center	Interception	Opponent
+19:17:42.470	Midfield player center	Passing	Ball posession
+19:17:42.470	Striker 2	Receiving	Midfield player center
+19:17:42.470	Striker 2	Passing	Ball posession
+19:17:43.470	Striker 1	Receiving	Striker 2
+19:18:53.470	Goalkeeper	Goal kick	Opponent
+19:19:11.470	Leftback	Throwing	Throw in
+19:21:13.470	Midfield player left	Interception	Opponent
+19:21:15.470	Midfield player left	Passing	Ball posession
+19:21:16.470	Striker 1	Receiving	Midfield player left
+19:21:17.470	Striker 1	Passing	Ball posession
+19:21:18.470	Midfield player front	Receiving	Striker 1
+19:21:21.470	Midfield player front	Passing	Ball posession
+19:21:22.470	Leftback	Receiving	Midfield player front
+19:21:23.470	Leftback	Dribbling	Ball posession
+19:23:01.470	Goalkeeper	Goal kick	Opponent
+19:23:26.470	Midfield player right	Passing	Opponent
+19:23:27.470	Goalkeeper	Kick	Midfield player right
+19:23:29.470	Striker 1	Passing	Goalkeeper
+19:23:30.470	Leftback	Receiving	Striker 1
+19:23:31.470	Leftback	Dribbling	Ball posession
+19:23:34.470	Leftback	Passing	Ball posession
+19:23:34.470	Midfield player center	Passing	Leftback
+19:23:36.470	Midfield player front	Passing	Midfield player center
+19:23:38.470	Midfield player right	Receiving	Midfield player front
+19:25:26.470	Goalkeeper	Interception	Opponent
+19:25:28.470	Goalkeeper	Throw	Bl
+19:25:30.470	Leftback	Receiving	Goalkeeper
+19:25:56.470	Leftback	Free kick	Ball posession
