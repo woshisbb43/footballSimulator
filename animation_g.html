@@ -205,28 +205,24 @@ function update(datax, datay, obVal) {
 
 var linScaleX = d3.scale.linear()
 	.domain([0, 105])
-	.range([0, 115*7]); 
+	.range([0, width + 70 ]); 
 
 var linScaleY = d3.scale.linear()
 	.domain([0, 68])
-	.range([0, 74*7]);
+	.range([0, height - 70 ]);
 		
-var linScaleBX = d3.scale.linear()
-	.domain([75, 4449])
-	.range([0, 115*7]); 
-	
-var linScaleBY = d3.scale.linear()
-	.domain([0, 1980])
-	.range([0, 74*7]); 
-	
 // Grab a random sample of letters from the alphabet, in alphabetical order.
 //this code run the function each 2000 miliseconds
-var num =0;
+var num = 0;
 setInterval(function() {
   num = num + 1;
-
+  
+  if (determinePolygon(b1[num][0], b1[num][1]) == -1) newBallPos = computeBallPosition(b1[num][0], b1[num][1], -1);   
+  else newBallPos = computeBallPosition(b1[num][0], b1[num][1], 1);
+  
+  
   // console.log(points);
-  update(linScaleBX(b1[num][0]), linScaleBY(b1[num][1]), ball);
+  update(newBallPos[0], newBallPos[1], ball);
   update(linScaleX(p1[num][0]), height - linScaleY(p1[num][1]), pl1); 
   update(linScaleX(p2[num][0]), height - linScaleY(p2[num][1]), pl2);
   update(linScaleX(p3[num][0]), height - linScaleY(p3[num][1]), pl3); 
@@ -240,5 +236,45 @@ setInterval(function() {
   update(linScaleX(p14[num][0]), height - linScaleY(p14[num][1]), pl14); 
   
 }, 500);
+
+function computeBallPosition(x, y, half) {
+
+if (half == -1) {
+	c11 = 0.419343067775651; 	 c12 = 0.829826774964493;	  c13 = -1053.20964592050; 
+	c21 = 0.171362763533614; 	 c22 = 1.25107701797849;	  c23 = -1053.26640897830; 
+	c31 = 0.000498425957288310;  c32 = 0.00186415608728975;   c33 = -1.35000259966186; 
+}
+else {
+	c11 = 0.0263997278461894; 	 c12 = 0.264756363627971;	  c13 = -106.842157410688; 
+	c21 = -0.0290420293016211; 	 c22 = 0.419319162793270;	  c23 = -168.736975094544; 
+	c31 = -9.78726166142597e-05; c32 = 0.0005983637214073111; c33 = 0.115570008858111; 
+}
+	xn = c11 * x + c12 * y + c13 * 1; 
+	yn = c21 * x + c22 * y + c23 * 1;
+	zn = c31 * x + c32 * y + c33 * 1; 
+	
+	xf = xn / zn;
+	yf = yn / zn; 
+	
+//	console.log(xf, yf, half); 
+	
+	return [xf, yf]; 
+}
+
+function determinePolygon(x, y) {
+	x1 = 2131; y1 = 550; 
+	x2 = 1693; y2 = 1755; 
+	
+	A = -(y2 - y1);
+	B = x2 - x1; 
+	C = -(A*x1 + B*y1);
+	
+	D = A*x + B*y + C;
+	
+	if (D > 0) return -1;
+	else return 1; 
+	
+}
+
 
 </script> 
