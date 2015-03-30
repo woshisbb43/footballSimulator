@@ -11,7 +11,8 @@ simpd3.js
 .idea/vcs.xml
 
 # Big Files 
-data/
+data/people/
+data/ball/
 examples/
 
 # Shortcuts
