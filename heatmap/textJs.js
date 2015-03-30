@@ -35,6 +35,7 @@ var svg = d3.select("body").append("svg").attr("class" , "pitch")
 var circle12 = svg.append("circle")
     .attr("r" , 20)
     .attr("id" , "player12");
+    // .on("mouseover" , mouseover);
 
 var rect = svg.append("rect")
     .attr("width" , 50)
@@ -83,7 +84,9 @@ arcV6 = svg.append("path")
 // ##################player 1 ###########################
 var circle1 = svg.append("circle")
     .attr("r" , 20)
-    .attr("id" , "player1");
+    .attr("id" , "player1")
+    .on("mouseover" , mouseover)
+    .on('mouseout' , mouseout);
 
 var rect1 = svg.append("rect")
     .attr("width" , 50)
