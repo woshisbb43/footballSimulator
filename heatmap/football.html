@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+path {
+  fill: none;
+  stroke: #FFF;
+  opacity: 0.5;
+  stroke-width: 3px;
+}
+
+.cursor {
+  fill: none;
+  stroke: brown;
+  pointer-events: none;
+}
+
+/*circle {
+  fill: steelblue;
+  stroke: #fff;
+  stroke-width: 3px;
+}*/
+
+</style>
+<body>
+    <svg id="mySvg" width="80" height="80">
+      <defs id="mdef">
+        <pattern id="image" x="0" y="0" height="40" width="40">
+          <image x="10" y="10" width="40" height="40" xlink:href="dacai1.png"></image>
+        </pattern>
+        <pattern id="imageF" x="0" y="0" height="40" width="40">
+          <image x="10" y="10" width="40" height="40" xlink:href="football.png"></image>
+        </pattern>
+  	  </defs>
+  	</svg>
+
+<script src="http://d3js.org/d3.v3.js"></script>
+<script src="simpd3.js"></script>
+
+
+</body>
