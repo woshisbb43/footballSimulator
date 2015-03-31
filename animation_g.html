@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <meta charset="utf-8">
 <style>
 
@@ -26,7 +26,14 @@ canvas {
   fill: brown;
 }
 
+.controls {
+ position: absolute; 
+ top: 700px; 
+ padding: 0px 0px 100px 0; 
+}
+
 </style>
+
 <body>
 <script src="data/js/player1data.js"></script>  
 <script src="data/js/player2data.js"></script>  
@@ -45,7 +52,8 @@ canvas {
 <script src="http://d3js.org/d3.v3.js"></script>
 <script src="http://d3js.org/d3.v2.min.js?2.10.1"></script>
 
-
+<script type="text/javascript" src="jwplayer.js"></script>
+<script type="text/javascript">jwplayer.key="xaJgGuohQ7GDgKsfnjqmrn+rDh6fGxcqU6yH6Q==";</script> 
 
 <script>
 
@@ -213,9 +221,12 @@ var linScaleY = d3.scale.linear()
 		
 // Grab a random sample of letters from the alphabet, in alphabetical order.
 //this code run the function each 2000 miliseconds
-var num = 0;
+
+
+
+
 setInterval(function() {
-  num = num + 1;
+  num = cte; 
   
   if (determinePolygon(b1[num][0], b1[num][1]) == -1) newBallPos = computeBallPosition(b1[num][0], b1[num][1], -1);   
   else newBallPos = computeBallPosition(b1[num][0], b1[num][1], 1);
@@ -278,3 +289,123 @@ function determinePolygon(x, y) {
 
 
 </script> 
+
+
+<script> 
+
+var cte = 0;
+var tte;
+var timer_is_on = 0;
+
+var accelerate = 1; 
+var deaccelerate = 1; 
+
+function timedCount(interval) {
+    cte = cte+interval; 
+    document.getElementById('txt').value = cte;
+    tte = setTimeout(function(){timedCount(interval)}, 500);
+}
+
+function backTimedCount(interval) {
+    cte = cte-interval; 
+    document.getElementById('txt').value = cte;
+    tte = setTimeout(function(){backTimedCount(interval)}, 500);
+}
+
+function doTimer() {
+    if (!timer_is_on) {
+        timer_is_on = 1;
+        timedCount(1);
+    }
+	jwplayer().play(); 
+}
+
+function doTimerForward() {
+	clearTimeout(tte); 	
+
+	if (accelerate < 16 )
+	{
+		accelerate = accelerate * 2; 
+		timedCount(accelerate); 
+	}
+	else 
+	{
+		accelerate = 1;
+		timedCount(accelerate); 
+	}
+}
+
+function doTimerBack() {
+    clearTimeout(tte);
+	
+	if (deaccelerate < 16 )
+	{
+		deaccelerate = deaccelerate * 2; 
+		backTimedCount(deaccelerate); 
+	}
+	else 
+	{
+		deaccelerate = 1;
+		backTimedCount(deaccelerate); 
+	}
+}
+
+function doFrameBack() {
+    cte = cte-1; 
+	document.getElementById('txt').value = cte;
+	var position = jwplayer().getPosition(); position -= 0.5; jwplayer().seek(position); 
+}
+
+function doFrameForward() {
+	cte = cte+1;
+	document.getElementById('txt').value = cte; 
+	var position = jwplayer().getPosition(); position += 0.5; jwplayer().seek(position);  
+	
+}
+
+function doPause() {
+    clearTimeout(tte);
+    timer_is_on = 0;
+	accelerate = 1;
+	deaccelerate = 1; 
+	jwplayer().play(); 
+}
+
+function stopCount() {
+	doPause();
+	cte = 0; 
+	document.getElementById('txt').value = cte; 
+}
+
+</script>
+
+<form class="controls" > 
+  <input type="button" value="Start count!" onclick="doTimer()">
+  <input type="text" id="txt" />
+  <input type="button" value="Stop count!" onclick="stopCount()">
+ 
+  <input type="button" value="Pause " onclick="doPause()"> 
+  <input type="button" value="Frame back " onclick="doFrameBack()"> 
+  <input type="button" value="Frame forward " onclick="doFrameForward()"> 
+  <input type="button" value="Go forward " onclick="doTimerForward()">
+  <input type="button" value="Go back " onclick="doTimerBack()">
+   
+ <div id="myElement">Loading the player...</div>
+
+<script type="text/javascript">
+    jwplayer("myElement").setup({
+        file: "video.mp4",
+        image: "/uploads/myPoster.jpg"
+    });
+	
+	function handlePlay() {
+		jwplayer().play();
+		doTimer(); 
+	} 
+	
+</script>
+
+
+</form>
+
+
