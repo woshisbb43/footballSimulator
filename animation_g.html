@@ -301,15 +301,25 @@ var accelerate = 1;
 var deaccelerate = 1; 
 
 function timedCount(interval) {
+	timer_is_on = 1;
     cte = cte+interval; 
     document.getElementById('txt').value = cte;
     tte = setTimeout(function(){timedCount(interval)}, 500);
+	
+	if (interval != 1) {
+		moveVideo(false); 
+	}
 }
 
-function backTimedCount(interval) {
+function backTimedCount(interval) { 
+	timer_is_on = 1; 
     cte = cte-interval; 
     document.getElementById('txt').value = cte;
-    tte = setTimeout(function(){backTimedCount(interval)}, 500);
+    tte = setTimeout(function(){backTimedCount(interval)}, 500); 
+	
+	if (interval != 1) {
+		moveVideo(false); 
+	}
 }
 
 function doTimer() {
@@ -317,7 +327,8 @@ function doTimer() {
         timer_is_on = 1;
         timedCount(1);
     }
-	jwplayer().play(); 
+	jwplayer().seek(cte / 2); 
+	frameButtons(false); 
 }
 
 function doTimerForward() {
@@ -347,20 +358,39 @@ function doTimerBack() {
 	{
 		deaccelerate = 1;
 		backTimedCount(deaccelerate); 
-	}
+	} 
 }
 
 function doFrameBack() {
     cte = cte-1; 
 	document.getElementById('txt').value = cte;
-	var position = jwplayer().getPosition(); position -= 0.5; jwplayer().seek(position); 
+	var position = jwplayer().getPosition(); 
+	
+	moveVideo(true); 
+}
+
+function moveVideo(needPause) {
+
+	var seekingTime = cte / 2; 
+	jwplayer().seek(seekingTime);  
+	
+	if (needPause) {
+	var pauseOnSeek = true;
+	jwplayer().onTime(function () {
+		if (jwplayer().getState() === "PLAYING" && pauseOnSeek) {
+			this.pause();
+			pauseOnSeek = false;
+		}
+	}); 
+	}
 }
 
 function doFrameForward() {
 	cte = cte+1;
 	document.getElementById('txt').value = cte; 
-	var position = jwplayer().getPosition(); position += 0.5; jwplayer().seek(position);  
+	var position = jwplayer().getPosition(); 
 	
+	moveVideo(true); 
 }
 
 function doPause() {
@@ -368,28 +398,47 @@ function doPause() {
     timer_is_on = 0;
 	accelerate = 1;
 	deaccelerate = 1; 
-	jwplayer().play(); 
+	jwplayer().play(false); 
+	frameButtons(true); 
 }
 
 function stopCount() {
-	doPause();
+    clearTimeout(tte);
+    timer_is_on = 0;
+	accelerate = 1;
+	deaccelerate = 1; 
+	jwplayer().stop(); 
 	cte = 0; 
 	document.getElementById('txt').value = cte; 
+	frameButtons(false); 
+}
+
+function frameButtons(option) {
+if (!option) {
+	document.getElementById("frameBackBtn").disabled = true;
+	document.getElementById("frameForwardBtn").disabled = true;
+} 
+else {
+	document.getElementById("frameBackBtn").disabled = false;
+	document.getElementById("frameForwardBtn").disabled = false; 
+
+} 
 }
 
 </script>
 
-<form class="controls" > 
-  <input type="button" value="Start count!" onclick="doTimer()">
+<div class="controls" > 
+
+  <button type="button" id="playBtn" onclick="doTimer()">Play</button>
   <input type="text" id="txt" />
-  <input type="button" value="Stop count!" onclick="stopCount()">
- 
-  <input type="button" value="Pause " onclick="doPause()"> 
-  <input type="button" value="Frame back " onclick="doFrameBack()"> 
-  <input type="button" value="Frame forward " onclick="doFrameForward()"> 
-  <input type="button" value="Go forward " onclick="doTimerForward()">
-  <input type="button" value="Go back " onclick="doTimerBack()">
+  <button type="button" id="pauseBtn" onclick="doPause()">Pause</button>  
    
+  <button type="button" id="stopBtn" onclick="stopCount()">Stop</button> 
+  <button type="button" id="frameBackBtn" disabled="true" onclick="doFrameBack()">Frame back</button>   
+  <button type="button" id="frameForwardBtn" disabled="true" onclick="doFrameForward()">Frame forward</button>
+  <button type="button" id="goBackBtn" onclick="doTimerBack()">Back forward </button> 
+  <button type="button" id="goForwardBtn" onclick="doTimerForward()">Forward</button> 
+     
  <div id="myElement">Loading the player...</div>
 
 <script type="text/javascript">
@@ -397,15 +446,8 @@ function stopCount() {
         file: "video.mp4",
         image: "/uploads/myPoster.jpg"
     });
-	
-	function handlePlay() {
-		jwplayer().play();
-		doTimer(); 
-	} 
-	
-</script>
+</script> 
 
+</div>
 
-</form>
-
-
+</body> 

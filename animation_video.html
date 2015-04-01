@@ -1,0 +1,171 @@
+<!DOCTYPE html> 
+<meta charset="utf-8">
+
+<script type="text/javascript" src="jwplayer.js"></script>
+<script type="text/javascript">jwplayer.key="xaJgGuohQ7GDgKsfnjqmrn+rDh6fGxcqU6yH6Q==";</script> 
+
+
+<body>
+
+<script> 
+
+var cte = 0;
+var tte;
+var timer_is_on = 0;
+
+var accelerate = 1; 
+var deaccelerate = 1; 
+
+function timedCount(interval) {
+	timer_is_on = 1;
+    cte = cte+interval; 
+    document.getElementById('txt').value = cte;
+    tte = setTimeout(function(){timedCount(interval)}, 500);
+	
+	if (interval != 1) {
+		moveVideo(false); 
+	}
+}
+
+function backTimedCount(interval) { 
+	timer_is_on = 1; 
+    cte = cte-interval; 
+    document.getElementById('txt').value = cte;
+    tte = setTimeout(function(){backTimedCount(interval)}, 500); 
+	
+	if (interval != 1) {
+		moveVideo(false); 
+	}
+}
+
+function doTimer() {
+    if (!timer_is_on) {
+        timer_is_on = 1;
+        timedCount(1);
+    }
+	jwplayer().seek(cte / 2); 
+	frameButtons(false); 
+}
+
+function doTimerForward() {
+	clearTimeout(tte); 	
+
+	if (accelerate < 16 )
+	{
+		accelerate = accelerate * 2; 
+		timedCount(accelerate); 
+	}
+	else 
+	{
+		accelerate = 1;
+		timedCount(accelerate); 
+	}
+}
+
+function doTimerBack() {
+    clearTimeout(tte);
+	
+	if (deaccelerate < 16 )
+	{
+		deaccelerate = deaccelerate * 2; 
+		backTimedCount(deaccelerate); 
+	}
+	else 
+	{
+		deaccelerate = 1;
+		backTimedCount(deaccelerate); 
+	} 
+}
+
+function doFrameBack() {
+    cte = cte-1; 
+	document.getElementById('txt').value = cte;
+	var position = jwplayer().getPosition(); 
+	
+	moveVideo(true); 
+}
+
+function moveVideo(needPause) {
+
+	var seekingTime = cte / 2; 
+	jwplayer().seek(seekingTime);  
+	
+	if (needPause) {
+	var pauseOnSeek = true;
+	jwplayer().onTime(function () {
+		if (jwplayer().getState() === "PLAYING" && pauseOnSeek) {
+			this.pause();
+			pauseOnSeek = false;
+		}
+	}); 
+	}
+}
+
+function doFrameForward() {
+	cte = cte+1;
+	document.getElementById('txt').value = cte; 
+	var position = jwplayer().getPosition(); 
+	
+	moveVideo(true); 
+}
+
+function doPause() {
+    clearTimeout(tte);
+    timer_is_on = 0;
+	accelerate = 1;
+	deaccelerate = 1; 
+	jwplayer().play(false); 
+	frameButtons(true); 
+}
+
+function stopCount() {
+    clearTimeout(tte);
+    timer_is_on = 0;
+	accelerate = 1;
+	deaccelerate = 1; 
+	jwplayer().stop(); 
+	cte = 0; 
+	document.getElementById('txt').value = cte; 
+	frameButtons(false); 
+}
+
+function frameButtons(option) {
+if (!option) {
+	document.getElementById("frameBackBtn").disabled = true;
+	document.getElementById("frameForwardBtn").disabled = true;
+} 
+else {
+	document.getElementById("frameBackBtn").disabled = false;
+	document.getElementById("frameForwardBtn").disabled = false; 
+
+} 
+}
+
+</script>
+
+
+  <button type="button" id="playBtn" onclick="doTimer()">Play</button>
+  <input type="text" id="txt" />
+  <button type="button" id="pauseBtn" onclick="doPause()">Pause</button>  
+   
+  <button type="button" id="stopBtn" onclick="stopCount()">Stop</button> 
+  <button type="button" id="frameBackBtn" disabled="true" onclick="doFrameBack()">Frame back</button>   
+  <button type="button" id="frameForwardBtn" disabled="true" onclick="doFrameForward()">Frame forward</button>
+  <button type="button" id="goBackBtn" onclick="doTimerBack()">Back forward </button> 
+  <button type="button" id="goForwardBtn" onclick="doTimerForward()">Forward</button> 
+     
+ <div id="myElement">Loading the player...</div>
+
+<script type="text/javascript">
+    jwplayer("myElement").setup({
+        file: "video.mp4",
+        image: "/uploads/myPoster.jpg"
+    });
+
+		
+</script>
+
+
+
+
+
