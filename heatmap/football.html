@@ -23,101 +23,55 @@ path {
 
 </style>
 <link rel="stylesheet" type="text/css" href="menu.css">
+<link rel="stylesheet" type="text/css" href="calculator.css">
 
 <body>
 <div id='cssmenu'>
 <ul>
-   <li><a href='#'><span>Home</span></a></li>
-   <li  class='active has-sub'><a href='#'><span>Players Status</span></a>
+   <li><a href='http://localhost/visp/footballSimulator/heatmap/text.html'><span>Home</span></a></li>
+   <li  class='active has-sub'><a href='#'><span>user mode</span></a>
       <ul>
-         <li class='has-sub'><a href='#' onClick="changeP1()"><span>player 1</span></a>
-            <ul>
-               <li><a href='#' onclick="P1()"><span>player</span></a></li>
-               <li><a href='#' onclick="P1S()"><span>speed</span></a></li>
-               <li class='last'><a href='#' onclick="P1V()"><span>view</span></a></li>
-            </ul>
-         </li>
-         <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 2</span></a>
-            <ul>
-               <li><a href='#' onclick="P2()"><span>player</span></a></li>
-               <li><a href='#' onclick="P2S()"><span>speed</span></a></li>
-               <li class='last'><a href='#' onclick="P2V()"><span>view</span></a></li>
-            </ul>
-         </li>
-          <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 3</span></a>
-            <ul>
-               <li><a href='#' onclick="P3()"><span>player</span></a></li>
-               <li><a href='#' onclick="P3S()"><span>speed</span></a></li>
-               <li class='last'><a href='#' onclick="P3V()"><span>view</span></a></li>
-            </ul>
-         </li>
-          <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 4</span></a>
-            <ul>
-               <li><a href='#' onclick="P4()"><span>player</span></a></li>
-               <li><a href='#' onclick="P4S()"><span>speed</span></a></li>
-               <li class='last'><a href='#' onclick="P4V()"><span>view</span></a></li>
-            </ul>
-         </li>
-          <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 5</span></a>
-            <ul>
-               <li><a href='#' onclick="P5()"><span>player</span></a></li>
-               <li><a href='#' onclick="P5S()"><span>speed</span></a></li>
-               <li class='last'><a href='#' onclick="P5V()"><span>view</span></a></li>
-            </ul>
-         </li>
-          <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 6</span></a>
-            <ul>
-               <li><a href='#' onclick="P6()"><span>player</span></a></li>
-               <li><a href='#' onclick="P6S()"><span>speed</span></a></li>
-               <li class='last'><a href='#' onclick="P6V()"><span>view</span></a></li>
-            </ul>
-         </li>
-          <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 7</span></a>
-            <ul>
-               <li><a href='#' onclick="P7()"><span>player</span></a></li>
-               <li><a href='#' onclick="P7S()"><span>speed</span></a></li>
-               <li class='last'><a href='#' onclick="P7V()"><span>view</span></a></li>
-            </ul>
-         </li>
-         <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 11</span></a>
-            <ul>
-               <li><a href='#' onclick="P11()"><span>player</span></a></li>
-               <li><a href='#' onclick="P11S()"><span>speed</span></a></li>
-               <li class='last'><a href='#' onclick="P11V()"><span>view</span></a></li>
-            </ul>
-         </li>
-         <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 13</span></a>
-            <ul>
-               <li><a href='#' onclick="P13()"><span>player</span></a></li>
-               <li><a href='#' onclick="P13S()"><span>speed</span></a></li>
-               <li class='last'><a href='#' onclick="P13V()"><span>view</span></a></li>
-            </ul>
-         </li>
-         <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 12</span></a>
-            <ul>
-               <li><a href='#' onclick="P12()"><span>player</span></a></li>
-               <li><a href='#' onclick="P12S()"><span>speed</span></a></li>
-               <li class='last'><a href='#' onclick="P12V()"><span>view</span></a></li>
-            </ul>
-         </li>
-         <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 14</span></a>
-            <ul>
-               <li><a href='#' onclick="P14()"><span>player</span></a></li>
-               <li><a href='#' onclick="P14S()"><span>speed</span></a></li>
-               <li class='last'><a href='#' onclick="P14V()"><span>view</span></a></li>
-            </ul>
-         </li>
+               <li><a href='#' onclick="reconstruction()"><span>reconstruction mode</span></a></li>
+               <li><a href='#' onclick="coach()"><span>coach mode</span></a></li>
+               <li class='last'><a href='#' onclick="player()"><span>player mode</span></a></li>
       </ul>
    </li>
-   <li><a href='#'><span>connection analysis</span></a></li>
-   <li class='has-sub'><a href='#' onclick="move()"><span>Tactic options</span></a>
+    <li class='has-sub'><a href='#' onclick="move()"><span>Soccer Formation</span></a>
    		<ul>
-               <li><a href='#' onclick="fourfourtwo()"><span> 4 4 2</span></a></li>
+               <li><a href='#' onclick="fourfourtwo()"><span>4 4 2</span></a></li>
                <li><a href='#' onclick="fourtwothreeone()"><span>4 2 3 1</span></a></li>
                <li class='last'><a href='#' onclick="threefivetwo()"><span>3 5 2</span></a></li>
             </ul>
    </li>
+   <li class='has-sub'><a href='#' onclick="move()"><span>tactics</span></a>
+   		<ul>
+               <li><a href='#' onclick="quickPassMid()"><span>quickly pass midfield</span></a></li>
+               <li><a href='#' onclick="wingAttack()"><span>wing attack</span></a></li>
+               <li class='last'><a href='#' onclick="tikiTaka()"><span>tiki-taka</span></a></li>
+            </ul>
+   </li>
 </ul>
+</div>
+
+<div id="calculator">
+	<!-- Screen and clear key -->
+
+	
+	<div class="keys">
+		<!-- operators and other keys -->
+		<a href='#' onclick="toPlayer1()"><span>to p1</span></a>
+		<a href='#' onclick="toPlayer2()"><span>to p2</span></a>
+		<a href='#' onclick="toPlayer3()"><span>to p3</span></a>
+		<a href='#' onclick="toPlayer4()"><span>to p4</span></a>
+		<a href='#' onclick="toPlayer5()"><span>to p5</span></a>
+		<a href='#' onclick="toPlayer6()"><span>to p6</span></a>
+		<a href='#' onclick="toPlayer7()"><span>to p7</span></a>
+		<a href='#' onclick="toPlayer8()"><span>to p8</span></a>
+		<a href='#' onclick="toPlayer9()"><span>to p9</span></a>
+		<a href='#' onclick="toPlayer10()"><span>to p10</span></a>
+		<a href='#' onclick="goal()"><span>shoot</span></a>
+		<a href='#' onclick="goalkeeper()"><span>goalKeeper</span></a>
+	</div>
 </div>
 
     <svg id="mySvg" width="80" height="80">
