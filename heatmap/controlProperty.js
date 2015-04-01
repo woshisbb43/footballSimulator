@@ -283,4 +283,3 @@ function P12V(){
 	arcV.style("visibility" , "hidden")
 	}
 }
-

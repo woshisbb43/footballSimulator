@@ -140,15 +140,15 @@ arcV6 = svg.append("path")
 // ##################player 1 ###########################
 var circle1 = svg.append("circle")
     .attr("r" , 20)
-    .attr("id" , "player1")
-    .on("mouseover" , mouseover)
-    .on('mouseout' , mouseout)
-    .on('click' , function(){
-      if(circle1T==0)
-        circle1T++
-      else
-        circle1T--
-    });
+    .attr("id" , "player1");
+    // .on("mouseover" , mouseover)
+    // .on('mouseout' , mouseout)
+    // .on('click' , function(){
+    //   if(circle1T==0)
+    //     circle1T++
+    //   else
+    //     circle1T--
+    // });
 
 var rect1 = svg.append("rect")
     .attr("width" , 50)
@@ -447,12 +447,12 @@ function update12(datax, datay , heading , energy, speed , tag_id) {
         // .on('click' , drawPath);
         //choose this player.
 
-  // circle12.on("click", function() {
-  //         //old values for dataset
-  //       // d3.select("#a1").remove();
-  //         drawImage(tag_id);
-  //         // console.log(heatArray);
-  //        });
+  circle12.on("click", function() {
+          //old values for dataset
+        // d3.select("#a1").remove();
+          drawImage(tag_id);
+          // console.log(heatArray);
+         });
 
   points.splice(2,1,[scaleDataX, scaleDataY])
   // console.log(points[0])      
@@ -495,12 +495,12 @@ function update6(datax, datay , heading , energy, speed , tag_id) {
         .attr("fill" , EnergyColor(energy));
         //choose this player.
 
-  // circle6.on("click", function() {
-  //         //old values for dataset
-  //       // d3.select("#a1").remove();
-  //         drawImage(tag_id);
-  //         // console.log(heatArray);
-  //        });
+  circle6.on("click", function() {
+          //old values for dataset
+        // d3.select("#a1").remove();
+          drawImage(tag_id);
+          // console.log(heatArray);
+         });
 
   points.splice(1,1,[scaleDataX, scaleDataY])
   // console.log(points[0])
@@ -536,21 +536,20 @@ function update1(datax, datay , heading , energy, speed , tag_id) {
         .attr("cx" , scaleDataX)
         .attr("cy" , scaleDataY)
         .attr("fill" , EnergyColor(energy));
-        //choose this player.
-  // circle1.on("click", drawPath(datax , datay));
 
-    // line.transition()
-    //   .attr('x1', scaleDataX)
-    //   .attr('y1', scaleDataY);
+
+
+  circle1.on("click", function() {
+          //old values for dataset
+        // d3.select("#a1").remove();
+          drawImage(tag_id);
+          // console.log(heatArray);
+         });
+
+
   // splice is used to remove or add elements in array.
   points.splice(0,1,[scaleDataX, scaleDataY])
-  // console.log(points[0])
 
-     // svg.append("path")
-     //  .attr("d", d3line(points1))
-     //  .style("stroke-width", 2)
-     //  .style("stroke", "blue")
-     //  .style("fill", "none");
   
 
 
@@ -587,12 +586,12 @@ function update4(datax, datay , heading , energy, speed , tag_id) {
         .attr("fill" , EnergyColor(energy));
         //choose this player.
 
-  // circle4.on("click", function() {
-  //         //old values for dataset
-  //       // d3.select("#a1").remove();
-  //         drawImage(tag_id);
-  //         // console.log(heatArray);
-  //        });
+  circle4.on("click", function() {
+          //old values for dataset
+        // d3.select("#a1").remove();
+          drawImage(tag_id);
+          // console.log(heatArray);
+         });
 
 
   rect4.transition()
@@ -670,12 +669,12 @@ function update5(datax, datay , heading , energy, speed , tag_id) {
         .attr("fill" , EnergyColor(energy));
         //choose this player.
 
-  // circle5.on("click", function() {
-  //         //old values for dataset
-  //       // d3.select("#a1").remove();
-  //         drawImage(tag_id);
-  //         // console.log(heatArray);
-  //        });
+  circle5.on("click", function() {
+          //old values for dataset
+        // d3.select("#a1").remove();
+          drawImage(tag_id);
+          // console.log(heatArray);
+         });
 
 
   rect5.transition()
@@ -710,12 +709,12 @@ function update2(datax, datay , heading , energy, speed , tag_id) {
         .attr("fill" , EnergyColor(energy));
         //choose this player.
 
-  // circle2.on("click", function() {
-  //         //old values for dataset
-  //       // d3.select("#a1").remove();
-  //         drawImage(tag_id);
-  //         // console.log(heatArray);
-  //        });
+  circle2.on("click", function() {
+          //old values for dataset
+        // d3.select("#a1").remove();
+          drawImage(tag_id);
+          // console.log(heatArray);
+         });
 
 
   rect2.transition()
@@ -750,12 +749,12 @@ function update3(datax, datay , heading , energy, speed , tag_id) {
         .attr("fill" , EnergyColor(energy));
         //choose this player.
 
-  // circle3.on("click", function() {
-  //         //old values for dataset
-  //       // d3.select("#a1").remove();
-  //         drawImage(tag_id);
-  //         // console.log(heatArray);
-  //        });
+  circle3.on("click", function() {
+          //old values for dataset
+        // d3.select("#a1").remove();
+          drawImage(tag_id);
+          // console.log(heatArray);
+         });
 
 
   rect3.transition()
@@ -790,12 +789,12 @@ function update11(datax, datay , heading , energy, speed , tag_id) {
         .attr("fill" , EnergyColor(energy));
         //choose this player.
 
-  // circle11.on("click", function() {
-  //         //old values for dataset
-  //       // d3.select("#a1").remove();
-  //         drawImage(tag_id);
-  //         // console.log(heatArray);
-  //        });
+  circle11.on("click", function() {
+          //old values for dataset
+        // d3.select("#a1").remove();
+          drawImage(tag_id);
+          // console.log(heatArray);
+         });
 
 
   rect11.transition()
@@ -830,12 +829,12 @@ function update14(datax, datay , heading , energy, speed , tag_id) {
         .attr("fill" , EnergyColor(energy));
         //choose this player.
 
-  // circle14.on("click", function() {
-  //         //old values for dataset
-  //       // d3.select("#a1").remove();
-  //         drawImage(tag_id);
-  //         // console.log(heatArray);
-  //        });
+  circle14.on("click", function() {
+          //old values for dataset
+        // d3.select("#a1").remove();
+          drawImage(tag_id);
+          // console.log(heatArray);
+         });
 
 
   rect14.transition()
@@ -950,6 +949,10 @@ function arcTween(transition, newStartAngle , newFinishAngle) {
   });
 }
 
+function hm(){
+  drawImage(1);
+}
+
 //this code run the function each 2000 miliseconds
 var num =0;
 var maxX=0;
@@ -1039,6 +1042,7 @@ var clearID = setInterval(function() {
 // }
   // ####################### code to stop interval ########################################
 }, 1);
+
 
 
 });
