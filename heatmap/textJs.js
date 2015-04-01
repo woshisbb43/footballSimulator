@@ -32,13 +32,20 @@ var d3line = d3.svg.line()
 
 
 
-svg.append("path")
+path1 = svg.append("path")
+      .attr('id' , 'paht1')
       .attr("d", d3line(points))
       .style("stroke-width", 0)
       .style("stroke", "black");
 
-function drawPath(){
-    svg.select("path").transition()
+path2 = svg.append('path')
+        .attr('id' , 'path2')
+      .attr("d", d3line(points2))
+      .style("stroke-width", 0)
+      .style("stroke", "black");
+
+function drawPath1(){
+    path1.transition()
       .style("stroke-width", 10)
       .style("stroke", "black")
       .style("fill", "#F22")
@@ -49,7 +56,21 @@ function drawPath(){
       //http://bl.ocks.org/hunzy/9929724 
       .ease("linear")
       .attr("d", d3line(points));
-    }
+}
+
+function drawPath2(){
+    path2.transition()
+      .style("stroke-width", 10)
+      .style("stroke", "black")
+      .style("fill", "#F22")
+      //dynamic opacity here
+      .attr('opacity' , '0.8')
+      .delay(1000)
+      .duration(0)
+      //http://bl.ocks.org/hunzy/9929724 
+      .ease("linear")
+      .attr("d", d3line(points2));
+}
 
 
 
@@ -62,17 +83,17 @@ function drawPath(){
 //     .tension(0.8) // Catmull–Rom
 //     .interpolate("cardinal"));
     // .on("mousemove", mousemove);
-    svg
-    .on("click" , function(){
-      // d3.select("#player12").remove();
-      // d3.select("#player4").remove();
-      // d3.select("#player5").remove();
-      // d3.select("#player2").remove();
-      // d3.select("#player3").remove();
-      // d3.select("#player1").remove();
-      // d3.select("#player13").remove();
-      // d3.select("#player14").remove();
-    });
+    // svg
+    // .on("click" , function(){
+    //   // d3.select("#player12").remove();
+    //   // d3.select("#player4").remove();
+    //   // d3.select("#player5").remove();
+    //   // d3.select("#player2").remove();
+    //   // d3.select("#player3").remove();
+    //   // d3.select("#player1").remove();
+    //   // d3.select("#player13").remove();
+    //   // d3.select("#player14").remove();
+    // });
 // var c = [1,2,3,4,5,6,8,11,12,13,14]
 // var selectCircle = d3.select("svg").selectAll("circle")
 //       .data(c)
@@ -593,6 +614,8 @@ function update4(datax, datay , heading , energy, speed , tag_id) {
           // console.log(heatArray);
          });
 
+  points2.splice(2,1,[scaleDataX, scaleDataY])
+
 
   rect4.transition()
         // .duration(500)
@@ -676,6 +699,8 @@ function update5(datax, datay , heading , energy, speed , tag_id) {
           // console.log(heatArray);
          });
 
+  points2.splice(1,1,[scaleDataX, scaleDataY])
+
 
   rect5.transition()
         // .duration(500)
@@ -755,6 +780,8 @@ function update3(datax, datay , heading , energy, speed , tag_id) {
           drawImage(tag_id);
           // console.log(heatArray);
          });
+
+  points2.splice(0,1,[scaleDataX, scaleDataY])
 
 
   rect3.transition()
@@ -967,10 +994,13 @@ var clearID = setInterval(function() {
   // }
   // }
   // else{
-  drawPath();
+  drawPath1();
+  drawPath2();
+
+
   num = num + 1;
 
-  if(jump>=20){
+  // if(jump>=20){
   // if(parseInt( ballP[num].timestamp) == timeStamp){
   //     timeStamp = parseInt(ballP[num].timestamp);
   //     }
@@ -999,19 +1029,19 @@ var clearID = setInterval(function() {
       else if(ballP[num].tag_id == 14){
     update14(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
 
-    jump = jump-1;
-    if(jump == 19)
-    {
-      jump=(-20);
-    }
-  }
+  //   jump = jump-1;
+  //   if(jump == 19)
+  //   {
+  //     jump=(-20);
+  //   }
+  // }
 
-  else{
-    jump = jump + 1;
-    if(jump = 19){
-      jump = 31;
-    }
-  }
+  // else{
+  //   jump = jump + 1;
+  //   if(jump = 19){
+  //     jump = 31;
+  //   }
+  // }
 
       // console.log(ballP[num].tag_id)
       // update(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);
