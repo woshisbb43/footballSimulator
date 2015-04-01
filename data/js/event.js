@@ -1,4 +1,4 @@
-["26","Leftback","Interception","Opponent","19:04:07.470"],
+var event = [["26","Leftback","Interception","Opponent","19:04:07.470"],
 ["32","Leftback","Dribbling","Ball posession","19:04:10.470"],
 ["44","Leftback","Passing","Ball posession","19:04:16.470"],
 ["48","Left central defender","Receiving","Leftback","19:04:18.470"],
@@ -112,4 +112,4 @@
 ["2584","Goalkeeper","Interception","Opponent","19:25:26.470"],
 ["2588","Goalkeeper","Throw","Bl","19:25:28.470"],
 ["2592","Leftback","Receiving","Goalkeeper","19:25:30.470"],
-["2644","Leftback","Free kick","Ball posession","19:25:56.470"],
+["2644","Leftback","Free kick","Ball posession","19:25:56.470"]] 

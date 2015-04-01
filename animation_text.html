@@ -1,0 +1,59 @@
+<!DOCTYPE html> 
+<meta charset="utf-8">
+<style>
+
+text {
+  font: bold 48px monospace;
+}
+
+svg,
+canvas {
+  position: absolute; 
+  background-color: #789; 
+  top: 0px;
+  left: 0px; 
+}
+
+.enter {
+  fill: green;
+}
+
+.update {
+  fill: #333;
+}
+
+.exit {
+  fill: brown;
+}
+
+.controls {
+ position: absolute; 
+ top: 700px; 
+ padding: 0px 0px 100px 0; 
+}
+
+#textString {
+ position: absolute;
+ top: 700px; 
+ left: 800px; 
+ padding: 0 0 0 0; 
+}                                                  
+
+</style>
+
+<body>
+
+<script type="text/javascript" src="data/js/event.js"></script> 
+
+ <p id="demo"></p>
+
+<script>
+
+document.getElementById("demo").innerHTML = event[1]; 
+
+
+</script> 
+
+
+
+</body> 

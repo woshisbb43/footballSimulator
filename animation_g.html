@@ -32,25 +32,37 @@ canvas {
  padding: 0px 0px 100px 0; 
 }
 
+#eventInfo {
+ position: absolute;
+ top: 700px; 
+ left: 800px; 
+ padding: 0; 
+}
+
+
+																		
+
 </style>
 
 <body>
-<script src="data/js/player1data.js"></script>  
-<script src="data/js/player2data.js"></script>  
-<script src="data/js/player3data.js"></script>  
-<script src="data/js/player4data.js"></script>  
-<script src="data/js/player5data.js"></script>  
-<script src="data/js/player6data.js"></script>  
-<script src="data/js/player8data.js"></script>  
-<script src="data/js/player11data.js"></script>  
-<script src="data/js/player12data.js"></script>  
-<script src="data/js/player13data.js"></script>  
-<script src="data/js/player14data.js"></script>   
+<script src="data/js/players/player1data.js"></script>  
+<script src="data/js/players/player2data.js"></script>  
+<script src="data/js/players/player3data.js"></script>  
+<script src="data/js/players/player4data.js"></script>  
+<script src="data/js/players/player5data.js"></script>  
+<script src="data/js/players/player6data.js"></script>  
+<script src="data/js/players/player8data.js"></script>  
+<script src="data/js/players/player11data.js"></script>  
+<script src="data/js/players/player12data.js"></script>  
+<script src="data/js/players/player13data.js"></script>  
+<script src="data/js/players/player14data.js"></script>   
 <script src="data/js/ball.js"></script> 
 
 <!-- <script src="http://d3js.org/d3.v2.min.js?2.10.1"></script> -->
 <script src="http://d3js.org/d3.v3.js"></script>
 <script src="http://d3js.org/d3.v2.min.js?2.10.1"></script>
+
+<script type="text/javascript" src="data/js/event.js"></script> 
 
 <script type="text/javascript" src="jwplayer.js"></script>
 <script type="text/javascript">jwplayer.key="xaJgGuohQ7GDgKsfnjqmrn+rDh6fGxcqU6yH6Q==";</script> 
@@ -222,8 +234,7 @@ var linScaleY = d3.scale.linear()
 // Grab a random sample of letters from the alphabet, in alphabetical order.
 //this code run the function each 2000 miliseconds
 
-
-
+var eventLocal = 0;
 
 setInterval(function() {
   num = cte; 
@@ -231,6 +242,17 @@ setInterval(function() {
   if (determinePolygon(b1[num][0], b1[num][1]) == -1) newBallPos = computeBallPosition(b1[num][0], b1[num][1], -1);   
   else newBallPos = computeBallPosition(b1[num][0], b1[num][1], 1);
   
+  if (num == 1) {
+	document.getElementById("eventInfo").innerHTML = "Information is expected";  
+  }
+  
+  var eventFile = parseFloat(event[eventLocal][0]);
+  if (num == eventFile) {
+	document.getElementById("eventInfo").innerHTML = document.getElementById("eventInfo").innerHTML = event[eventLocal][1] + " makes " + event[eventLocal][2] + ", interaction " + event[eventLocal][3]; 
+	eventLocal = eventLocal + 1; 
+  } 
+		
+
   
   // console.log(points);
   update(newBallPos[0], newBallPos[1], ball);
@@ -444,10 +466,23 @@ else {
 <script type="text/javascript">
     jwplayer("myElement").setup({
         file: "video.mp4",
-        image: "/uploads/myPoster.jpg"
+        image: "/uploads/myPoster.jpg",
+		width: 800,
+		height: 600
     });
 </script> 
 
 </div>
+
+<div id="eventInfo">
+
+</div>
+
+<script>
+
+// document.getElementById("eventInfo").innerHTML = event[1][1] + " makes " + event[1][2] + ", interaction " + event[1][3];  
+
+
+</script> 
 
 </body> 
