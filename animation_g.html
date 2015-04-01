@@ -111,6 +111,24 @@ piter.append('rect')
 .attr('fill', 'green')
 .attr('stroke', 'white');
 
+//second goalkeeper rectangle
+piter.append('rect')
+.attr('height',44*7)
+.attr('width', 18*7)
+.attr('y',15*7+10)
+.attr('x',width - 117)
+.attr('fill', 'green')
+.attr('stroke', 'white');
+
+//small second rectangle 
+piter.append('rect')
+.attr('height',20*7)
+.attr('width', 8*7)
+.attr('y',27*7+10)
+.attr('x',width - 47)
+.attr('fill', 'green')
+.attr('stroke', 'white');
+
 //centerline of the pitch
 piter.append('line')
 .attr('x1',width/2+10)
@@ -144,6 +162,14 @@ piter.append('circle')
 .attr('fill','black')
 .attr('stroke', 'white');
 
+//point for penalty
+piter.append('circle')
+.attr('r', 4)
+.attr('cx',width - 70)
+.attr('cy',height/2+10)
+.attr('fill','black')
+.attr('stroke', 'white');
+
 //adding the corner arc to the bottom left
 piter.append('path')
   .attr('d', corner)
@@ -160,62 +186,74 @@ var ball = svg.append("circle")
     .attr("cx" , b1[0][0])
     .attr("cy" , b1[0][1])
     .attr("r" , 20)
-	.attr("fill", "white"); 
+	.attr("fill", "black"); 
 	  
 var pl1 = svg.append("circle")
     .attr("cx" , p1[0][0])
     .attr("cy" , p1[0][1])
-    .attr("r" , 20);
+    .attr("r" , 20)
+	.attr("fill", "white");	
 	
 var pl2 = svg.append("circle")
     .attr("cx" , p2[0][0])
     .attr("cy" , p2[0][1])
-    .attr("r" , 20);
+    .attr("r" , 20)
+	.attr("fill", "white");	
 	
- var pl3 = svg.append("circle")
+
+/* var pl3 = svg.append("circle")
     .attr("cx" , p3[0][0])
     .attr("cy" , p3[0][1])
-    .attr("r" , 20);   
+    .attr("r" , 20);
+	.attr("fill", "white");		*/ 
 
 var pl4 = svg.append("circle")
     .attr("cx" , p4[0][0])
     .attr("cy" , p4[0][1])
-    .attr("r" , 20);
+    .attr("r" , 20)
+	.attr("fill", "white");	
 
 var pl5 = svg.append("circle")
     .attr("cx" , p5[0][0])
     .attr("cy" , p5[0][1])
-    .attr("r" , 20);
+    .attr("r" , 20)
+	.attr("fill", "white");	
 
 var pl6 = svg.append("circle")
     .attr("cx" , p6[0][0])
     .attr("cy" , p6[0][1])
-    .attr("r" , 20);
+    .attr("r" , 20)
+	.attr("fill", "white");	
 
 var pl8 = svg.append("circle")
     .attr("cx" , p8[0][0])
     .attr("cy" , p8[0][1])
-    .attr("r" , 20);
+    .attr("r" , 20)
+	.attr("fill", "white");	
 
 var pl11 = svg.append("circle")
     .attr("cx" , p11[0][0])
     .attr("cy" , p11[0][1])
-    .attr("r" , 20);
+    .attr("r" , 20)
+	.attr("fill", "white");	
 
 var pl12 = svg.append("circle")
     .attr("cx" , p12[0][0])
     .attr("cy" , p12[0][1])
-    .attr("r" , 20);
+    .attr("r" , 20)
+	.attr("fill", "white");	
 
-var pl13 = svg.append("circle")
+/* var pl13 = svg.append("circle")
     .attr("cx" , p13[0][0])
     .attr("cy" , p13[0][1])
-    .attr("r" , 20);  
+    .attr("r" , 20)
+	.attr("fill", "white");		*/ 
 
 var pl14 = svg.append("circle")
     .attr("cx" , p14[0][0])
     .attr("cy" , p14[0][1])
-    .attr("r" , 20);	
+    .attr("r" , 20)
+	.attr("fill", "white");		
 	
 function update(datax, datay, obVal) {
   obVal.transition()
@@ -248,7 +286,7 @@ setInterval(function() {
   
   var eventFile = parseFloat(event[eventLocal][0]);
   if (num == eventFile) {
-	document.getElementById("eventInfo").innerHTML = document.getElementById("eventInfo").innerHTML = event[eventLocal][1] + " makes " + event[eventLocal][2] + ", interaction " + event[eventLocal][3]; 
+	document.getElementById("eventInfo").innerHTML = document.getElementById("eventInfo").innerHTML = event[eventLocal][1] + " makes " + event[eventLocal][2] + ", additional information " + event[eventLocal][3]; 
 	eventLocal = eventLocal + 1; 
   } 
 		
@@ -258,14 +296,14 @@ setInterval(function() {
   update(newBallPos[0], newBallPos[1], ball);
   update(linScaleX(p1[num][0]), height - linScaleY(p1[num][1]), pl1); 
   update(linScaleX(p2[num][0]), height - linScaleY(p2[num][1]), pl2);
-  update(linScaleX(p3[num][0]), height - linScaleY(p3[num][1]), pl3); 
+//  update(linScaleX(p3[num][0]), height - linScaleY(p3[num][1]), pl3); 
   update(linScaleX(p4[num][0]), height - linScaleY(p4[num][1]), pl4); 
   update(linScaleX(p5[num][0]), height - linScaleY(p5[num][1]), pl5); 
   update(linScaleX(p6[num][0]), height - linScaleY(p6[num][1]), pl6); 
   update(linScaleX(p8[num][0]), height - linScaleY(p8[num][1]), pl8); 
   update(linScaleX(p11[num][0]), height - linScaleY(p11[num][1]), pl11); 
   update(linScaleX(p12[num][0]), height - linScaleY(p12[num][1]), pl12); 
-  update(linScaleX(p13[num][0]), height - linScaleY(p13[num][1]), pl13); 
+//  update(linScaleX(p13[num][0]), height - linScaleY(p13[num][1]), pl13); 
   update(linScaleX(p14[num][0]), height - linScaleY(p14[num][1]), pl14); 
   
 }, 500);
