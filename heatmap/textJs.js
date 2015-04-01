@@ -8,6 +8,8 @@ var svg = d3.select("body").append("svg").attr("class" , "pitch")
     .attr("height", height)
     .style('background','green');
 
+console.log(p1[0][0])
+
 // var line = svg.append("line")
 //                          .attr("stroke-width", 2)
 //                          .attr("stroke", "black");
@@ -1006,28 +1008,30 @@ var clearID = setInterval(function() {
   //     }
   // else{
   //     timeStamp = parseInt(ballP[num].timestamp);  
-  if (ballP[num].tag_id == 12) {
-    update12(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-  else if(ballP[num].tag_id == 6){
-    update6(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-    else if(ballP[num].tag_id == 1){
-    update1(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 4){
-    update4(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-    //   else if(ballP[num].tag_id == 13){
-    // update13(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 12){
-    update12(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 5){
-    update5(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 2){
-    update2(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 3){
-    update3(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 11){
-    update11(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 14){
-    update14(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
+  // if (ballP[num].tag_id == 12) {
+  //   update12(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
+  // else if(ballP[num].tag_id == 6){
+  //   update6(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
+    // else if(ballP[num].tag_id == 1){
+  if(true){
+    update1(p1[num][0], p1[num][1], p1[num][2], p1[num][4], p1[num][5], 1);
+  }
+    //   else if(ballP[num].tag_id == 4){
+    // update4(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
+    // //   else if(ballP[num].tag_id == 13){
+    // // update13(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
+    //   else if(ballP[num].tag_id == 12){
+    // update12(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
+    //   else if(ballP[num].tag_id == 5){
+    // update5(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
+    //   else if(ballP[num].tag_id == 2){
+    // update2(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
+    //   else if(ballP[num].tag_id == 3){
+    // update3(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
+    //   else if(ballP[num].tag_id == 11){
+    // update11(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
+    //   else if(ballP[num].tag_id == 14){
+    // update14(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
 
   //   jump = jump-1;
   //   if(jump == 19)
@@ -1071,7 +1075,7 @@ var clearID = setInterval(function() {
   // } 
 // }
   // ####################### code to stop interval ########################################
-}, 1);
+}, 200);
 
 
 
