@@ -110,7 +110,11 @@ function drawPath2(){
 //       console.log(rem)
 //       d3.select("#" + d.id).remove();
 //     })
+var circleB = svg.append('circle')
+    .attr('r' , 25)
+    .attr('id' , "ball");
 // ##################player 12 ###########################
+
 var circle12 = svg.append("circle")
     .attr("r" , 20)
     .attr("id" , "player12");
@@ -450,6 +454,16 @@ d3.csv("2013-11-28_tromso_tottenham_raw_without_data.csv", function(error, ballP
 
   //player's quickest speed is 13.3202 slowest is 0 
 
+function updateball(datax, datay){
+scaleDataX = parseInt(scaleX(datax)),
+scaleDataY = parseInt(scaleY(datay));
+
+
+  circleB.transition()
+  .attr('cx' , scaleDataX)
+  .attr('cy' , scaleDataY);
+}
+
 function update12(datax, datay , heading , energy, speed , tag_id) {
 
   // console.log(tag_id)
@@ -457,6 +471,7 @@ function update12(datax, datay , heading , energy, speed , tag_id) {
   var endHeading =parseFloat (heading+ 1),
   scaleDataX = parseInt(scaleX(datax)),
   scaleDataY = parseInt(scaleY(datay));
+
   if(speed==0){
     speed = 0.1;
   }
@@ -1028,6 +1043,7 @@ var clearID = setInterval(function() {
                                     update12(p12[num][0], p12[num][1], p12[num][2], p12[num][4], p12[num][5], 12);
                                         // update13(p13[num][0], p13[num][1], p13[num][2], p13[num][4], p13[num][5], 13);
                                         update14(p14[num][0], p14[num][1], p14[num][2], p14[num][4], p14[num][5], 14);
+                                        updateball(b1[num][0] , b1[num][1]);
 
   
     //   else if(ballP[num].tag_id == 4){
@@ -1089,7 +1105,7 @@ var clearID = setInterval(function() {
   // } 
 // }
   // ####################### code to stop interval ########################################
-}, 500);
+}, 300);
 
 
 
