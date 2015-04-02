@@ -1,0 +1,532 @@
+<!DOCTYPE html> 
+<meta charset="utf-8">
+<style>
+
+text {
+  font: bold 48px monospace;
+}
+
+svg,
+canvas {
+  position: absolute; 
+  background-color: #789; 
+  top: 0px;
+  left: 0px; 
+}
+
+.enter {
+  fill: green;
+}
+
+.update {
+  fill: #333;
+}
+
+.exit {
+  fill: brown;
+}
+
+.controls {
+ position: absolute; 
+ top: 10px; 
+ left: 900px; 
+ padding: 0px 0px 100px 0; 
+}
+
+#eventInfo {
+ position: absolute;
+ top: 700px; 
+ left: 800px; 
+ padding: 0; 
+}
+
+
+																		
+
+</style>
+
+<body>
+<script src="http://d3js.org/d3.v3.js"></script>
+<script src="textJs.js"></script>
+<script src="controlProperty.js"></script>
+<script src="interaction.js"></script>
+<script src="player1data.js"></script>
+<script src="player2data.js"></script>
+<script src="player3data.js"></script>
+<script src="player4data.js"></script>
+<script src="player5data.js"></script>
+<script src="player6data.js"></script>
+<script src="player8data.js"></script>
+<script src="player11data.js"></script>
+<script src="player12data.js"></script>
+<script src="player13data.js"></script>
+<script src="player14data.js"></script>
+<script src="ball.js"></script>
+<script src="event.js"></script>
+
+<!-- <script src="http://d3js.org/d3.v2.min.js?2.10.1"></script> -->
+
+
+<script type="text/javascript" src="data/js/event.js"></script> 
+
+<script type="text/javascript" src="jwplayer.js"></script>
+<script type="text/javascript">jwplayer.key="xaJgGuohQ7GDgKsfnjqmrn+rDh6fGxcqU6yH6Q==";</script> 
+
+<script>
+
+var width = 115*7;
+var height = 74*7;
+
+var pi = Math.PI;
+
+
+var piter = d3.select('body').append('svg').attr('class', 'pitch').attr('height',height+20)
+.attr('width', width+20)
+.style('background','green');
+
+
+var corner = d3.svg.arc()
+    .innerRadius(6)
+    .outerRadius(7)
+    .startAngle(0 * (pi/180)) //converting from degs to radians
+    .endAngle(90* (pi/180)) //just radians
+
+var field = piter.append('rect').attr('height',height)
+.attr('width', width)
+.attr('fill', 'transparent')
+.attr('stroke', 'white')
+.attr('x', 10)
+.attr('y',10);
+
+//big goalkeeper rectangle
+piter.append('rect')
+.attr('height',44*7)
+.attr('width', 18*7)
+.attr('y',15*7+10)
+.attr('x',10)
+.attr('fill', 'green')
+.attr('stroke', 'white');
+
+//small rectangle
+piter.append('rect')
+.attr('height',20*7)
+.attr('width', 8*7)
+.attr('y',27*7+10)
+.attr('x',10)
+.attr('fill', 'green')
+.attr('stroke', 'white');
+
+//second goalkeeper rectangle
+piter.append('rect')
+.attr('height',44*7)
+.attr('width', 18*7)
+.attr('y',15*7+10)
+.attr('x',width - 117)
+.attr('fill', 'green')
+.attr('stroke', 'white');
+
+//small second rectangle 
+piter.append('rect')
+.attr('height',20*7)
+.attr('width', 8*7)
+.attr('y',27*7+10)
+.attr('x',width - 47)
+.attr('fill', 'green')
+.attr('stroke', 'white');
+
+//centerline of the pitch
+piter.append('line')
+.attr('x1',width/2+10)
+.attr('x2',width/2+10)
+.attr('y1',10)
+.attr('y2',height+10)
+.attr('stroke','white');	
+
+piter.append('circle')
+.attr('r', 70)
+.attr('cx',width/2+10)
+.attr('cy',height/2+10)
+.attr('fill','transparent')
+.attr('stroke', 'white');
+
+//center og the field
+piter.append('circle')
+.attr('r', 4)
+.attr('cx',width/2+10)
+.attr('cy',height/2+10)
+.attr('fill','white')
+.attr('stroke', 'white')
+.attr("id", "middle");
+//the ball
+
+//point for penalty
+piter.append('circle')
+.attr('r', 4)
+.attr('cx',12*7+10)
+.attr('cy',height/2+10)
+.attr('fill','black')
+.attr('stroke', 'white');
+
+//point for penalty
+piter.append('circle')
+.attr('r', 4)
+.attr('cx',width - 70)
+.attr('cy',height/2+10)
+.attr('fill','black')
+.attr('stroke', 'white');
+
+//adding the corner arc to the bottom left
+piter.append('path')
+  .attr('d', corner)
+  .attr('transform','translate('+ 10 +','+ (10+74*7) + ')')
+  .attr('stroke','white');
+
+  
+  
+
+  
+var svg = d3.select("body").select("svg");
+
+var ball = svg.append("circle")
+    .attr("cx" , b1[0][0])
+    .attr("cy" , b1[0][1])
+    .attr("r" , 20)
+	.attr("fill", "black"); 
+	  
+var pl1 = svg.append("circle")
+    .attr("cx" , p1[0][0])
+    .attr("cy" , p1[0][1])
+    .attr("r" , 20)
+	.attr("fill", "white");	
+	
+var pl2 = svg.append("circle")
+    .attr("cx" , p2[0][0])
+    .attr("cy" , p2[0][1])
+    .attr("r" , 20)
+	.attr("fill", "white");	
+	
+
+/* var pl3 = svg.append("circle")
+    .attr("cx" , p3[0][0])
+    .attr("cy" , p3[0][1])
+    .attr("r" , 20);
+	.attr("fill", "white");		*/ 
+
+var pl4 = svg.append("circle")
+    .attr("cx" , p4[0][0])
+    .attr("cy" , p4[0][1])
+    .attr("r" , 20)
+	.attr("fill", "white");	
+
+var pl5 = svg.append("circle")
+    .attr("cx" , p5[0][0])
+    .attr("cy" , p5[0][1])
+    .attr("r" , 20)
+	.attr("fill", "white");	
+
+var pl6 = svg.append("circle")
+    .attr("cx" , p6[0][0])
+    .attr("cy" , p6[0][1])
+    .attr("r" , 20)
+	.attr("fill", "white");	
+
+var pl8 = svg.append("circle")
+    .attr("cx" , p8[0][0])
+    .attr("cy" , p8[0][1])
+    .attr("r" , 20)
+	.attr("fill", "white");	
+
+var pl11 = svg.append("circle")
+    .attr("cx" , p11[0][0])
+    .attr("cy" , p11[0][1])
+    .attr("r" , 20)
+	.attr("fill", "white");	
+
+var pl12 = svg.append("circle")
+    .attr("cx" , p12[0][0])
+    .attr("cy" , p12[0][1])
+    .attr("r" , 20)
+	.attr("fill", "white");	
+
+/* var pl13 = svg.append("circle")
+    .attr("cx" , p13[0][0])
+    .attr("cy" , p13[0][1])
+    .attr("r" , 20)
+	.attr("fill", "white");		*/ 
+
+var pl14 = svg.append("circle")
+    .attr("cx" , p14[0][0])
+    .attr("cy" , p14[0][1])
+    .attr("r" , 20)
+	.attr("fill", "white");		
+	
+function update(datax, datay, obVal) {
+  obVal.transition()
+        .attr("cx" , datax)
+        .attr("cy" , datay);
+}
+
+var linScaleX = d3.scale.linear()
+	.domain([0, 105])
+	.range([0, width]); 
+
+var linScaleY = d3.scale.linear()
+	.domain([0, 68])
+	.range([0, height]); 
+		
+// Grab a random sample of letters from the alphabet, in alphabetical order.
+//this code run the function each 2000 miliseconds
+
+var eventLocal = 0;
+
+setInterval(function() {
+  num = cte; 
+  
+  if (determinePolygon(b1[num][0], b1[num][1]) == -1) newBallPos = computeBallPosition(b1[num][0], b1[num][1], -1);   
+  else newBallPos = computeBallPosition(b1[num][0], b1[num][1], 1);
+  
+  if (num == 1) {
+	document.getElementById("eventInfo").innerHTML = "Information is expected";  
+  }
+  
+  var eventFile = parseFloat(event[eventLocal][0]);
+  if (num == eventFile) {
+	document.getElementById("eventInfo").innerHTML = document.getElementById("eventInfo").innerHTML = "Time " + event[eventLocal][0] + ", " + event[eventLocal][1] + " makes " + event[eventLocal][2] + ", additional information " + "\"" + event[eventLocal][3] + "\"" ;  
+	eventLocal = eventLocal + 1; 
+  } 
+		
+
+  
+  // console.log(points);
+  update(newBallPos[0], newBallPos[1], ball);
+  update(linScaleX(p1[num][0]), height - linScaleY(p1[num][1]), pl1); 
+  update(linScaleX(p2[num][0]), height - linScaleY(p2[num][1]), pl2);
+//  update(linScaleX(p3[num][0]), height - linScaleY(p3[num][1]), pl3); 
+  update(linScaleX(p4[num][0]), height - linScaleY(p4[num][1]), pl4); 
+  update(linScaleX(p5[num][0]), height - linScaleY(p5[num][1]), pl5); 
+  update(linScaleX(p6[num][0]), height - linScaleY(p6[num][1]), pl6); 
+  update(linScaleX(p8[num][0]), height - linScaleY(p8[num][1]), pl8); 
+  update(linScaleX(p11[num][0]), height - linScaleY(p11[num][1]), pl11); 
+  update(linScaleX(p12[num][0]), height - linScaleY(p12[num][1]), pl12); 
+//  update(linScaleX(p13[num][0]), height - linScaleY(p13[num][1]), pl13); 
+  update(linScaleX(p14[num][0]), height - linScaleY(p14[num][1]), pl14); 
+  
+}, 200);
+
+function computeBallPosition(x, y, half) {
+
+if (half == -1) {
+	c11 = 0.419343067775651; 	 c12 = 0.829826774964493;	  c13 = -1053.20964592050; 
+	c21 = 0.171362763533614; 	 c22 = 1.25107701797849;	  c23 = -1053.26640897830; 
+	c31 = 0.000498425957288310;  c32 = 0.00186415608728975;   c33 = -1.35000259966186; 
+}
+else {
+	c11 = 0.0263997278461894; 	 c12 = 0.264756363627971;	  c13 = -106.842157410688; 
+	c21 = -0.0290420293016211; 	 c22 = 0.419319162793270;	  c23 = -168.736975094544; 
+	c31 = -9.78726166142597e-05; c32 = 0.0005983637214073111; c33 = 0.115570008858111; 
+}
+	xn = c11 * x + c12 * y + c13 * 1; 
+	yn = c21 * x + c22 * y + c23 * 1;
+	zn = c31 * x + c32 * y + c33 * 1; 
+	
+	xf = xn / zn;
+	yf = yn / zn; 
+	
+//	console.log(xf, yf, half); 
+	
+	return [xf, yf]; 
+}
+
+function determinePolygon(x, y) {
+	x1 = 2131; y1 = 550; 
+	x2 = 1693; y2 = 1755; 
+	
+	A = -(y2 - y1);
+	B = x2 - x1; 
+	C = -(A*x1 + B*y1);
+	
+	D = A*x + B*y + C;
+	
+	if (D > 0) return -1;
+	else return 1; 
+	
+}
+
+
+</script> 
+
+
+<script> 
+
+var cte = 0;
+var tte;
+var timer_is_on = 0;
+
+var accelerate = 1; 
+var deaccelerate = 1; 
+
+function timedCount(interval) {
+	timer_is_on = 1;
+    cte = cte+interval; 
+    document.getElementById('txt').value = cte;
+    tte = setTimeout(function(){timedCount(interval)}, 200);
+	
+	if (interval != 1) {
+		moveVideo(false); 
+	}
+}
+
+function backTimedCount(interval) { 
+	timer_is_on = 1; 
+    cte = cte-interval; 
+    document.getElementById('txt').value = cte;
+    tte = setTimeout(function(){backTimedCount(interval)}, 200); 
+	
+	if (interval != 1) {
+		moveVideo(false); 
+	}
+}
+
+function doTimer() {
+    if (!timer_is_on) {
+        timer_is_on = 1;
+        timedCount(1);
+    }
+	jwplayer().seek(cte / 2); 
+	frameButtons(false); 
+}
+
+function doTimerForward() {
+	clearTimeout(tte); 	
+
+	if (accelerate < 16 )
+	{
+		accelerate = accelerate * 2; 
+		timedCount(accelerate); 
+	}
+	else 
+	{
+		accelerate = 1;
+		timedCount(accelerate); 
+	}
+}
+
+function doTimerBack() {
+    clearTimeout(tte);
+	
+	if (deaccelerate < 16 )
+	{
+		deaccelerate = deaccelerate * 2; 
+		backTimedCount(deaccelerate); 
+	}
+	else 
+	{
+		deaccelerate = 1;
+		backTimedCount(deaccelerate); 
+	} 
+}
+
+function doFrameBack() {
+    cte = cte-1; 
+	document.getElementById('txt').value = cte;
+	var position = jwplayer().getPosition(); 
+	
+	moveVideo(true); 
+}
+
+function moveVideo(needPause) {
+
+	var seekingTime = cte / 5; 
+	jwplayer().seek(seekingTime);  
+	
+	if (needPause) {
+	var pauseOnSeek = true;
+	jwplayer().onTime(function () {
+		if (jwplayer().getState() === "PLAYING" && pauseOnSeek) {
+			this.pause();
+			pauseOnSeek = false;
+		}
+	}); 
+	}
+}
+
+function doFrameForward() {
+	cte = cte+1;
+	document.getElementById('txt').value = cte; 
+	var position = jwplayer().getPosition(); 
+	
+	moveVideo(true); 
+}
+
+function doPause() {
+    clearTimeout(tte);
+    timer_is_on = 0;
+	accelerate = 1;
+	deaccelerate = 1; 
+	jwplayer().play(false); 
+	frameButtons(true); 
+}
+
+function stopCount() {
+    clearTimeout(tte);
+    timer_is_on = 0;
+	accelerate = 1;
+	deaccelerate = 1; 
+	jwplayer().stop(); 
+	cte = 0; 
+	document.getElementById('txt').value = cte; 
+	frameButtons(false); 
+}
+
+function frameButtons(option) {
+if (!option) {
+	document.getElementById("frameBackBtn").disabled = true;
+	document.getElementById("frameForwardBtn").disabled = true;
+} 
+else {
+	document.getElementById("frameBackBtn").disabled = false;
+	document.getElementById("frameForwardBtn").disabled = false; 
+
+} 
+}
+
+</script>
+
+<div class="controls" > 
+
+  <button type="button" id="playBtn" onclick="doTimer()">Play</button>
+  <input type="text" id="txt" />
+  <button type="button" id="pauseBtn" onclick="doPause()">Pause</button>  
+   
+  <button type="button" id="stopBtn" onclick="stopCount()">Stop</button> 
+  <button type="button" id="frameBackBtn" disabled="true" onclick="doFrameBack()">Frame back</button>   
+  <button type="button" id="frameForwardBtn" disabled="true" onclick="doFrameForward()">Frame forward</button>
+  <button type="button" id="goBackBtn" onclick="doTimerBack()">Back forward </button> 
+  <button type="button" id="goForwardBtn" onclick="doTimerForward()">Forward</button> 
+     
+ <div id="myElement">Loading the player...</div>
+
+<script type="text/javascript">
+    jwplayer("myElement").setup({
+        file: "video.mp4",
+        image: "/uploads/myPoster.jpg",
+// 		controls: false, 
+		width: 800,
+		height: 600
+    });
+</script> 
+
+</div>
+
+<div id="eventInfo">
+
+</div>
+
+<script>
+
+// document.getElementById("eventInfo").innerHTML = event[1][1] + " makes " + event[1][2] + ", interaction " + event[1][3];  
+
+
+</script> 
+
+</body> 
