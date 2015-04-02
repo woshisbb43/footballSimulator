@@ -307,7 +307,7 @@ setInterval(function() {
 //  update(linScaleX(p13[num][0]), height - linScaleY(p13[num][1]), pl13); 
   update(linScaleX(p14[num][0]), height - linScaleY(p14[num][1]), pl14); 
   
-}, 500);
+}, 200);
 
 function computeBallPosition(x, y, half) {
 
@@ -365,7 +365,7 @@ function timedCount(interval) {
 	timer_is_on = 1;
     cte = cte+interval; 
     document.getElementById('txt').value = cte;
-    tte = setTimeout(function(){timedCount(interval)}, 500);
+    tte = setTimeout(function(){timedCount(interval)}, 200);
 	
 	if (interval != 1) {
 		moveVideo(false); 
@@ -376,7 +376,7 @@ function backTimedCount(interval) {
 	timer_is_on = 1; 
     cte = cte-interval; 
     document.getElementById('txt').value = cte;
-    tte = setTimeout(function(){backTimedCount(interval)}, 500); 
+    tte = setTimeout(function(){backTimedCount(interval)}, 200); 
 	
 	if (interval != 1) {
 		moveVideo(false); 
@@ -432,7 +432,7 @@ function doFrameBack() {
 
 function moveVideo(needPause) {
 
-	var seekingTime = cte / 2; 
+	var seekingTime = cte / 5; 
 	jwplayer().seek(seekingTime);  
 	
 	if (needPause) {
