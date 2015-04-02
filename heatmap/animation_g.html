@@ -67,7 +67,7 @@ canvas {
 <!-- <script src="http://d3js.org/d3.v2.min.js?2.10.1"></script> -->
 
 
-<script type="text/javascript" src="data/js/event.js"></script> 
+<!-- <script type="text/javascript" src="data/js/event.js"></script>  -->
 
 <script type="text/javascript" src="jwplayer.js"></script>
 <script type="text/javascript">jwplayer.key="xaJgGuohQ7GDgKsfnjqmrn+rDh6fGxcqU6yH6Q==";</script> 
@@ -298,18 +298,18 @@ setInterval(function() {
 
   
   // console.log(points);
-  update(newBallPos[0], newBallPos[1], ball);
-  update(linScaleX(p1[num][0]), height - linScaleY(p1[num][1]), pl1); 
-  update(linScaleX(p2[num][0]), height - linScaleY(p2[num][1]), pl2);
-//  update(linScaleX(p3[num][0]), height - linScaleY(p3[num][1]), pl3); 
-  update(linScaleX(p4[num][0]), height - linScaleY(p4[num][1]), pl4); 
-  update(linScaleX(p5[num][0]), height - linScaleY(p5[num][1]), pl5); 
-  update(linScaleX(p6[num][0]), height - linScaleY(p6[num][1]), pl6); 
-  update(linScaleX(p8[num][0]), height - linScaleY(p8[num][1]), pl8); 
-  update(linScaleX(p11[num][0]), height - linScaleY(p11[num][1]), pl11); 
-  update(linScaleX(p12[num][0]), height - linScaleY(p12[num][1]), pl12); 
-//  update(linScaleX(p13[num][0]), height - linScaleY(p13[num][1]), pl13); 
-  update(linScaleX(p14[num][0]), height - linScaleY(p14[num][1]), pl14); 
+   update1(p1[num][0], p1[num][1], p1[num][2], p1[num][4], p1[num][5], 1);
+        update2(p2[num][0], p2[num][1], p2[num][2], p2[num][4], p2[num][5], 2);
+            // update3(p3[num][0], p3[num][1], p3[num][2], p3[num][4], p3[num][5], 3);
+                update4(p4[num][0], p4[num][1], p4[num][2], p4[num][4], p4[num][5], 4);
+                    update5(p5[num][0], p5[num][1], p5[num][2], p5[num][4], p5[num][5], 5);
+                        update6(p6[num][0], p6[num][1], p6[num][2], p6[num][4], p6[num][5], 6);
+                            update8(p8[num][0], p8[num][1], p8[num][2], p8[num][4], p8[num][5], 8);
+                                update11(p11[num][0], p11[num][1], p11[num][2], p11[num][4], p11[num][5], 11);
+                                    update12(p12[num][0], p12[num][1], p12[num][2], p12[num][4], p12[num][5], 12);
+                                        // update13(p13[num][0], p13[num][1], p13[num][2], p13[num][4], p13[num][5], 13);
+                                        update14(p14[num][0], p14[num][1], p14[num][2], p14[num][4], p14[num][5], 14);
+                                        updateball(b1[num][0] , b1[num][1]);
   
 }, 200);
 
@@ -509,7 +509,7 @@ else {
 <script type="text/javascript">
     jwplayer("myElement").setup({
         file: "video.mp4",
-        image: "/uploads/myPoster.jpg",
+        // image: "/uploads/myPoster.jpg",
 // 		controls: false, 
 		width: 800,
 		height: 600
