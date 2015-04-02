@@ -28,7 +28,8 @@ canvas {
 
 .controls {
  position: absolute; 
- top: 700px; 
+ top: 10px; 
+ left: 900px; 
  padding: 0px 0px 100px 0; 
 }
 
@@ -263,11 +264,11 @@ function update(datax, datay, obVal) {
 
 var linScaleX = d3.scale.linear()
 	.domain([0, 105])
-	.range([0, width + 70 ]); 
+	.range([0, width]); 
 
 var linScaleY = d3.scale.linear()
 	.domain([0, 68])
-	.range([0, height - 70 ]);
+	.range([0, height]); 
 		
 // Grab a random sample of letters from the alphabet, in alphabetical order.
 //this code run the function each 2000 miliseconds
@@ -286,7 +287,7 @@ setInterval(function() {
   
   var eventFile = parseFloat(event[eventLocal][0]);
   if (num == eventFile) {
-	document.getElementById("eventInfo").innerHTML = document.getElementById("eventInfo").innerHTML = event[eventLocal][1] + " makes " + event[eventLocal][2] + ", additional information " + event[eventLocal][3]; 
+	document.getElementById("eventInfo").innerHTML = document.getElementById("eventInfo").innerHTML = "Time " + event[eventLocal][0] + ", " + event[eventLocal][1] + " makes " + event[eventLocal][2] + ", additional information " + "\"" + event[eventLocal][3] + "\"" ;  
 	eventLocal = eventLocal + 1; 
   } 
 		
@@ -505,6 +506,7 @@ else {
     jwplayer("myElement").setup({
         file: "video.mp4",
         image: "/uploads/myPoster.jpg",
+// 		controls: false, 
 		width: 800,
 		height: 600
     });
