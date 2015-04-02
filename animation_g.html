@@ -14,6 +14,10 @@ canvas {
   left: 0px; 
 }
 
+body {
+	background: #00ff00 url("background.jpg") no-repeat fixed center; 
+} 
+
 .enter {
   fill: green;
 }
@@ -26,21 +30,47 @@ canvas {
   fill: brown;
 }
 
+.pitch {
+  margin: 100px 0px 0px 30px; 
+}
+
 .controls {
  position: absolute; 
- top: 10px; 
- left: 900px; 
+ top: 20px; 
+ left: 500px; 
  padding: 0px 0px 100px 0; 
 }
 
 #eventInfo {
  position: absolute;
  top: 700px; 
- left: 800px; 
- padding: 0; 
+ left: 300px; 
+ padding: 10px; 
+
+ 
+ font-size: 2em; 
+ color: #FFFFFF; 
+ width: 70%; 
+ margin: 0 auto; 
+ background-color: rgba(30, 30, 30, 0.7); 
+ 
+ text-align: center; 
 }
 
+#myElement {
+ position: absolute; 
+ top: 100px;
+ left: 900px; 
+}
 
+#wrapper {
+	z-index: -1; 
+	min-width: 100%;
+	min-height: 100%;
+	margin: 0px;
+	padding: 0px; 
+
+}
 																		
 
 </style>
@@ -68,7 +98,14 @@ canvas {
 <script type="text/javascript" src="jwplayer.js"></script>
 <script type="text/javascript">jwplayer.key="xaJgGuohQ7GDgKsfnjqmrn+rDh6fGxcqU6yH6Q==";</script> 
 
+
+
+<div id="wrapper">
+
+</div>
+
 <script>
+
 
 var width = 115*7;
 var height = 74*7;
@@ -280,13 +317,10 @@ setInterval(function() {
   
   if (determinePolygon(b1[num][0], b1[num][1]) == -1) newBallPos = computeBallPosition(b1[num][0], b1[num][1], -1);   
   else newBallPos = computeBallPosition(b1[num][0], b1[num][1], 1);
-  
-  if (num == 1) {
-	document.getElementById("eventInfo").innerHTML = "Information is expected";  
-  }
-  
+
+
   var eventFile = parseFloat(event[eventLocal][0]);
-  if (num == eventFile) {
+  if (num > eventFile) {
 	document.getElementById("eventInfo").innerHTML = document.getElementById("eventInfo").innerHTML = "Time " + event[eventLocal][0] + ", " + event[eventLocal][1] + " makes " + event[eventLocal][2] + ", additional information " + "\"" + event[eventLocal][3] + "\"" ;  
 	eventLocal = eventLocal + 1; 
   } 
@@ -491,7 +525,6 @@ else {
 <div class="controls" > 
 
   <button type="button" id="playBtn" onclick="doTimer()">Play</button>
-  <input type="text" id="txt" />
   <button type="button" id="pauseBtn" onclick="doPause()">Pause</button>  
    
   <button type="button" id="stopBtn" onclick="stopCount()">Stop</button> 
@@ -499,23 +532,25 @@ else {
   <button type="button" id="frameForwardBtn" disabled="true" onclick="doFrameForward()">Frame forward</button>
   <button type="button" id="goBackBtn" onclick="doTimerBack()">Back forward </button> 
   <button type="button" id="goForwardBtn" onclick="doTimerForward()">Forward</button> 
-     
- <div id="myElement">Loading the player...</div>
+
+  <input type="text" id="txt" /> 
+  
+</div>
+
+<div id="myElement">Loading the player...</div>
 
 <script type="text/javascript">
     jwplayer("myElement").setup({
         file: "video.mp4",
         image: "/uploads/myPoster.jpg",
-// 		controls: false, 
+ 		controls: false, 
 		width: 800,
-		height: 600
+		height: 538 
     });
 </script> 
 
-</div>
-
 <div id="eventInfo">
-
+	 Welcome to the match between Tromsø IL and Tottenham Hotspurs 
 </div>
 
 <script>
