@@ -110,7 +110,7 @@ function drawPath1(){
       .style("fill", "#66CCFF")
       //dynamic opacity here
       .attr('opacity' , '0.8')
-      .delay(1000)
+      // .delay(1000)
       .duration(0)
       //http://bl.ocks.org/hunzy/9929724 
       .ease("linear")
@@ -124,7 +124,7 @@ function drawPath2(){
       .style("fill", "#66CCFF")
       //dynamic opacity here
       .attr('opacity' , '0.8')
-      .delay(1000)
+      // .delay(1000)
       .duration(0)
       //http://bl.ocks.org/hunzy/9929724 
       .ease("linear")
@@ -138,7 +138,7 @@ function drawPath3(){
       .style("fill", "#66CCFF")
       //dynamic opacity here
       .attr('opacity' , '0.8')
-      .delay(1000)
+      // .delay(1000)
       .duration(0)
       //http://bl.ocks.org/hunzy/9929724 
       .ease("linear")
@@ -343,29 +343,29 @@ arcV4 = svg.append("path")
 
 // ##################player 4 ###########################
 // ##################player 13 ###########################
-// var circle13 = svg.append("circle")
-//     .attr("r" , 20)
-//     .attr("id" , "player13");
+var circle8 = svg.append("circle")
+    .attr("r" , 20)
+    .attr("id" , "player8");
 
 
-// var rect13 = svg.append("rect")
-//     .attr("width" , 50)
-//     .attr("height" , 40)
-//     .attr("opacity" , 0.5)
-//     .attr("id" , "player13");
+var rect8 = svg.append("rect")
+    .attr("width" , 50)
+    .attr("height" , 40)
+    .attr("opacity" , 0.5)
+    .attr("id" , "player8");
 
 
-// var arc13 = d3.svg.arc()
-//     .innerRadius(10)
-//     .outerRadius(200)
+var arc8 = d3.svg.arc()
+    .innerRadius(10)
+    .outerRadius(200)
 
-// arcV13 = svg.append("path")
-//     .datum({endAngle: 0 , startAngle: 0})
-//     .attr("d", arc13)
-//     .attr("fill" , "#FA8258")
-//     .attr("opacity" , "0.7")
-//     .attr("stroke" , "white")
-//     .attr("id" , "player13");
+arcV8 = svg.append("path")
+    .datum({endAngle: 0 , startAngle: 0})
+    .attr("d", arc8)
+    .attr("fill" , "#FA8258")
+    .attr("opacity" , "0.7")
+    .attr("stroke" , "white")
+    .attr("id" , "player8");
 
 
 // ##################player 13 ###########################
@@ -465,34 +465,34 @@ arcV2 = svg.append("path")
 
 // ##################player 2 ###########################
 // ##################player 3 ###########################
-var circle3 = svg.append("circle")
-    .attr("r" , 20)
-    .attr("id" , "player3")
-    .style("stroke-width", 5)
-      .style("stroke", "#B8B8B8")
+// var circle3 = svg.append("circle")
+//     .attr("r" , 20)
+//     .attr("id" , "player3")
+//     .style("stroke-width", 5)
+//       .style("stroke", "#B8B8B8")
 
 
-var rect3 = svg.append("rect")
-    .attr("width" , 50)
-    .attr("height" , 40)
-    .attr("opacity" , 0.5)
-    .attr("id" , "player3")
-    .style("stroke-width", 5)
-      .style("stroke", "#B8B8B8")
+// var rect3 = svg.append("rect")
+//     .attr("width" , 50)
+//     .attr("height" , 40)
+//     .attr("opacity" , 0.5)
+//     .attr("id" , "player3")
+//     .style("stroke-width", 5)
+//       .style("stroke", "#B8B8B8")
 
 
-var arc3 = d3.svg.arc()
-    .innerRadius(0)
-    .outerRadius(20)
+// var arc3 = d3.svg.arc()
+//     .innerRadius(0)
+//     .outerRadius(20)
 
-arcV3 = svg.append("path")
-    .datum({endAngle: 0 , startAngle: 0})
-    .attr("d", arc3)
-    .attr("fill" , "#FA8258")
-    .attr("opacity" , "0.7")
-    .attr("stroke" , "white")
-    .style("stroke-width", 5)
-    .attr("id" , "player3");
+// arcV3 = svg.append("path")
+//     .datum({endAngle: 0 , startAngle: 0})
+//     .attr("d", arc3)
+//     .attr("fill" , "#FA8258")
+//     .attr("opacity" , "0.7")
+//     .attr("stroke" , "white")
+//     .style("stroke-width", 5)
+//     .attr("id" , "player3");
 
 
 // ##################player 3 ###########################
@@ -595,7 +595,7 @@ d3.csv("2013-11-28_tromso_tottenham_raw_without_data.csv", function(error, ballP
 
   //player's quickest speed is 13.3202 slowest is 0 
 
-function update12(datax, datay , heading , energy, speed , tag_id) {
+function update12(datax, datay , heading , energy, speed ) {
 
   // console.log(tag_id)
   var startHeading =  parseFloat (heading-1);
@@ -618,7 +618,7 @@ function update12(datax, datay , heading , energy, speed , tag_id) {
   circle12.on("click", function() {
           //old values for dataset
         // d3.select("#a1").remove();
-          drawImage(tag_id);
+          drawImage(12);
           // console.log(heatArray);
          });
 
@@ -641,10 +641,10 @@ function update12(datax, datay , heading , energy, speed , tag_id) {
         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
         .call(arcTween, startHeading,  endHeading );
   
-  calculateHeat(scaleDataX ,scaleDataY ,tag_id);    
+  calculateHeat(scaleDataX ,scaleDataY ,12);    
 }
 
-function update6(datax, datay , heading , energy, speed , tag_id) {
+function update6(datax, datay , heading , energy, speed ) {
 
   // console.log(tag_id)
   var startHeading =  parseFloat (heading-1);
@@ -685,9 +685,9 @@ function update6(datax, datay , heading , energy, speed , tag_id) {
         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
         .call(arcTween, startHeading,  endHeading );
   gauge.value(speed);
-  calculateHeat(scaleDataX ,scaleDataY , tag_id);    
+  calculateHeat(scaleDataX ,scaleDataY , 6);    
 }
-function update1(datax, datay , heading , energy, speed , tag_id) {
+function update1(datax, datay , heading , energy, speed ) {
 
   // console.log(tag_id)
   var startHeading =  parseFloat (heading-1);
@@ -710,7 +710,7 @@ function update1(datax, datay , heading , energy, speed , tag_id) {
   circle1.on("click", function() {
           //old values for dataset
         // d3.select("#a1").remove();
-          drawImage(tag_id);
+          drawImage(1);
           // console.log(heatArray);
          });
 
@@ -733,9 +733,9 @@ points3.splice(2,1,[scaleDataX, scaleDataY])
         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
         .call(arcTween, startHeading,  endHeading );
   
-  calculateHeat(scaleDataX ,scaleDataY , tag_id);    
+  calculateHeat(scaleDataX ,scaleDataY , 1);    
 }
-function update4(datax, datay , heading , energy, speed , tag_id) {
+function update4(datax, datay , heading , energy, speed ) {
 
   // console.log(tag_id)
   var startHeading =  parseFloat (heading-1);
@@ -757,7 +757,7 @@ function update4(datax, datay , heading , energy, speed , tag_id) {
   circle4.on("click", function() {
           //old values for dataset
         // d3.select("#a1").remove();
-          drawImage(tag_id);
+          drawImage(4);
           // console.log(heatArray);
          });
 
@@ -776,52 +776,60 @@ points3.splice(1,1,[scaleDataX, scaleDataY])
         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
         .call(arcTween, startHeading,  endHeading );
   
-  calculateHeat(scaleDataX ,scaleDataY , tag_id);    
+  calculateHeat(scaleDataX ,scaleDataY , 4);    
 }
-// function update13(datax, datay , heading , energy, speed , tag_id) {
+function update8(datax, datay , heading , energy, speed ) {
 
-//   // console.log(tag_id)
-//   var startHeading =  parseFloat (heading-1);
-//   var endHeading =parseFloat (heading+ 1),
-//   scaleDataX = parseInt(scaleX(datax)),
-//   scaleDataY = parseInt(scaleY(datay));
-//   if(speed==0){
-//     speed = 0.1;
-//   }
+  // console.log(tag_id)
+  var startHeading =  parseFloat (heading-1);
+  var endHeading =parseFloat (heading+ 1),
+  scaleDataX = parseInt(scaleX(datax)),
+  scaleDataY = parseInt(scaleY(datay));
+  if(speed==0){
+    speed = 0.1;
+  }
 
-//   // console.log("x "+scaleDataX + " y" + scaleDataY + " heading" + heading);
-//   circle13.transition()
-//         .duration(500)
-//         .attr("cx" , scaleDataX)
-//         .attr("cy" , scaleDataY)
-//         .attr("fill" , EnergyColor(energy));
-//         //choose this player.
+  // console.log("x "+scaleDataX + " y" + scaleDataY + " heading" + heading);
+  circle8.transition()
+        .duration(500)
+        .attr("cx" , scaleDataX)
+        .attr("cy" , scaleDataY)
+        .attr("fill" , EnergyColor(energy));
+        //choose this player.
 
-//   line.transition()
-//       .attr('x1', scaleDataX)
-//       .attr('y1', scaleDataY);
-//   // circle13.on("click", function() {
-//   //         //old values for dataset
-//   //       // d3.select("#a1").remove();
-//   //         drawImage(tag_id);
-//   //         // console.log(heatArray);
-//   //        });
+          circle8.on("click", function() {
+          //old values for dataset
+        // d3.select("#a1").remove();
+          drawImage(8);
+          // console.log(heatArray);
+         });
 
+  // line.transition()
+  //     .attr('x1', scaleDataX)
+  //     .attr('y1', scaleDataY);
+  // circle13.on("click", function() {
+  //         //old values for dataset
+  //       // d3.select("#a1").remove();
+  //         drawImage(tag_id);
+  //         // console.log(heatArray);
+  //        });
+  points2.splice(0,1,[scaleDataX, scaleDataY])
+  points2.splice(3,1,[scaleDataX, scaleDataY])
 
-//   rect13.transition()
-//         .duration(500)
-//         .attr("height" , speed*30 )
-//         .attr("x"  , scaleDataX + 10)
-//         .attr("y" , scaleDataY);
+  rect8.transition()
+        .duration(500)
+        .attr("height" , speed*30 )
+        .attr("x"  , scaleDataX + 10)
+        .attr("y" , scaleDataY);
 
-//   arcV13.transition()
-//         .duration(500)
-//         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
-//         .call(arcTween, startHeading,  endHeading );
+  arcV8.transition()
+        .duration(500)
+        .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
+        .call(arcTween, startHeading,  endHeading );
   
-//   calculateHeat(scaleDataX ,scaleDataY , tag_id);    
-// }
-function update5(datax, datay , heading , energy, speed , tag_id) {
+  calculateHeat(scaleDataX ,scaleDataY , 8);    
+}
+function update5(datax, datay , heading , energy, speed ) {
 
   // console.log(tag_id)
   var startHeading =  parseFloat (heading-1);
@@ -843,7 +851,7 @@ function update5(datax, datay , heading , energy, speed , tag_id) {
   circle5.on("click", function() {
           //old values for dataset
         // d3.select("#a1").remove();
-          drawImage(tag_id);
+          drawImage(5);
           // console.log(heatArray);
          });
 
@@ -861,9 +869,9 @@ function update5(datax, datay , heading , energy, speed , tag_id) {
         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
         .call(arcTween, startHeading,  endHeading );
   
-  calculateHeat(scaleDataX ,scaleDataY , tag_id);    
+  calculateHeat(scaleDataX ,scaleDataY , 5);    
 }
-function update2(datax, datay , heading , energy, speed , tag_id) {
+function update2(datax, datay , heading , energy, speed ) {
 
   // console.log(tag_id)
   var startHeading =  parseFloat (heading-1);
@@ -885,7 +893,7 @@ function update2(datax, datay , heading , energy, speed , tag_id) {
   circle2.on("click", function() {
           //old values for dataset
         // d3.select("#a1").remove();
-          drawImage(tag_id);
+          drawImage(2);
           // console.log(heatArray);
          });
 
@@ -901,52 +909,52 @@ points.splice(1,1,[scaleDataX, scaleDataY])
         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
         .call(arcTween, startHeading,  endHeading );
   
-  calculateHeat(scaleDataX ,scaleDataY , tag_id);    
+  calculateHeat(scaleDataX ,scaleDataY , 2);    
 }
-function update3(datax, datay , heading , energy, speed , tag_id) {
+// function update3(datax, datay , heading , energy, speed ) {
 
-  // console.log(tag_id)
-  var startHeading =  parseFloat (heading-1);
-  var endHeading =parseFloat (heading+ 1),
-  scaleDataX = parseInt(scaleX(datax)),
-  scaleDataY = parseInt(scaleY(datay));
-  if(speed==0){
-    speed = 0.1;
-  }
+//   // console.log(tag_id)
+//   var startHeading =  parseFloat (heading-1);
+//   var endHeading =parseFloat (heading+ 1),
+//   scaleDataX = parseInt(scaleX(datax)),
+//   scaleDataY = parseInt(scaleY(datay));
+//   if(speed==0){
+//     speed = 0.1;
+//   }
 
-  // console.log("x "+scaleDataX + " y" + scaleDataY + " heading" + heading);
-  circle3.transition()
-        // .duration(500)
-        .attr("cx" , scaleDataX)
-        .attr("cy" , scaleDataY)
-        .attr("fill" , EnergyColor(energy));
-        //choose this player.
+//   // console.log("x "+scaleDataX + " y" + scaleDataY + " heading" + heading);
+//   circle3.transition()
+//         // .duration(500)
+//         .attr("cx" , scaleDataX)
+//         .attr("cy" , scaleDataY)
+//         .attr("fill" , EnergyColor(energy));
+//         //choose this player.
 
-  circle3.on("click", function() {
-          //old values for dataset
-        // d3.select("#a1").remove();
-          drawImage(tag_id);
-          // console.log(heatArray);
-         });
+//   circle3.on("click", function() {
+//           //old values for dataset
+//         // d3.select("#a1").remove();
+//           drawImage(3);
+//           // console.log(heatArray);
+//          });
 
-  points2.splice(0,1,[scaleDataX, scaleDataY])
-  points2.splice(3,1,[scaleDataX, scaleDataY])
+//   points2.splice(0,1,[scaleDataX, scaleDataY])
+//   points2.splice(3,1,[scaleDataX, scaleDataY])
 
 
-  rect3.transition()
-        // .duration(500)
-        .attr("height" , speed*30 )
-        .attr("x"  , scaleDataX + 10)
-        .attr("y" , scaleDataY);
+//   rect3.transition()
+//         // .duration(500)
+//         .attr("height" , speed*30 )
+//         .attr("x"  , scaleDataX + 10)
+//         .attr("y" , scaleDataY);
 
-  arcV3.transition()
-        // .duration(500)
-        .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
-        .call(arcTween, startHeading,  endHeading );
+//   arcV3.transition()
+//         // .duration(500)
+//         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
+//         .call(arcTween, startHeading,  endHeading );
   
-  calculateHeat(scaleDataX ,scaleDataY , tag_id);    
-}
-function update11(datax, datay , heading , energy, speed , tag_id) {
+//   calculateHeat(scaleDataX ,scaleDataY , 3);    
+// }
+function update11(datax, datay , heading , energy, speed ) {
 
   // console.log(tag_id)
   var startHeading =  parseFloat (heading-1);
@@ -968,7 +976,7 @@ function update11(datax, datay , heading , energy, speed , tag_id) {
   circle11.on("click", function() {
           //old values for dataset
         // d3.select("#a1").remove();
-          drawImage(tag_id);
+          drawImage(11);
           // console.log(heatArray);
          });
 
@@ -985,9 +993,9 @@ points.splice(3,1,[scaleDataX, scaleDataY])
         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
         .call(arcTween, startHeading,  endHeading );
   
-  calculateHeat(scaleDataX ,scaleDataY , tag_id);    
+  calculateHeat(scaleDataX ,scaleDataY , 11);    
 }
-function update14(datax, datay , heading , energy, speed , tag_id) {
+function update14(datax, datay , heading , energy, speed ) {
 
   // console.log(tag_id)
   var startHeading =  parseFloat (heading-1);
@@ -1009,7 +1017,7 @@ function update14(datax, datay , heading , energy, speed , tag_id) {
   circle14.on("click", function() {
           //old values for dataset
         // d3.select("#a1").remove();
-          drawImage(tag_id);
+          drawImage(14);
           // console.log(heatArray);
          });
 
@@ -1027,7 +1035,7 @@ points3.splice(3,1,[scaleDataX, scaleDataY])
         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
         .call(arcTween, startHeading,  endHeading );
   
-  calculateHeat(scaleDataX ,scaleDataY , tag_id);    
+  calculateHeat(scaleDataX ,scaleDataY , 14);    
 }
 
 //caluculate the apperance array for heatmap
@@ -1162,28 +1170,31 @@ var clearID = setInterval(function() {
   //     }
   // else{
   //     timeStamp = parseInt(ballP[num].timestamp);  
-  if (ballP[num].tag_id == 12) {
-    update12(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-  else if(ballP[num].tag_id == 6){
-    update6(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-    else if(ballP[num].tag_id == 1){
-    update1(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 4){
-    update4(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
+  // if (ballP[num].tag_id == 12) {
+
+  // else if(ballP[num].tag_id == 6){
+    update6(p6[num-1][0],p6[num-1][1], p6[num-1][2],p6[num-1][4], p6[num-1][5]);
+    // else if(ballP[num].tag_id == 1){
+    update1(p1[num-1][0],p1[num-1][1], p1[num-1][2],p1[num-1][4], p1[num-1][5]); 
+      // else if(ballP[num].tag_id == 4){
+    update4(p4[num-1][0],p4[num-1][1], p4[num-1][2],p4[num-1][4], p4[num-1][5]); 
     //   else if(ballP[num].tag_id == 13){
     // update13(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 12){
-    update12(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 5){
-    update5(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 2){
-    update2(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 8){
-    update3(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 11){
-    update11(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
-      else if(ballP[num].tag_id == 14){
-    update14(ballP[num].x_pos, ballP[num].y_pos, ballP[num].heading, ballP[num].energy, ballP[num].speed, ballP[num].tag_id);} 
+      // else if(ballP[num].tag_id == 12){
+    update8(p8[num-1][0],p8[num-1][1], p8[num-1][2],p8[num-1][4], p8[num-1][5]); 
+      // else if(ballP[num].tag_id == 5){
+    update5(p5[num-1][0],p5[num-1][1], p5[num-1][2],p5[num-1][4], p5[num-1][5]); 
+      // else if(ballP[num].tag_id == 2){
+    update2(p2[num-1][0],p2[num-1][1], p2[num-1][2],p2[num-1][4], p2[num-1][5]); 
+      // else if(ballP[num].tag_id == 8){
+      // else if(ballP[num].tag_id == 11){
+    update11(p11[num-1][0],p11[num-1][1], p11[num-1][2],p11[num-1][4], p11[num-1][5]); 
+
+    update12(p12[num-1][0],p12[num-1][1], p12[num-1][2],p12[num-1][4], p12[num-1][5]); 
+      // else if(ballP[num].tag_id == 14){
+    update14(p14[num-1][0],p14[num-1][1], p14[num-1][2],p14[num-1][4], p14[num-1][5]); 
+
+    // console.log(p1[num][0])
 
   //   jump = jump-1;
   //   if(jump == 19)
@@ -1227,7 +1238,7 @@ var clearID = setInterval(function() {
   // } 
 // }
   // ####################### code to stop interval ########################################
-}, 1);
+}, 200);
 
 
 
