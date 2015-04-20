@@ -283,3 +283,24 @@ function P12V(){
 	arcV.style("visibility" , "hidden")
 	}
 }
+
+// var conectionAnalysisNum = 1;
+// function Forwards(){
+// 	conectionAnalysisNum =1;
+// 	d3.select('#path2').remove();
+// 	d3.select('#path3').remove();
+
+// }
+
+// function Midfielder(){
+// 	conectionAnalysisNum =2;
+// 		d3.select('#path1').remove();
+// 	d3.select('#path3').remove();
+// }
+
+// function Defender(){
+// 	conectionAnalysisNum =3;
+// 	// alert('3')
+// 		d3.select('#path2').remove();
+// 	d3.select('#path1').remove();
+// }

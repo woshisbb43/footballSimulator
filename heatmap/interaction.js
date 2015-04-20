@@ -10,13 +10,37 @@ function mouseout(){
 var points = [
   [0, 0],
   [width, 0],
+  [width, height],
+  [0,0]
+];
+
+var points3 = [
+  [0, 0],
+  [width, 0],
   [width, height]
+  [0,0]
 ];
 
 var points2 = [
   [0, 0],
   [width, 0],
+  [width, height],
+  [0,0]
+
+];
+
+var points4 = [
+  [0, 0],
+  [0, 0],
+  [0, 0],
+  [0, 0],
+  [0, 0],
+  [0, 0],
+  [0, 0],
+  [0, 0],
+  [width, 0],
   [width, height]
+  [0,0]
 ];
 
 

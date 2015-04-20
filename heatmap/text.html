@@ -6,11 +6,72 @@
 <script src="controlProperty.js"></script>
 <script src="player1data.js"></script>
 <script src="interaction.js"></script>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Play:700,400' type='text/css'>
+    
+    <script type="text/javascript" src="http://iop.io/js/vendor/d3.v3.min.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerEvents/pointerevents.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerGestures/pointergestures.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/iopctrl.js"></script>
 	<link rel="stylesheet" type="text/css" href="menu.css">
     <link rel="stylesheet" type="text/css" href="calculator.css">
 </head>
 
 <style>
+/*######################gauge#############################*/
+        body {
+            font: 16px arial;
+        }
+        .unselectable {
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* css formats for the gauge */
+        .gauge .domain {
+            stroke-width: 2px;
+            stroke: #fff;
+        }
+
+        .gauge .tick line {
+            stroke: #fff;
+            stroke-width: 2px;
+        }
+        
+        .gauge line {
+            stroke: #fff;
+        }
+
+        .gauge .arc, .gauge .cursor {
+            opacity: 0;
+        }
+
+        .gauge .major {
+            fill: #fff;
+            font-size: 10px;
+            font-family: 'Play', verdana, sans-serif;
+            font-weight: normal;
+        }
+        
+        .gauge .indicator {
+            stroke: #EE3311;
+            fill: #000;
+            stroke-width: 4px;
+        }
+
+        /* css formats for the segment display */
+        .segdisplay .on {
+            fill: #00FFFF;
+
+        }
+
+        .segdisplay .off {
+            fill: #00FFFF;
+            opacity: 0.15;
+        }
+/*#########################for gauge###############################*/
 
 text {
   font: bold 48px monospace;
@@ -82,13 +143,13 @@ canvas {
                <li class='last'><a href='#' onclick="P6V()"><span>view</span></a></li>
             </ul>
          </li>
-          <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 7</span></a>
+<!--           <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 7</span></a>
             <ul>
-               <li><a href='#' onclick="P7()"><span>player</span></a></li>
-               <li><a href='#' onclick="P7S()"><span>speed</span></a></li>
+               <li><a href='#' onclick="P8()"><span>player</span></a></li>
+               <li><a href='#' onclick="P8S()"><span>speed</span></a></li>
                <li class='last'><a href='#' onclick="P7V()"><span>view</span></a></li>
             </ul>
-         </li>
+         </li> -->
          <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 11</span></a>
             <ul>
                <li><a href='#' onclick="P11()"><span>player</span></a></li>
@@ -119,11 +180,11 @@ canvas {
          </li>
       </ul>
    </li>
-   <li class="has-sub"><a href='#'><span>heat map</span></a>
+   <li class="has-sub"><a href='#'><span>connection analysis</span></a>
             <ul>
-               <li><a href='#' onclick="hm()"><span>player1's heatmap</span></a></li>
-               <li><a href='#' onclick="P14S()"><span>speed</span></a></li>
-               <li class='last'><a href='#' onclick="P14V()"><span>view</span></a></li>
+               <li><a href='#' onclick="Forwards()"><span>Forwards</span></a></li>
+               <li><a href='#' onclick="Midfielder()"><span>Midfielder</span></a></li>
+               <li class='last'><a href='#' onclick="Defender()"><span>Defender</span></a></li>
             </ul>
    </li>
    <li class='last'><a href='#' onclick="move()"><span>Contact</span></a></li>
@@ -147,5 +208,11 @@ canvas {
 <script src="player12data.js"></script>
 <script src="player13data.js"></script>
 <script src="player14data.js"></script>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Play:700,400' type='text/css'>
+    
+    <script type="text/javascript" src="http://iop.io/js/vendor/d3.v3.min.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerEvents/pointerevents.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerGestures/pointergestures.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/iopctrl.js"></script>
 
 
