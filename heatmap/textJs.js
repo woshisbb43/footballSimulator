@@ -222,13 +222,13 @@ var circle12 = svg.append("circle")
       .style("stroke", "#B8B8B8");
     // .on("mouseover" , mouseover);
 
-var rect = svg.append("rect")
-    .attr("width" , 50)
-    .attr("height" , 40)
-    .attr("opacity" , 0.5)
-    .attr("id" , "player12Speed")
-    .style("stroke-width", 5)
-      .style("stroke", "#B8B8B8");
+// var rect = svg.append("rect")
+//     .attr("width" , 50)
+//     .attr("height" , 40)
+//     .attr("opacity" , 0.5)
+//     .attr("id" , "player12Speed")
+//     .style("stroke-width", 5)
+//       .style("stroke", "#B8B8B8");
 
 var arc = d3.svg.arc()
     .innerRadius(0)
@@ -252,13 +252,13 @@ var circle6 = svg.append("circle")
     .style("stroke-width", 5)
       .style("stroke", "#B8B8B8")
 
-var rect6 = svg.append("rect")
-    .attr("width" , 50)
-    .attr("height" , 40)
-    .attr("opacity" , 0.5)
-    .attr("id" , "player6")
-    .style("stroke-width", 5)
-      .style("stroke", "#B8B8B8")
+// var rect6 = svg.append("rect")
+//     .attr("width" , 50)
+//     .attr("height" , 40)
+//     .attr("opacity" , 0.5)
+//     .attr("id" , "player6")
+//     .style("stroke-width", 5)
+//       .style("stroke", "#B8B8B8")
 var arc6 = d3.svg.arc()
     .innerRadius(0)
     .outerRadius(20)
@@ -289,13 +289,13 @@ var circle1 = svg.append("circle")
     //     circle1T--
     // });
 
-var rect1 = svg.append("rect")
-    .attr("width" , 50)
-    .attr("height" , 40)
-    .attr("opacity" , 0.5)
-    .attr("id" , "player1")
-    .style("stroke-width", 5)
-      .style("stroke", "#B8B8B8");
+// var rect1 = svg.append("rect")
+//     .attr("width" , 50)
+//     .attr("height" , 40)
+//     .attr("opacity" , 0.5)
+//     .attr("id" , "player1")
+//     .style("stroke-width", 5)
+//       .style("stroke", "#B8B8B8");
 
 
 var arc1 = d3.svg.arc()
@@ -317,14 +317,16 @@ arcV1 = svg.append("path")
 // ##################player 4 ###########################
 var circle4 = svg.append("circle")
     .attr("r" , 20)
-    .attr("id" , "player4");
+    .attr("id" , "player4")
+        .style("stroke-width", 5)
+      .style("stroke", "#B8B8B8");;
 
 
-var rect4 = svg.append("rect")
-    .attr("width" , 50)
-    .attr("height" , 40)
-    .attr("opacity" , 0.5)
-    .attr("id" , "player4");
+// var rect4 = svg.append("rect")
+//     .attr("width" , 50)
+//     .attr("height" , 40)
+//     .attr("opacity" , 0.5)
+//     .attr("id" , "player4");
 
 
 var arc4 = d3.svg.arc()
@@ -345,14 +347,16 @@ arcV4 = svg.append("path")
 // ##################player 13 ###########################
 var circle8 = svg.append("circle")
     .attr("r" , 20)
-    .attr("id" , "player8");
+    .attr("id" , "player8")
+        .style("stroke-width", 5)
+      .style("stroke", "#B8B8B8");;
 
 
-var rect8 = svg.append("rect")
-    .attr("width" , 50)
-    .attr("height" , 40)
-    .attr("opacity" , 0.5)
-    .attr("id" , "player8");
+// var rect8 = svg.append("rect")
+//     .attr("width" , 50)
+//     .attr("height" , 40)
+//     .attr("opacity" , 0.5)
+//     .attr("id" , "player8");
 
 
 var arc8 = d3.svg.arc()
@@ -365,6 +369,7 @@ arcV8 = svg.append("path")
     .attr("fill" , "#FA8258")
     .attr("opacity" , "0.7")
     .attr("stroke" , "white")
+    .style("stroke-width", 5)
     .attr("id" , "player8");
 
 
@@ -377,13 +382,13 @@ var circle14 = svg.append("circle")
       .style("stroke", "#B8B8B8")
 
 
-var rect14 = svg.append("rect")
-    .attr("width" , 50)
-    .attr("height" , 40)
-    .attr("opacity" , 0.5)
-    .attr("id" , "player14")
-    .style("stroke-width", 5)
-      .style("stroke", "#B8B8B8")
+// var rect14 = svg.append("rect")
+//     .attr("width" , 50)
+//     .attr("height" , 40)
+//     .attr("opacity" , 0.5)
+//     .attr("id" , "player14")
+//     .style("stroke-width", 5)
+//       .style("stroke", "#B8B8B8")
 
 
 var arc14 = d3.svg.arc()
@@ -409,13 +414,13 @@ var circle5 = svg.append("circle")
       .style("stroke", "#B8B8B8")
 
 
-var rect5 = svg.append("rect")
-    .attr("width" , 50)
-    .attr("height" , 40)
-    .attr("opacity" , 0.5)
-    .attr("id" , "player5")
-    .style("stroke-width", 5)
-      .style("stroke", "#B8B8B8")
+// var rect5 = svg.append("rect")
+//     .attr("width" , 50)
+//     .attr("height" , 40)
+//     .attr("opacity" , 0.5)
+//     .attr("id" , "player5")
+//     .style("stroke-width", 5)
+//       .style("stroke", "#B8B8B8")
 
 var arc5 = d3.svg.arc()
     .innerRadius(0)
@@ -440,13 +445,13 @@ var circle2 = svg.append("circle")
       .style("stroke", "#B8B8B8")
 
 
-var rect2 = svg.append("rect")
-    .attr("width" , 50)
-    .attr("height" , 40)
-    .attr("opacity" , 0.5)
-    .attr("id" , "player2")
-    .style("stroke-width", 5)
-      .style("stroke", "#B8B8B8")
+// var rect2 = svg.append("rect")
+//     .attr("width" , 50)
+//     .attr("height" , 40)
+//     .attr("opacity" , 0.5)
+//     .attr("id" , "player2")
+//     .style("stroke-width", 5)
+//       .style("stroke", "#B8B8B8")
 
 
 var arc2 = d3.svg.arc()
@@ -465,11 +470,11 @@ arcV2 = svg.append("path")
 
 // ##################player 2 ###########################
 // ##################player 3 ###########################
-// var circle3 = svg.append("circle")
-//     .attr("r" , 20)
-//     .attr("id" , "player3")
-//     .style("stroke-width", 5)
-//       .style("stroke", "#B8B8B8")
+var ball = svg.append("circle")
+    .attr("r" , 20)
+    .attr("id" , "ball")
+    .style("stroke-width", 5)
+      .style("stroke", "#B8B8B8")
 
 
 // var rect3 = svg.append("rect")
@@ -504,13 +509,13 @@ var circle11 = svg.append("circle")
       .style("stroke", "#B8B8B8")
 
 
-var rect11 = svg.append("rect")
-    .attr("width" , 50)
-    .attr("height" , 40)
-    .attr("opacity" , 0.5)
-    .attr("id" , "player11")
-    .style("stroke-width", 5)
-      .style("stroke", "#B8B8B8")
+// var rect11 = svg.append("rect")
+//     .attr("width" , 50)
+//     .attr("height" , 40)
+//     .attr("opacity" , 0.5)
+//     .attr("id" , "player11")
+//     .style("stroke-width", 5)
+//       .style("stroke", "#B8B8B8")
 
 
 var arc11 = d3.svg.arc()
@@ -572,6 +577,10 @@ var dx = heatArray[0].length,
       .domain([0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000])
       .range(["#66FF66", "#CCFF66", "#FFFF99", "#FF9933", "#FF6600", "#FF1919" ,"#CC0000", "#660000"]);
 
+  var speedColor = d3.scale.linear()
+      .domain([0, 1, 2, 3, 4, 13.4])
+      .range(["#00FF00", "#99FF00", "#FFFF00", "#FF6600", "#FF0000", "#CC00FF"]);
+
   // var xAxis = d3.svg.axis()
   //     .scale(x)
   //     .orient("top")
@@ -591,7 +600,7 @@ var  canvas =  d3.select("body").append("canvas")
 // ###############################heatmap over#######################################
 
 //load data
-d3.csv("2013-11-28_tromso_tottenham_raw_without_data.csv", function(error, ballP) {   
+// d3.csv("2013-11-28_tromso_tottenham_raw_without_data.csv", function(error, ballP) {   
 
   //player's quickest speed is 13.3202 slowest is 0 
 
@@ -611,7 +620,8 @@ function update12(datax, datay , heading , energy, speed ) {
         // .duration(500)
         .attr("cx" , scaleDataX)
         .attr("cy" , scaleDataY)
-        .attr("fill" , EnergyColor(energy));
+        .attr("fill" , EnergyColor(energy))
+        .style("stroke", speedColor(speed));
         // .on('click' , drawPath);
         //choose this player.
 
@@ -630,11 +640,11 @@ function update12(datax, datay , heading , energy, speed ) {
   //     .attr('y2', scaleDataY);
 
 
-  rect.transition()
-        // .duration(500)
-        .attr("height" , speed*30 )
-        .attr("x"  , scaleDataX + 10)
-        .attr("y" , scaleDataY);
+  // rect.transition()
+  //       // .duration(500)
+  //       .attr("height" , speed*30 )
+  //       .attr("x"  , scaleDataX + 10)
+  //       .attr("y" , scaleDataY);
 
   arcV.transition()
         // .duration(500)
@@ -660,7 +670,8 @@ function update6(datax, datay , heading , energy, speed ) {
         // .duration(500)
         .attr("cx" , scaleDataX)
         .attr("cy" , scaleDataY)
-        .attr("fill" , EnergyColor(energy));
+        .attr("fill" , EnergyColor(energy))
+        .style("stroke", speedColor(speed));
         //choose this player.
 
   circle6.on("click", function() {
@@ -674,11 +685,11 @@ function update6(datax, datay , heading , energy, speed ) {
   // console.log(points[0])
 
 
-  rect6.transition()
-        // .duration(500)
-        .attr("height" , speed*30 )
-        .attr("x"  , scaleDataX + 10)
-        .attr("y" , scaleDataY);
+  // rect6.transition()
+  //       // .duration(500)
+  //       .attr("height" , speed*30 )
+  //       .attr("x"  , scaleDataX + 10)
+  //       .attr("y" , scaleDataY);
 
   arcV6.transition()
         // .duration(500)
@@ -703,7 +714,8 @@ function update1(datax, datay , heading , energy, speed ) {
         // .duration(500)
         .attr("cx" , scaleDataX)
         .attr("cy" , scaleDataY)
-        .attr("fill" , EnergyColor(energy));
+        .attr("fill" , EnergyColor(energy))
+        .style("stroke", speedColor(speed));
 
 
 
@@ -722,11 +734,11 @@ points3.splice(2,1,[scaleDataX, scaleDataY])
 
 
 
-  rect1.transition()
-        // .duration(500)
-        .attr("height" , speed*30 )
-        .attr("x"  , scaleDataX + 10)
-        .attr("y" , scaleDataY);
+  // rect1.transition()
+  //       // .duration(500)
+  //       .attr("height" , speed*30 )
+  //       .attr("x"  , scaleDataX + 10)
+  //       .attr("y" , scaleDataY);
 
   arcV1.transition()
         // .duration(500)
@@ -751,7 +763,9 @@ function update4(datax, datay , heading , energy, speed ) {
         // .duration(500)
         .attr("cx" , scaleDataX)
         .attr("cy" , scaleDataY)
-        .attr("fill" , EnergyColor(energy));
+        .attr("fill" , EnergyColor(energy))
+        .style("stroke", speedColor(speed));
+
         //choose this player.
 
   circle4.on("click", function() {
@@ -765,11 +779,11 @@ function update4(datax, datay , heading , energy, speed ) {
 points3.splice(1,1,[scaleDataX, scaleDataY])
 
 
-  rect4.transition()
-        // .duration(500)
-        .attr("height" , speed*30 )
-        .attr("x"  , scaleDataX + 10)
-        .attr("y" , scaleDataY);
+  // rect4.transition()
+  //       // .duration(500)
+  //       .attr("height" , speed*30 )
+  //       .attr("x"  , scaleDataX + 10)
+  //       .attr("y" , scaleDataY);
 
   arcV4.transition()
         // .duration(500)
@@ -794,7 +808,8 @@ function update8(datax, datay , heading , energy, speed ) {
         .duration(500)
         .attr("cx" , scaleDataX)
         .attr("cy" , scaleDataY)
-        .attr("fill" , EnergyColor(energy));
+        .attr("fill" , EnergyColor(energy))
+        .style("stroke", speedColor(speed));
         //choose this player.
 
           circle8.on("click", function() {
@@ -816,11 +831,11 @@ function update8(datax, datay , heading , energy, speed ) {
   points2.splice(0,1,[scaleDataX, scaleDataY])
   points2.splice(3,1,[scaleDataX, scaleDataY])
 
-  rect8.transition()
-        .duration(500)
-        .attr("height" , speed*30 )
-        .attr("x"  , scaleDataX + 10)
-        .attr("y" , scaleDataY);
+  // rect8.transition()
+  //       .duration(500)
+  //       .attr("height" , speed*30 )
+  //       .attr("x"  , scaleDataX + 10)
+  //       .attr("y" , scaleDataY);
 
   arcV8.transition()
         .duration(500)
@@ -845,7 +860,8 @@ function update5(datax, datay , heading , energy, speed ) {
         // .duration(500)
         .attr("cx" , scaleDataX)
         .attr("cy" , scaleDataY)
-        .attr("fill" , EnergyColor(energy));
+        .attr("fill" , EnergyColor(energy))
+        .style("stroke", speedColor(speed));
         //choose this player.
 
   circle5.on("click", function() {
@@ -858,11 +874,11 @@ function update5(datax, datay , heading , energy, speed ) {
   points2.splice(1,1,[scaleDataX, scaleDataY])
 
 
-  rect5.transition()
-        // .duration(500)
-        .attr("height" , speed*30 )
-        .attr("x"  , scaleDataX + 10)
-        .attr("y" , scaleDataY);
+  // rect5.transition()
+  //       // .duration(500)
+  //       .attr("height" , speed*30 )
+  //       .attr("x"  , scaleDataX + 10)
+  //       .attr("y" , scaleDataY);
 
   arcV5.transition()
         // .duration(500)
@@ -887,7 +903,8 @@ function update2(datax, datay , heading , energy, speed ) {
         // .duration(500)
         .attr("cx" , scaleDataX)
         .attr("cy" , scaleDataY)
-        .attr("fill" , EnergyColor(energy));
+        .attr("fill" , EnergyColor(energy))
+        .style("stroke", speedColor(speed));
         //choose this player.
 
   circle2.on("click", function() {
@@ -898,11 +915,11 @@ function update2(datax, datay , heading , energy, speed ) {
          });
 
 points.splice(1,1,[scaleDataX, scaleDataY])
-  rect2.transition()
-        // .duration(500)
-        .attr("height" , speed*30 )
-        .attr("x"  , scaleDataX + 10)
-        .attr("y" , scaleDataY);
+  // rect2.transition()
+  //       // .duration(500)
+  //       .attr("height" , speed*30 )
+  //       .attr("x"  , scaleDataX + 10)
+  //       .attr("y" , scaleDataY);
 
   arcV2.transition()
         // .duration(500)
@@ -911,49 +928,48 @@ points.splice(1,1,[scaleDataX, scaleDataY])
   
   calculateHeat(scaleDataX ,scaleDataY , 2);    
 }
-// function update3(datax, datay , heading , energy, speed ) {
+function updateBall(datax, datay ) {
 
-//   // console.log(tag_id)
-//   var startHeading =  parseFloat (heading-1);
-//   var endHeading =parseFloat (heading+ 1),
-//   scaleDataX = parseInt(scaleX(datax)),
-//   scaleDataY = parseInt(scaleY(datay));
-//   if(speed==0){
-//     speed = 0.1;
-//   }
+  // console.log(tag_id)
+  // var startHeading =  parseFloat (heading-1);
+  // var endHeading =parseFloat (heading+ 1),
+  scaleDataX = parseInt(scaleX(datax)),
+  scaleDataY = parseInt(scaleY(datay));
+  // if(speed==0){
+  //   speed = 0.1;
+  // }
 
-//   // console.log("x "+scaleDataX + " y" + scaleDataY + " heading" + heading);
-//   circle3.transition()
-//         // .duration(500)
-//         .attr("cx" , scaleDataX)
-//         .attr("cy" , scaleDataY)
-//         .attr("fill" , EnergyColor(energy));
-//         //choose this player.
+  // console.log("x "+scaleDataX + " y" + scaleDataY + " heading" + heading);
+  ball.transition()
+        // .duration(500)
+        .attr("cx" , scaleDataX)
+        .attr("cy" , scaleDataY);
+        //choose this player.
 
-//   circle3.on("click", function() {
-//           //old values for dataset
-//         // d3.select("#a1").remove();
-//           drawImage(3);
-//           // console.log(heatArray);
-//          });
+  // ball.on("click", function() {
+  //         //old values for dataset
+  //       // d3.select("#a1").remove();
+  //         drawImage(3);
+  //         // console.log(heatArray);
+  //        });
 
-//   points2.splice(0,1,[scaleDataX, scaleDataY])
-//   points2.splice(3,1,[scaleDataX, scaleDataY])
+  // points2.splice(0,1,[scaleDataX, scaleDataY])
+  // points2.splice(3,1,[scaleDataX, scaleDataY])
 
 
-//   rect3.transition()
-//         // .duration(500)
-//         .attr("height" , speed*30 )
-//         .attr("x"  , scaleDataX + 10)
-//         .attr("y" , scaleDataY);
+  // rect3.transition()
+  //       // .duration(500)
+  //       .attr("height" , speed*30 )
+  //       .attr("x"  , scaleDataX + 10)
+  //       .attr("y" , scaleDataY);
 
-//   arcV3.transition()
-//         // .duration(500)
-//         .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
-//         .call(arcTween, startHeading,  endHeading );
+  // arcV3.transition()
+  //       // .duration(500)
+  //       .attr("transform" , "translate(" + scaleDataX + "," + scaleDataY + ")")
+  //       .call(arcTween, startHeading,  endHeading );
   
-//   calculateHeat(scaleDataX ,scaleDataY , 3);    
-// }
+  // calculateHeat(scaleDataX ,scaleDataY , 3);    
+}
 function update11(datax, datay , heading , energy, speed ) {
 
   // console.log(tag_id)
@@ -970,7 +986,8 @@ function update11(datax, datay , heading , energy, speed ) {
         // .duration(500)
         .attr("cx" , scaleDataX)
         .attr("cy" , scaleDataY)
-        .attr("fill" , EnergyColor(energy));
+        .attr("fill" , EnergyColor(energy))
+        .style("stroke", speedColor(speed));
         //choose this player.
 
   circle11.on("click", function() {
@@ -982,11 +999,11 @@ function update11(datax, datay , heading , energy, speed ) {
 
 points.splice(0,1,[scaleDataX, scaleDataY])
 points.splice(3,1,[scaleDataX, scaleDataY])
-  rect11.transition()
-        // .duration(500)
-        .attr("height" , speed*30 )
-        .attr("x"  , scaleDataX + 10)
-        .attr("y" , scaleDataY);
+  // rect11.transition()
+  //       // .duration(500)
+  //       .attr("height" , speed*30 )
+  //       .attr("x"  , scaleDataX + 10)
+  //       .attr("y" , scaleDataY);
 
   arcV11.transition()
         // .duration(500)
@@ -1011,7 +1028,8 @@ function update14(datax, datay , heading , energy, speed ) {
         // .duration(500)
         .attr("cx" , scaleDataX)
         .attr("cy" , scaleDataY)
-        .attr("fill" , EnergyColor(energy));
+        .attr("fill" , EnergyColor(energy))
+        .style("stroke", speedColor(speed));
         //choose this player.
 
   circle14.on("click", function() {
@@ -1024,11 +1042,11 @@ function update14(datax, datay , heading , energy, speed ) {
 points3.splice(0,1,[scaleDataX, scaleDataY])
 points3.splice(3,1,[scaleDataX, scaleDataY])
 
-  rect14.transition()
-        // .duration(500)
-        .attr("height" , speed*30 )
-        .attr("x"  , scaleDataX + 10)
-        .attr("y" , scaleDataY);
+  // rect14.transition()
+  //       // .duration(500)
+  //       .attr("height" , speed*30 )
+  //       .attr("x"  , scaleDataX + 10)
+  //       .attr("y" , scaleDataY);
 
   arcV14.transition()
         // .duration(500)
@@ -1045,10 +1063,23 @@ function calculateHeat(datax , datay ,tag_id){
 
    for (var i = datax-30; i < datax+30; i++) {
      for (var j = datay-30; j < datay+30; j++) {
+      var difX = Math.abs(datax-i),
+          difY = Math.abs(datay-j);
+          // dis = Math.sqrt(difX*difX + difY*difY);
+          // console.log(dis);
+
       if(i<0||j<0){
         continue;
       }
-     heatArray[tag_id][i][j] = heatArray[tag_id][i][j]+0.4;
+      if(difX<=10 && difY<=10){
+        heatArray[tag_id][i][j] = heatArray[tag_id][i][j]+0.7;
+      }
+      if(10<difX<=20 && 10<difY<=20){
+        heatArray[tag_id][i][j] = heatArray[tag_id][i][j]+0.4;
+      }
+      else{
+        heatArray[tag_id][i][j] = heatArray[tag_id][i][j]+0.1;
+     }
      };
    };
    // console.log(heatArray[datax][datay] + " x"+datax +" y"+ datay);
@@ -1194,6 +1225,8 @@ var clearID = setInterval(function() {
       // else if(ballP[num].tag_id == 14){
     update14(p14[num-1][0],p14[num-1][1], p14[num-1][2],p14[num-1][4], p14[num-1][5]); 
 
+    updateBall(b1[num-1][0],b1[num-1][1] ) ;
+
     // console.log(p1[num][0])
 
   //   jump = jump-1;
@@ -1242,4 +1275,4 @@ var clearID = setInterval(function() {
 
 
 
-});
+// });
