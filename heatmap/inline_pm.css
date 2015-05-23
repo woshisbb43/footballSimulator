@@ -1,0 +1,120 @@
+body {
+	background: #00ff00 url("background.jpg") fixed center; 
+} 
+
+svg {
+  position: absolute; 
+  background-color: #789; 
+  top: 0px;
+  left: 0px; 
+}
+
+text {
+  font: bold 48px monospace;
+}
+
+.enter {
+  fill: green;
+}
+
+.update {
+  fill: #333;
+}
+
+.exit {
+  fill: brown;
+}
+
+.pitch {
+  position: absolute; 
+  top: 80px;
+  left: 30px;
+  margin: 0;     
+  padding: 0;
+}
+
+.controls {
+ position: absolute; 
+ top: 630px; 
+ left: 1020px;  
+ padding: 0; 
+ margin: 0; 
+}
+
+#eventInfo {
+ position: absolute;
+ top: 542px; 
+ left: 911px; 
+ padding: 10px; 
+
+ 
+ font-size: 1.4em; 
+ color: #FFFFFF; 
+ width: 772px; 
+ height: 64px; 
+ margin: 0 auto; 
+ background-color: rgba(255, 30, 30, 0.7); 
+ 
+ text-align: center; 
+}
+
+#myElement {
+ position: absolute; 
+ top: 0; 
+ left: 0; 
+}
+
+#canvas { 
+	position: absolute;
+	top: 690px;
+	left: 500px; 
+	margin: 0 0 0 0; 
+	padding: 0 0 20px 0; 
+
+}
+
+#dashboard { 
+	position: absolute;
+	top: 800px; 
+	left: 900px; 
+	width: 825px;
+	height: 518px; 
+	visibility: visible;  
+	background-color: rgba(30, 30, 30, 0.7); 
+}
+
+#wrapper {
+	z-index: -1; 
+	min-width: 100%;
+	min-height: 100%;
+	margin: 0px;
+	padding: 0px; 
+	position: absolute;
+	top: 0;
+	left: 0; 
+	background: #00ff00 url("background.jpg") fixed center; 
+
+}
+
+#timeClock {
+	position: absolute;
+	top: 15px;
+	left: 1250px; 
+	left: 1250px; 
+	font-size: 2em; 
+	padding: 0;
+	margin: 0; 
+}
+
+#videoFrame {
+	position: absolute; 
+	top: 80px;
+	left: 900px; 
+	border: 12px solid #515250;  	
+	height: 538px; 
+	width: 794px; 
+}
+
+#time_in_tet {
+	visibility: hidden; 
+} 
