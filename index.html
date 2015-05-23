@@ -1,53 +1,190 @@
-<div id="container"></div>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script>
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+<script src="http://d3js.org/d3.v3.js"></script>
+<script src="textJs.js"></script>
+<script src="controlProperty.js"></script>
+<script src="interaction.js"></script>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Play:700,400' type='text/css'>
 
-		var points = [
-  [480, 200],
-  [580, 400],
-  [680, 100],
-  [780, 300],
-  [180, 300],
-  [280, 100],
-  [380, 400],
-  [500, 700]
-];
-		
-var container =  d3.select("#container")
-							.append("svg")
-							.attr("id", "plot")
-							.attr("width", 500)
-							.attr("height", 500);
-							
-		var circle = container
-						.append("circle")
-						.attr("cx", 25)
-						.attr("cy", 25)
-						.attr("r", 25)
-						.style("fill", "purple");
-		
-		var rect = container
-						.append("rect")
-						.attr("x", 100)
-						.attr("y", 200)
-						.attr("height", 30)
-						.attr("width", 30)
-						.attr("fill", 40);
-			
-		animations = [ 	function(){  console.log(1); return circle.transition().duration(2e3).attr("cy", Math.random()*300); } ,
-						function(){  console.log(2); return rect.transition().duration(3e3).attr("fill", "#"+((1<<24)*Math.random()|0).toString(16)); },
-						function(){  console.log(3); return circle.transition().duration(1e3).attr("r", Math.random()*500); },
-						function(){  console.log(4); return circle.transition().duration(2e3).style("fill", "#"+((1<<24)*Math.random()|0).toString(16)); },
-						function(){  console.log(5); return circle.transition().duration(1e3).attr("cx", Math.random()*500); }]
-		
-		function animate(index){
-			if(index < animations.length - 1){
-				index = index + 1
-				return animations[index]().each("end", function() { animate(index) })
-			} else {
-				return true
-			}
-		}
-		
-		animate(-1)
-		</script>
+<script src="data/js/players/player1data.js"></script>  
+<script src="data/js/players/player2data.js"></script>  
+<script src="data/js/players/player3data.js"></script>  
+<script src="data/js/players/player4data.js"></script>  
+<script src="data/js/players/player5data.js"></script>  
+<script src="data/js/players/player6data.js"></script>  
+<script src="data/js/players/player8data.js"></script>  
+<script src="data/js/players/player11data.js"></script>  
+<script src="data/js/players/player12data.js"></script>  
+<script src="data/js/players/player13data.js"></script>  
+<script src="data/js/players/player14data.js"></script>   
+<script src="data/js/ball.js"></script> 
+	
+    <script type="text/javascript" src="http://iop.io/js/vendor/d3.v3.min.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerEvents/pointerevents.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerGestures/pointergestures.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/iopctrl.js"></script>
+	<link rel="stylesheet" type="text/css" href="menu.css">
+    <link rel="stylesheet" type="text/css" href="calculator.css">
+
+	<link rel="stylesheet" type="text/css" href="inline.css"> 
+	<link rel="stylesheet" type="text/css" href="inline_pm.css"> 
+
+<script type="text/javascript" src="data/js/event.js"></script> 
+
+<script type="text/javascript" src="jwplayer.js"></script>
+<script type="text/javascript">jwplayer.key="xaJgGuohQ7GDgKsfnjqmrn+rDh6fGxcqU6yH6Q==";</script> 
+	
+
+	</head>
+
+
+<body>
+<div id="wrapper">
+
+<div id='cssmenu'>
+<ul>
+   <li><a href='index.html'><span>Tactic Board</span></a></li>
+   <li  class='active has-sub'><a href='#'><span>Players Status</span></a>
+      <ul>
+         <li class='has-sub'><a href='#' onClick="changeP1()"><span>player 1</span></a>
+            <ul>
+               <li><a href='#' onclick="P1()"><span>player</span></a></li>
+               <li><a href='#' onclick="P1S()"><span>speed</span></a></li>
+               <li class='last'><a href='#' onclick="P1V()"><span>view</span></a></li>
+            </ul>
+         </li>
+         <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 2</span></a>
+            <ul>
+               <li><a href='#' onclick="P2()"><span>player</span></a></li>
+               <li><a href='#' onclick="P2S()"><span>speed</span></a></li>
+               <li class='last'><a href='#' onclick="P2V()"><span>view</span></a></li>
+            </ul>
+         </li>
+          <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 3</span></a>
+            <ul>
+               <li><a href='#' onclick="P3()"><span>player</span></a></li>
+               <li><a href='#' onclick="P3S()"><span>speed</span></a></li>
+               <li class='last'><a href='#' onclick="P3V()"><span>view</span></a></li>
+            </ul>
+         </li>
+          <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 4</span></a>
+            <ul>
+               <li><a href='#' onclick="P4()"><span>player</span></a></li>
+               <li><a href='#' onclick="P4S()"><span>speed</span></a></li>
+               <li class='last'><a href='#' onclick="P4V()"><span>view</span></a></li>
+            </ul>
+         </li>
+          <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 5</span></a>
+            <ul>
+               <li><a href='#' onclick="P5()"><span>player</span></a></li>
+               <li><a href='#' onclick="P5S()"><span>speed</span></a></li>
+               <li class='last'><a href='#' onclick="P5V()"><span>view</span></a></li>
+            </ul>
+         </li>
+          <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 6</span></a>
+            <ul>
+               <li><a href='#' onclick="P6()"><span>player</span></a></li>
+               <li><a href='#' onclick="P6S()"><span>speed</span></a></li>
+               <li class='last'><a href='#' onclick="P6V()"><span>view</span></a></li>
+            </ul>
+         </li>
+<!--           <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 7</span></a>
+            <ul>
+               <li><a href='#' onclick="P8()"><span>player</span></a></li>
+               <li><a href='#' onclick="P8S()"><span>speed</span></a></li>
+               <li class='last'><a href='#' onclick="P7V()"><span>view</span></a></li>
+            </ul>
+         </li> -->
+         <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 11</span></a>
+            <ul>
+               <li><a href='#' onclick="P11()"><span>player</span></a></li>
+               <li><a href='#' onclick="P11S()"><span>speed</span></a></li>
+               <li class='last'><a href='#' onclick="P11V()"><span>view</span></a></li>
+            </ul>
+         </li>
+         <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 13</span></a>
+            <ul>
+               <li><a href='#' onclick="P13()"><span>player</span></a></li>
+               <li><a href='#' onclick="P13S()"><span>speed</span></a></li>
+               <li class='last'><a href='#' onclick="P13V()"><span>view</span></a></li>
+            </ul>
+         </li>
+         <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 12</span></a>
+            <ul>
+               <li><a href='#' onclick="P12()"><span>player</span></a></li>
+               <li><a href='#' onclick="P12S()"><span>speed</span></a></li>
+               <li class='last'><a href='#' onclick="P12V()"><span>view</span></a></li>
+            </ul>
+         </li>
+         <li class='has-sub'><a href='#' onClick="myFunction()"><span>player 14</span></a>
+            <ul>
+               <li><a href='#' onclick="P14()"><span>player</span></a></li>
+               <li><a href='#' onclick="P14S()"><span>speed</span></a></li>
+               <li class='last'><a href='#' onclick="P14V()"><span>view</span></a></li>
+            </ul>
+         </li>
+      </ul>
+   </li>
+   <li class="has-sub"><a href='#'><span>Connection Analysis</span></a>
+            <ul>
+               <li><a href='#' onclick="Forwards()"><span>Forwards</span></a></li>
+               <li><a href='#' onclick="Midfielder()"><span>Midfielder</span></a></li>
+               <li class='last'><a href='#' onclick="Defender()"><span>Defender</span></a></li>
+            </ul>
+   </li>
+   <li class='last'><a href="contacts.htm" target="_blank" ><span>Contact</span></a></li>
+</ul>
+</div>
+
+<div class="controls" > 
+
+  <button type="button" id="playBtn" onclick="doTimer()">Play</button>
+  <button type="button" id="pauseBtn" onclick="doPause()">Pause</button>  
+   
+  <button type="button" id="stopBtn" onclick="stopCount()">Stop</button> 
+  <button type="button" id="frameBackBtn" disabled="true" onclick="doFrameBack()">Frame back</button>   
+  <button type="button" id="frameForwardBtn" disabled="true" onclick="doFrameForward()">Frame forward</button>
+  <button type="button" id="goBackBtn" onclick="doTimerBack()">Rewind </button> 
+  <button type="button" id="goForwardBtn" onclick="doTimerForward()">Fast Forward</button> 
+
+  <input type="text" id="time_in_tet" /> 
+  
+</div>
+
+<div id="videoFrame">
+	<div id="myElement">Loading the player...</div>
+</div>
+
+<script type="text/javascript">
+    jwplayer("myElement").setup({
+        file: "video.mp4",
+        image: "intro.jpg", 
+ 		controls: false, 
+		width: 770,
+		height: 450  
+    });
+</script> 
+
+<div id="eventInfo">
+	 Welcome to the match between Tromsø IL and Tottenham Hotspurs 
+</div>
+
+<div id="timeClock">
+
+
+
+</div> 
+
+</div>
+
+
+
+</body>
+
+<script src="textJs.js"></script>
+
+
+
+
+    
